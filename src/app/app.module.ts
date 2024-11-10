@@ -9,6 +9,11 @@ import { LandingComponent } from './components/landing/landing.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
+import { LoginComponent } from './components/login/login.component';
+import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +21,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     LandingComponent,
-    DashboardComponent
+    DashboardComponent,
+    BlankLayoutComponent,
+    LoginComponent,
+    UserLayoutComponent,
+    AdminLayoutComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
