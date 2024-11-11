@@ -1,51 +1,30 @@
-<div class="container">
-    <form [formGroup]="addBikeForm" (ngSubmit)="onAddBike()">
-        <div class="row">
-            <div class="col-8">
-                <h2 class="text-danger mt-3">Add New Bike</h2>
-                <label for="title" class="form-label">Brand : </label>
-                <input type="text" class="form-control" id="" formControlName="brand">
-                <label for="description" class="form-label">Model : </label>
-                <input type="text" class="form-control" id="" formControlName="model">
-                <label for="description" class="form-label">Type : </label>
-                <input type="text" class="form-control" id="" formControlName="type">
-                <!-- <label for="priority" class="form-label">Select the priority</label>
-                <select formControlName="priority" class="form-control">
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                </select> -->
-                <label for="description" class="form-label">Rate per Hour : </label>
-                <input type="number" class="form-control" id="" formControlName="ratePerHour">
-                <!-- <label for="assigneeId" class="form-label">Select the assignee</label>
-                <select formControlName="assigneeId" class="form-control">
-                    <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
-                </select> -->
-                <button type="submit" class="btn btn-primary mt-3" [disabled]="addBikeForm.invalid">Submit</button>
 
+<main>
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
             </div>
-
-            <div class="col-4 mt-4" formArrayName="images">
-                <h3>Add Images</h3>
-                <div class="row" *ngFor="let checkList of bikeImages.controls;let i=index;">
-                    <div [formGroupName]="i">
-                        <div class="row mt-2">
-                            <div class="col-8">
-                                <input type="file" class="form-control" id="" formControlName="imagePath" (change)="loadImage($event)">
-                            </div>
-                            <div class="col-2">
-                                <button class="btn btn-danger" type="button"
-                                    (click)="removeImage(i)">Remove</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <button class="btn btn-success" type="button" (click)="addImage()">Add</button>
-            </div>
+            <button type="button"
+                class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
+                <svg class="bi">
+                    <use xlink:href="#calendar3" />
+                </svg>
+                This week
+            </button>
         </div>
-    </form>
-    <div *ngFor="let img of images">
-        <img [src]="img.imagePath">
     </div>
-</div>
+
+    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+
+    <h2>Section title</h2>
+    <div class="table-responsive small">
+    </div>
+</main>
+
+ 
+
+

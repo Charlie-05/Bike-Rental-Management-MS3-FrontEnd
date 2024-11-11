@@ -1,0 +1,22 @@
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  .bi {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+  }
+  /*-------------------------------------------------*/
+  @media (min-width: 768px) {
+    .sidebar .offcanvas-lg {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 48px;
+    }
+    .navbar-search {
+      display: block;
+    }
+  }
+  
