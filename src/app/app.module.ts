@@ -14,6 +14,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { RegisterComponent } from './components/register/register.component';
 import { AddBikeComponent } from './components/add-bike/add-bike.component';
 import { ListBikeComponent } from './components/list-bike/list-bike.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ViewBikeComponent } from './components/view-bike/view-bike.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { ListBikeComponent } from './components/list-bike/list-bike.component';
     AdminLayoutComponent,
     RegisterComponent,
     AddBikeComponent,
-    ListBikeComponent
+    ListBikeComponent,
+    HeaderComponent,
+    FooterComponent,
+    ViewBikeComponent
   ],
   imports: [
     BrowserModule,
