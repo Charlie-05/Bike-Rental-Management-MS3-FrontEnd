@@ -13,4 +13,7 @@ export class BikeService {
   createBike(bike: IBike) {
     return this.http.post("http://localhost:5057/api/Bikes", bike)
   }
+  getBikes(){
+    return this.http.get<IBike[]>("http://localhost:5057/api/Bikes")
+  }
 }

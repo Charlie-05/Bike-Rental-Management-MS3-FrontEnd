@@ -8,6 +8,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddBikeComponent } from './components/add-bike/add-bike.component';
+import { ListBikeComponent } from './components/list-bike/list-bike.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
    // canActivate : [AuthGuard],
     children: [
       { path: '', component: DashboardComponent },
-      {path : 'add-bike' , component : AddBikeComponent}
+      {path : 'add-bike' , component : AddBikeComponent},
+      {path : 'bikes' , component : ListBikeComponent},
     ]
   },
   {
