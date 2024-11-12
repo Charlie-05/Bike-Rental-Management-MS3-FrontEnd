@@ -47,7 +47,7 @@ export class AddBikeComponent {
     const files = Array.from(event.target.files || []);
     const reader = new FileReader();
     let bikeImg: IImage = {
-      imagePath: ''
+      imagePath: '',  
     };
     files.forEach((file: any) => {
       reader.onload = (e: any) => {

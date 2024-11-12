@@ -1,1 +1,20 @@
-<p>list-bike works!</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bike of bikes">
+        <th scope="row">{{bike.brand}}</th>
+        <td>{{bike.model}}</td>
+        <td>{{bike.ratePerHour}}</td>
+        <td>{{bike.type}}</td>
+        <td><button (click)="deleteBike(bike.id)"><i class="bi bi-trash-fill"></i></button></td>
+      </tr>
+    </tbody>
+  </table>

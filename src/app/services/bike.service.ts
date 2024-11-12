@@ -16,4 +16,8 @@ export class BikeService {
   getBikes(){
     return this.http.get<IBike[]>("http://localhost:5057/api/Bikes")
   }
+
+  deleteBike(id : string){
+    return this.http.delete("http://localhost:5057/api/Bikes/" + id);
+  }
 }
