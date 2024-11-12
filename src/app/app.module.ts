@@ -13,6 +13,7 @@ import { UserLayoutComponent } from './layouts/user-layout/user-layout.component
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AddBikeComponent } from './components/add-bike/add-bike.component';
+import { ListBikeComponent } from './components/list-bike/list-bike.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AddBikeComponent } from './components/add-bike/add-bike.component';
     UserLayoutComponent,
     AdminLayoutComponent,
     RegisterComponent,
-    AddBikeComponent
+    AddBikeComponent,
+    ListBikeComponent
   ],
   imports: [
     BrowserModule,
