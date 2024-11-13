@@ -1,4 +1,5 @@
 import { IImage } from "./image";
+import { IInventoryUnit } from "./inventoryUnit";
 
 export interface IBike{
     id : string,
@@ -6,7 +7,7 @@ export interface IBike{
     model : string,
     type : string ,
     ratePerHour : number,
-    inventoryUnits : any[],
+    inventoryUnits : IInventoryUnit[],
     rentalRequests : any[],
     images : IImage[],
 }

@@ -27,7 +27,7 @@
 
             <div class="col-4 mt-4" formArrayName="images">
                 <h3>Add Images</h3>
-                <div class="row" *ngFor="let checkList of bikeImages.controls;let i=index;">
+                <div class="row" *ngFor="let img of bikeImages.controls;let i=index;">
                     <div [formGroupName]="i">
                         <div class="row mt-2">
                             <div class="col-8">

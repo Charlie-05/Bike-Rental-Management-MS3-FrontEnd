@@ -2,7 +2,9 @@ import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { BikeService } from '../../services/bike.service';
 import { IBike } from '../../modals/bike';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IInventoryUnit } from '../../modals/inventoryUnit';
+import { InventoryUnitService } from '../../services/inventory-unit.service';
 
 @Component({
   selector: 'app-list-bike',
@@ -12,13 +14,17 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class ListBikeComponent implements OnInit {
 
   bikes!: IBike[];
-  addUnitsForm! : FormGroup;
+  currentBike! : IBike;
+  currentBikeId! : string;
+  currentBikeUnits! : IInventoryUnit[];
+  addBikeUnits! : IInventoryUnit;
+  addUnitsForm!: FormGroup;
   modalRef?: BsModalRef;
-  constructor(private bikeService: BikeService , private modalService: BsModalService , private fb : FormBuilder) {
+  constructor(private bikeService: BikeService, private modalService: BsModalService, private fb: FormBuilder , private inventoryUnitService : InventoryUnitService) {
     this.addUnitsForm = this.fb.group({
       inventoryUnits: this.fb.array([])
     })
-   };
+  };
 
   ngOnInit(): void {
     this.loadData();
@@ -40,11 +46,36 @@ export class ListBikeComponent implements OnInit {
   loadData() {
     this.getAllBikes();
   }
-  addUnits(id: string , template: TemplateRef<void>) {
+  addUnits(id: string, template: TemplateRef<void>) {
     this.modalRef = this.modalService.show(template);
-    console.log(id)
+    console.log(id);
+    this.bikeService.getBike(id).subscribe(data => {
+      this.currentBikeId = data.id;
+      this.currentBikeUnits = data.inventoryUnits;
+    })
+  }
+  addUnit() {
+    // this.inventoryUnits.push(this.fb.group({
+    //   registrationNo : ['', [Validators.required]],
+    //   yearOfManufacture: ['']
+    // }))
+  }
+  removeUnit(index: number) {
+    this.inventoryUnits.removeAt(index);
   }
 
+
+  get inventoryUnits(): FormArray {
+    return this.addUnitsForm.get('inventoryUnits') as FormArray;
+  }
+  onAddUnits() {
+   this.addBikeUnits = this.addUnitsForm.value.inventoryUnits;
+
+  //   console.log(this.addBikeUnits)
+  //  this.inventoryUnitService.postUnits(this.addBikeUnits).subscribe(data => {
+  //   console.log(data);
+  //  })
+  }
 
   openModal(template: TemplateRef<void>) {
     this.modalRef = this.modalService.show(template);
