@@ -17,6 +17,10 @@ import { ListBikeComponent } from './components/list-bike/list-bike.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ViewBikeComponent } from './components/view-bike/view-bike.component';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -39,9 +43,11 @@ import { ViewBikeComponent } from './components/view-bike/view-bike.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    TooltipModule.forRoot(),
   ],
-  providers: [],
+  providers: [BsModalService, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
