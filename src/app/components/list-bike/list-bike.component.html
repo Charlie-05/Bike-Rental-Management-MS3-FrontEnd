@@ -14,7 +14,23 @@
         <td>{{bike.model}}</td>
         <td>{{bike.ratePerHour}}</td>
         <td>{{bike.type}}</td>
-        <td><button (click)="deleteBike(bike.id)"><i class="bi bi-trash-fill"></i></button></td>
+        <td>
+          <button (click)="addUnits(bike.id , template)"><i class="bi bi-plus-square"></i></button>
+          <button (click)="deleteBike(bike.id)"><i class="bi bi-trash-fill"></i></button>
+        </td>
       </tr>
     </tbody>
   </table>
+ 
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Modal</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      This is a modal.
+    </div>
+  </ng-template>
+  
