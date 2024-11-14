@@ -1,1 +1,30 @@
-grygtergtyugt
+<div class="container-fluid">
+    <div class="bg">     
+    </div>
+</div>
+<div class="row">
+    <div class="card" *ngFor="let bike of bikes" style="width: 18rem;">
+        <div class="">
+            <img [src]="bike.images?.[currentImgIndex]?.imagePath" class="card-img-top" alt="..." (click)="getBike(bike.id)">
+        </div>      
+        <div class="card-body">
+            <h5 class="card-title">{{bike.brand}} {{bike.model}}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <button (click)="viewbikeInfo(bike.id)" class="btn btn-primary">View More</button>
+            <button (click)="openReqModal(bike.id)" class="btn btn-success">Request</button>
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+ 
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    This is a modal.
+  </div>
