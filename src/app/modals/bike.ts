@@ -7,7 +7,7 @@ export interface IBike{
     model : string,
     type : string ,
     ratePerHour : number,
-    inventoryUnits : IInventoryUnit[],
-    rentalRequests : any[],
-    images : IImage[],
+    inventoryUnits? : IInventoryUnit[],
+    rentalRequests? : any[],
+    images? : IImage[],
 }

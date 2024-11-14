@@ -15,8 +15,8 @@ export class ListBikeComponent implements OnInit {
 
   bikes!: IBike[];
   currentBike! : IBike;
-  currentBikeId! : string;
-  currentBikeUnits! : IInventoryUnit[];
+  //currentBikeId! : string;
+ // currentBikeUnits! : IInventoryUnit[];
   addBikeUnits! : IInventoryUnit;
   addUnitsForm!: FormGroup;
   modalRef?: BsModalRef;
@@ -50,15 +50,18 @@ export class ListBikeComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
     console.log(id);
     this.bikeService.getBike(id).subscribe(data => {
-      this.currentBikeId = data.id;
-      this.currentBikeUnits = data.inventoryUnits;
+      this.currentBike = data;
+     // this.currentBikeId = data.id;
+      //this.currentBikeUnits = data.inventoryUnits;
     })
   }
+
   addUnit() {
-    // this.inventoryUnits.push(this.fb.group({
-    //   registrationNo : ['', [Validators.required]],
-    //   yearOfManufacture: ['']
-    // }))
+    this.inventoryUnits.push(this.fb.group({
+      registrationNo : [''], // format validation
+      yearOfManufacture: [''], //Future validation
+      bikeId : [this.currentBike.id]
+    }))
   }
   removeUnit(index: number) {
     this.inventoryUnits.removeAt(index);
@@ -70,11 +73,10 @@ export class ListBikeComponent implements OnInit {
   }
   onAddUnits() {
    this.addBikeUnits = this.addUnitsForm.value.inventoryUnits;
-
-  //   console.log(this.addBikeUnits)
-  //  this.inventoryUnitService.postUnits(this.addBikeUnits).subscribe(data => {
-  //   console.log(data);
-  //  })
+     console.log(this.addBikeUnits)
+   this.inventoryUnitService.postUnits(this.addBikeUnits).subscribe(data => {
+    console.log(data);
+   })
   }
 
   openModal(template: TemplateRef<void>) {

@@ -30,45 +30,47 @@
 
 <ng-template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
+    <h4 class="modal-title pull-left">Inventory of {{currentBike.model}}</h4>
     <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
       <span aria-hidden="true" class="visually-hidden">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-
+    <ul>
+      <li *ngFor="let unit of currentBike?.inventoryUnits">{{unit.registrationNo}}</li>
+    </ul>
     <form [formGroup]="addUnitsForm" (ngSubmit)="onAddUnits()">
       <div class="mt-4" formArrayName="inventoryUnits">
-        <h3>Add Units</h3>
+        <h3>Add to Inventory</h3>
         <div class="" *ngFor="let unit of inventoryUnits.controls;let i=index;">
           <div [formGroupName]="i">
             <div class="row mt-2">
               <div class="col-6">
-                <input type="text" class="form-control" id="" formControlName="registrationNo ">
+                <input type="text" class="form-control" id="" name="registrationNo" formControlName="registrationNo" >
               </div>
               <div class="col-4">
-                <input type="text" class="form-control" id="" formControlName="yearOfManufacture">
+                <input type="number" class="form-control" id="" name="yearOfManufacture" formControlName="yearOfManufacture">
               </div>
               <div class="col-2">
                 <div class="row">
                   <button class="btn btn-danger col-6" type="button" (click)="removeUnit(i)"><i
                       class="bi bi-trash-fill"></i></button>
-
                 </div>
               </div>
             </div>
           </div>
-
         </div>
-        <div class="row mt-2">      
-          <div class="col-1"></div>
-          <button class="btn btn-success btn-sm col-3" type="button" (click)="addUnit()">Add</button>     
-        </div>
-       <button type="submit">Submit</button>
       </div>
+      <div class="d-flex flex-row-reverse row">
+        <div class="col-2 me-3 mt-2"><button (click)="addUnit()" type="button">Add</button></div>
+        <div class="col-1"></div>
+      </div>     
+      <!-- <button (click)="addUnit()">Add</button> -->
+      <div class="row d-flex justify-content-center mt-2">
+        <button type="submit" class="col-10">Submit</button>
+      </div>
+    
     </form>
-    <ul>
-      <li *ngFor="let unit of currentBikeUnits">{{unit.registrationNo}}</li>
-    </ul>
+   
   </div>
 </ng-template>
