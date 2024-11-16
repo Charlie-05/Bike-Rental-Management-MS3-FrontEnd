@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IToken } from '../modals/token';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,24 @@ export class UserService {
   registerUser(user : any){
     return this.http.post("http://localhost:5057/api/Users/Sign-Up" , user);
   }
+
+  logIn(user : any){
+    return this.http.post<IToken>("http://localhost:5057/api/Users/Log-In" , user);
+  }
   getRoles(){
     return this.http.get("http://localhost:5057/api/Users/Get-Roles");
   }
+  isLoggedIn() {
+    if (localStorage.getItem('token')) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const decoded: any = jwtDecode(token);
+        localStorage.setItem('user', JSON.stringify(decoded));
+      }
+      return true;
+    }
+    return false;
+  }
 }
+
+

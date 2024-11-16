@@ -40,8 +40,9 @@ export class ViewBikeComponent implements OnInit {
   });
 
  }
- openReqModal(id : string){
+ openReqModal(id : string , template: TemplateRef<void>){
   //Check token and redirect to login page if not
+  this.modalRef = this.modalService.show(template);
  }
  viewbikeInfo(id : string){
   console.log(id)
