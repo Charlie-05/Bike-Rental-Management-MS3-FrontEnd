@@ -17,4 +17,16 @@ export class RequestDisplayComponent implements OnInit {
       console.log(data);
      })
    }
+   acceptRequest(id : string){
+    this.rentalrequestService.acceptRequest(id).subscribe(data => {
+      console.log(data);
+    })
+   }
+   
+   declineRequest(id : string){
+    this.rentalrequestService.declineRequest(id).subscribe(data => {
+      console.log(data);
+    })
+   }
+
 }

@@ -11,4 +11,8 @@ export class InventoryUnitService {
   postUnits(inventoryUnit : IInventoryUnit){
     return this.http.post("http://localhost:5057/api/InventoryUnits" , inventoryUnit);
   }
+
+  getAvailableUnitsByBikeId(bikeId : string){
+    return this.http.get("http://localhost:5057/api/InventoryUnits?availability=true&bikeId=" + bikeId);
+  }
 }

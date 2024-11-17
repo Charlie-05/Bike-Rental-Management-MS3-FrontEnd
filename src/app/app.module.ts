@@ -25,6 +25,7 @@ import { BikePopupComponent } from './components/bike-popup/bike-popup.component
 import { RentalsComponent } from './components/rentals/rentals.component';
 import { RequestDisplayComponent } from './components/request-display/request-display.component';
 import { BikesComponent } from './components/bikes/bikes.component';
+import { RentalPortalComponent } from './components/rental-portal/rental-portal.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { BikesComponent } from './components/bikes/bikes.component';
     RentalsComponent,
     RequestDisplayComponent,
     BikesComponent,
+    RentalPortalComponent,
  
   ],
   imports: [
