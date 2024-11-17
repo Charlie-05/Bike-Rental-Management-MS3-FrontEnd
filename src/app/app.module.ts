@@ -22,6 +22,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BikePopupComponent } from './components/bike-popup/bike-popup.component';
+import { RentalsComponent } from './components/rentals/rentals.component';
+import { RequestDisplayComponent } from './components/request-display/request-display.component';
+import { BikesComponent } from './components/bikes/bikes.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +42,11 @@ import { BikePopupComponent } from './components/bike-popup/bike-popup.component
     HeaderComponent,
     FooterComponent,
     ViewBikeComponent,
-    BikePopupComponent
+    BikePopupComponent,
+    RentalsComponent,
+    RequestDisplayComponent,
+    BikesComponent,
+ 
   ],
   imports: [
     BrowserModule,
