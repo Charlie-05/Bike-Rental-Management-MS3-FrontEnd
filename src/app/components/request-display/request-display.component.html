@@ -1,0 +1,24 @@
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+                <!-- <th scope="col">Handle</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let request of rentalRequests">
+                <th scope="row">{{request.bike?.brand}} {{request.bike?.model}}</th>
+                <td>{{request.nicNumber}}</td>
+                <td>{{request.requestTime | date}}</td>
+                <!-- <td>{{request.bikeId}}</td> -->
+                <td>
+                  <button class="btn btn-success">Accept</button>
+                  <button class="btn btn-danger">Decline</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>

@@ -12,4 +12,8 @@ export class RentalRequestService {
   postRequest(req : any){
     return this.http.post<IRentalRequest>("http://localhost:5057/api/RentalRequests" , req);
   }
+
+  getRequests(){
+    return this.http.get<IRentalRequest[]>("http://localhost:5057/api/RentalRequests");
+  }
 }

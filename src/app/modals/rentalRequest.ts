@@ -1,10 +1,13 @@
+import { IBike } from "./bike";
+
 export interface IRentalRequest {
     id: string,
     requestTime: string,
     status: Status,
     bikeId: string,
     nicNumber: string,
-    notify: boolean
+    notify: boolean,
+    bike? : IBike
 }
 
 export enum Status {
