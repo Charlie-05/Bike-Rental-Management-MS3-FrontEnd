@@ -3,7 +3,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="card" *ngFor="let bike of bikes" style="width: 18rem;">
+    <div class="card col-lg-2 col-md-3 col-sm-4 col-xsm-6" *ngFor="let bike of bikes" style="width: 18rem;">
         <div class="">
             <img [src]="bike.images?.[currentImgIndex]?.imagePath" class="card-img-top" alt="..." (click)="getBike(bike.id)">
         </div>      
@@ -11,15 +11,21 @@
             <h5 class="card-title">{{bike.brand}} {{bike.model}}</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
                 content.</p>
-            <button (click)="viewbikeInfo(bike.id)" class="btn btn-primary">View More</button>
-            <button (click)="openReqModal(bike.id , template)" class="btn btn-success">Request</button>
+            <!-- <button (click)="viewbikeInfo(bike.id)" class="btn btn-primary">View More</button> -->
+            <div class="row d-flex justify-content-center">
+              <!-- <button (click)="openReqModal(bike.id , template)" class="btn btn-success col-4 ms-2">Request</button> -->
+              <button type="button" class="btn btn-primary col-6" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="selected=bike">
+                View
+              </button>
+            </div>
+          
         </div>
     </div>
 </div>
-<button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+<!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button> -->
  
 <!-- May use input decorator in this instance instead of using the modal method  -->
-<ng-template #template>
+<!-- <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Modal</h4>
     <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
@@ -29,3 +35,24 @@
   <div class="modal-body">
     This is a modal.
   </div>
+</ng-template> -->
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-bike-popup [bikeData]="selected"></app-bike-popup>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

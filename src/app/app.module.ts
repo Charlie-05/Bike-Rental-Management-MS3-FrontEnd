@@ -21,6 +21,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { BikePopupComponent } from './components/bike-popup/bike-popup.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     ListBikeComponent,
     HeaderComponent,
     FooterComponent,
-    ViewBikeComponent
+    ViewBikeComponent,
+    BikePopupComponent
   ],
   imports: [
     BrowserModule,

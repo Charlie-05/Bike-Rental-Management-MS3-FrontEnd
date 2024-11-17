@@ -19,7 +19,7 @@ export class ViewBikeComponent implements OnInit {
  }
  modalRef?: BsModalRef;
 
-
+ selected! : any;
  openModal(template: TemplateRef<void>) {
    this.modalRef = this.modalService.show(template);
  }

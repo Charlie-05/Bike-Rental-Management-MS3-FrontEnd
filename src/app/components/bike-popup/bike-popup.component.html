@@ -1,0 +1,17 @@
+<div *ngIf="bikeData">
+    <div class="row">
+        <div class="col-6 row">
+            <div class="ratio ratio-4x3">
+                <img [src]="bikeData.images?.[0].imagePath" class="img-fluid" alt="Responsive Image">
+            </div>
+        </div>
+        <div class="col-6">
+            <form [formGroup]="rentalRequestForm" (ngSubmit)="onRequest()">
+                <label>Date</label>
+                <input type="date" formControlName="requestTime">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</div>
