@@ -12,12 +12,13 @@
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
                 content.</p>
             <button (click)="viewbikeInfo(bike.id)" class="btn btn-primary">View More</button>
-            <button (click)="openReqModal(bike.id)" class="btn btn-success">Request</button>
+            <button (click)="openReqModal(bike.id , template)" class="btn btn-success">Request</button>
         </div>
     </div>
 </div>
 <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
  
+<!-- May use input decorator in this instance instead of using the modal method  -->
 <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Modal</h4>
