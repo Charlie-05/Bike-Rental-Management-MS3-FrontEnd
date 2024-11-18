@@ -3,6 +3,8 @@ import { InventoryUnitService } from '../../services/inventory-unit.service';
 import { IRentalRequest } from '../../modals/rentalRequest';
 import { RentalRequestService } from '../../services/rental-request.service';
 import { IInventoryUnit } from '../../modals/inventoryUnit';
+import { RentalRecordService } from '../../services/rental-record.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-rental-portal',
@@ -11,10 +13,16 @@ import { IInventoryUnit } from '../../modals/inventoryUnit';
 })
 export class RentalPortalComponent implements OnInit {
 
-  rentalRequests! : IRentalRequest[];
-  currentInventoryUnits! : IInventoryUnit[];
-  constructor(private inventoryUnitService : InventoryUnitService , private rentalRequestService : RentalRequestService){
-
+  rentalRequests!: IRentalRequest[];
+  currentInventoryUnits!: IInventoryUnit[];
+  rentalRecordForm!: FormGroup;
+  registrationNo: string = '';
+  constructor(private inventoryUnitService: InventoryUnitService, private rentalRequestService: RentalRequestService,
+    private rentalRecordService: RentalRecordService, private fb: FormBuilder) {
+    this.rentalRecordForm = this.fb.group({
+      bikeRegNo: [''],
+      rentalRequestId : ['']
+    })
   }
 
   ngOnInit(): void {
@@ -24,17 +32,21 @@ export class RentalPortalComponent implements OnInit {
       this.rentalRequests.forEach(request => {
         this.getAvailableInventoryUnits(request.bikeId);
       });
-     
+
     })
   }
-  getAvailableInventoryUnits(bikeId : string){
+  getAvailableInventoryUnits(bikeId: string) {
     this.inventoryUnitService.getAvailableUnitsByBikeId(bikeId).subscribe(data => {
       this.currentInventoryUnits = data;
-      console.log(data);    
+      console.log(data);
     })
   }
 
-  rentOut(requestId : string){
-    
+  rentOut(requestId: string) {
+    console.log(this.rentalRecordForm.value);
+    this.rentalRecordForm.value.rentalRequestId = requestId;
+    this.rentalRecordService.postRentalRecord(this.rentalRecordForm.value).subscribe(data => {
+      console.log(data);
+    })
   }
 }
