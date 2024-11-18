@@ -13,6 +13,6 @@ export class InventoryUnitService {
   }
 
   getAvailableUnitsByBikeId(bikeId : string){
-    return this.http.get("http://localhost:5057/api/InventoryUnits?availability=true&bikeId=" + bikeId);
+    return this.http.get<IInventoryUnit[]>("http://localhost:5057/api/InventoryUnits?availability=true&bikeId=" + bikeId);
   }
 }

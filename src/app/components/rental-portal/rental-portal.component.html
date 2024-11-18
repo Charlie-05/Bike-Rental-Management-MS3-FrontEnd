@@ -4,20 +4,28 @@
             <th scope="col">#</th>
             <th scope="col">First</th>
             <th scope="col">Last</th>
+            <th scope="col">Last</th>
             <th scope="col">Handle</th>
-            <!-- <th scope="col">Handle</th> -->
+            <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
-        <!-- <tr *ngFor="let request of rentalRequests">
+        <tr *ngFor="let request of rentalRequests">
             <th scope="row">{{request.bike?.brand}} {{request.bike?.model}}</th>
             <td>{{request.nicNumber}}</td>
             <td>{{request.requestTime | date}}</td>
             <td>{{request.bikeId}}</td>
             <td>
-              <button class="btn btn-success" (click)="acceptRequest(request.id)">Accept</button>
-              <button class="btn btn-danger" (click)="declineRequest(request.id)">Decline</button>
+                <div>
+                    <select>
+                        <option *ngFor="let unit of currentInventoryUnits">{{unit.registrationNo}}</option>
+                    </select>
+                </div>
             </td>
-        </tr> -->
+            <td>
+                <button class="btn btn-success" (click)="rentOut(request.id)">Accept</button>
+                <!-- <button class="btn btn-danger" (click)="declineRequest(request.id)">Decline</button> -->
+            </td>
+        </tr>
     </tbody>
 </table>

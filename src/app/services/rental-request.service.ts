@@ -15,8 +15,7 @@ export class RentalRequestService {
   getRequests() {
     return this.http.get<IRentalRequest[]>("http://localhost:5057/api/RentalRequests");
   }
-
-  getRequestsForPortal(){
+  getRequestsForPortal() {
     return this.http.get<IRentalRequest[]>("http://localhost:5057/api/RentalRequests?status=1");
   }
   acceptRequest(id: string) {
