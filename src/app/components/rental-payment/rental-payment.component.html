@@ -1,0 +1,28 @@
+<div class="modal-content" *ngIf="recordData">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <!-- <app-bike-popup [bikeData]="selected"></app-bike-popup> -->
+      <div >
+        <div class="row">
+           
+            <div class="col-8">
+                <h6>Rental Start : {{recordData.rentalOut | date : 'MMM d, y, h:mm:ss a'}} </h6>
+                <h6>Rental End : {{currentTime | date : 'MMM d, y, h:mm:ss a'}} </h6>
+                <div *ngIf="payment">
+                    <h4>Payment : {{payment.payment| number: '2.0-1'}}</h4>
+                </div>               
+            </div>          
+        </div>    
+    </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <div *ngIf="payment">
+        <button type="button" class="btn btn-primary" (click)="completeRecord(payment.payment , recordData.id)">Confirm Payment</button>
+      </div>
+     
+    </div>
+  </div>

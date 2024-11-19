@@ -27,6 +27,8 @@ import { RequestDisplayComponent } from './components/request-display/request-di
 import { BikesComponent } from './components/bikes/bikes.component';
 import { RentalPortalComponent } from './components/rental-portal/rental-portal.component';
 import { RentalReturnComponent } from './components/rental-return/rental-return.component';
+import { RentalPaymentComponent } from './components/rental-payment/rental-payment.component';
+
 
 
 @NgModule({
@@ -50,7 +52,7 @@ import { RentalReturnComponent } from './components/rental-return/rental-return.
     BikesComponent,
     RentalPortalComponent,
     RentalReturnComponent,
- 
+    RentalPaymentComponent,
   ],
   imports: [
     BrowserModule,
