@@ -17,7 +17,7 @@ export class RentalReturnComponent implements OnInit {
   constructor(private rentalRecordService: RentalRecordService) { }
 
   ngOnInit(): void {
-    this.rentalRecordService.getRentalRecords().subscribe(data => {
+    this.rentalRecordService.getIncompleteRentalRecords().subscribe(data => {
       console.log(data);
       this.rentalRecords = data;
     })

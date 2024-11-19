@@ -14,7 +14,11 @@ export class RentalRecordService {
     return this.http.post("http://localhost:5057/api/RentalRecords" , record);
   }
   getRentalRecords(){
-    return this.http.get<IRentalRecord[]>("http://localhost:5057/api/RentalRecords");
+    return this.http.get<IRentalRecord[]>("http://localhost:5057/api/RentalRecords?state=1");
+  }
+
+  getIncompleteRentalRecords(){
+    return this.http.get<IRentalRecord[]>("http://localhost:5057/api/RentalRecords?state=0")
   }
   getRentalRecord(id : string){
     return this.http.get<IRentalRecord>("http://localhost:5057/api/RentalRecords/" + id)
