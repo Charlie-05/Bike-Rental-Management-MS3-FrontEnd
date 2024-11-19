@@ -5,7 +5,7 @@ export interface IRentalRequest {
     requestTime: string,
     status: Status,
     bikeId: string,
-    nicNumber: string,
+    userId: string,
     notify: boolean,
     bike? : IBike
 }

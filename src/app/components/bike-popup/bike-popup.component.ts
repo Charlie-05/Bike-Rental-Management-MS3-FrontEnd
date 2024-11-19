@@ -17,7 +17,7 @@ export class BikePopupComponent {
     this.rentalRequestForm = this.fb.group({
       requestTime : [''],
       bikeId : [''],
-      nicNumber : [this.user.NICNo]
+      userId : [this.user.NICNo]
     })
   }
 
