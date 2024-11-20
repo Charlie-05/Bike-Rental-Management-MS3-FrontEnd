@@ -1,20 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { IImage } from '../../modals/image';
-import { IBike } from '../../modals/bike';
+import { IBike, Types } from '../../modals/bike';
 import { BikeService } from '../../services/bike.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-bike',
   templateUrl: './add-bike.component.html',
   styleUrl: './add-bike.component.css'
 })
-export class AddBikeComponent {
+export class AddBikeComponent implements OnInit{
   addBikeForm: any;
   bike!: IBike;
+  currentBikeId! : string ;
+  currentBike! : IBike;
+  isEdit : boolean = false;
   images: IImage[] = [];
+  bikeTypes! : any[];
 
-  constructor(private fb: FormBuilder, private bikeService: BikeService) {
+  constructor(private fb: FormBuilder, private bikeService: BikeService , private route: ActivatedRoute) {
     this.addBikeForm = this.fb.group({
       brand: [''],
       model: [''],
@@ -22,6 +27,27 @@ export class AddBikeComponent {
       ratePerHour: [0],
       images: this.fb.array([])
     })
+    this.currentBikeId = this.route.snapshot.paramMap.get("id") || '';
+    if(this.currentBikeId){
+      this.isEdit = true;
+    }
+  }
+  ngOnInit(): void {
+    if(this.isEdit ==true){
+      this.bikeService.getBike(this.currentBikeId).subscribe(data => {
+        this.currentBike = data;
+        console.log(this.currentBike);
+        this.addBikeForm.patchValue(data);
+      })
+    }
+    this.getBikeTypes()
+  }
+
+  getBikeTypes(){
+    this.bikeTypes = Object.values(Types).filter(value => typeof value === 'string')
+    // .map(value => ({ label: value, value }));
+    console.log(this.bikeTypes);
+    Object.values(Types).filter(value => typeof value === 'string')
   }
   removeImage(index: number) {
     this.bikeImages.removeAt(index);
@@ -29,9 +55,17 @@ export class AddBikeComponent {
 
   onAddBike() {
     this.bike = this.addBikeForm.value;
-    this.bike.images = this.images;
-    console.log(this.bike);
-    this.bikeService.createBike(this.bike).subscribe(() => { });
+    if(this.isEdit == false){
+      this.bike.images = this.images;
+      console.log(this.bike);
+      this.bikeService.createBike(this.bike).subscribe(() => { });
+    }else if(this.isEdit == true){
+      console.log(this.bike);
+      this.bikeService.updateBike(this.bike , this.currentBikeId).subscribe(data => {
+        console.log(data);
+      })
+    }
+   
   }
 
   addImage() {
@@ -59,4 +93,8 @@ export class AddBikeComponent {
     });
     console.log(this.images);
   }
+
+
+
+
 }
