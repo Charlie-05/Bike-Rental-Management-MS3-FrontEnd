@@ -25,6 +25,8 @@ export class RentalPaymentComponent {
       this.recRequest.payment = parseFloat(finalPayment.toFixed(2));
       console.log(this.recRequest);
       this.addRecord.emit(this.recRequest);
+    }else{
+      console.log(this.recRequest);
     }
   }
   constructor() {

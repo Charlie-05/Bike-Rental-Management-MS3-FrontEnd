@@ -37,11 +37,11 @@ export class RentalReturnComponent implements OnInit {
       this.currentRecord = data;
       this.currentRecord.payment = rec.payment;
       console.log(this.currentRecord);
+      this.rentalRecordService.completeRentalRecord(rec.id, this.currentRecord).subscribe(data => {
+        console.log(data);
+      })
     })
-    console.log(this.currentRecord);
-    this.rentalRecordService.completeRentalRecord(rec.id, this.currentRecord).subscribe(data => {
-      console.log(data);
-    })
+
   }
 
 }
