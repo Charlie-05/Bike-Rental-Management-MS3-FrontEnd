@@ -3,7 +3,7 @@ import { IInventoryUnit } from "./inventoryUnit";
 
 export interface IBike {
     id: string,
-    brand: string,
+    brandId: string,
     model: string,
     type: string,
     ratePerHour: number,
