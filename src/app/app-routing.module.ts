@@ -13,6 +13,7 @@ import { RequestDisplayComponent } from './components/request-display/request-di
 import { BikesComponent } from './components/bikes/bikes.component';
 import { RentalPortalComponent } from './components/rental-portal/rental-portal.component';
 import { RentalReturnComponent } from './components/rental-return/rental-return.component';
+import { RentalRecordsComponent } from './components/rental-records/rental-records.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
         {path : '' , component : RequestDisplayComponent},
         {path : 'requests' , component : RequestDisplayComponent},
         {path : 'portal' , component : RentalPortalComponent},
-        {path : 'return' , component : RentalReturnComponent}
+        {path : 'return' , component : RentalReturnComponent},
+        {path : 'records' , component : RentalRecordsComponent}
       ]},
      
     ]

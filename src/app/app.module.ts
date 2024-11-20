@@ -28,6 +28,7 @@ import { BikesComponent } from './components/bikes/bikes.component';
 import { RentalPortalComponent } from './components/rental-portal/rental-portal.component';
 import { RentalReturnComponent } from './components/rental-return/rental-return.component';
 import { RentalPaymentComponent } from './components/rental-payment/rental-payment.component';
+import { RentalRecordsComponent } from './components/rental-records/rental-records.component';
 
 
 
@@ -53,6 +54,7 @@ import { RentalPaymentComponent } from './components/rental-payment/rental-payme
     RentalPortalComponent,
     RentalReturnComponent,
     RentalPaymentComponent,
+    RentalRecordsComponent,
   ],
   imports: [
     BrowserModule,
