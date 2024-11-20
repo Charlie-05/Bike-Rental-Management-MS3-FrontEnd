@@ -29,6 +29,7 @@ import { RentalPortalComponent } from './components/rental-portal/rental-portal.
 import { RentalReturnComponent } from './components/rental-return/rental-return.component';
 import { RentalPaymentComponent } from './components/rental-payment/rental-payment.component';
 import { RentalRecordsComponent } from './components/rental-records/rental-records.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
 
 
 
@@ -55,6 +56,7 @@ import { RentalRecordsComponent } from './components/rental-records/rental-recor
     RentalReturnComponent,
     RentalPaymentComponent,
     RentalRecordsComponent,
+    CustomerListComponent,
   ],
   imports: [
     BrowserModule,

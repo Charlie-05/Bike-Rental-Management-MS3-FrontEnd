@@ -14,6 +14,7 @@ import { BikesComponent } from './components/bikes/bikes.component';
 import { RentalPortalComponent } from './components/rental-portal/rental-portal.component';
 import { RentalReturnComponent } from './components/rental-return/rental-return.component';
 import { RentalRecordsComponent } from './components/rental-records/rental-records.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
 
 
 const routes: Routes = [
@@ -23,18 +24,25 @@ const routes: Routes = [
     // canActivate : [AuthGuard],
     children: [
       { path: '', component: DashboardComponent },
-      { path: 'bikes', component: BikesComponent  , children : [
-        {path : '' , component : ListBikeComponent},
-        { path: 'add-bike', component: AddBikeComponent },
-      ]},
-      {path : 'rentals' , component : RentalsComponent , children : [
-        {path : '' , component : RequestDisplayComponent},
-        {path : 'requests' , component : RequestDisplayComponent},
-        {path : 'portal' , component : RentalPortalComponent},
-        {path : 'return' , component : RentalReturnComponent},
-        {path : 'records' , component : RentalRecordsComponent}
-      ]},
-     
+      {
+        path: 'bikes', component: BikesComponent, children: [
+          { path: '', component: ListBikeComponent },
+          { path: 'add-bike', component: AddBikeComponent },
+        ]
+      },
+      {
+        path: 'rentals', component: RentalsComponent, children: [
+          { path: '', component: RequestDisplayComponent },
+          { path: 'requests', component: RequestDisplayComponent },
+          { path: 'portal', component: RentalPortalComponent },
+          { path: 'return', component: RentalReturnComponent },
+          { path: 'records', component: RentalRecordsComponent }
+        ]
+      },
+      {
+        path: 'customers', component: CustomerListComponent
+      },
+
     ]
   },
   {
