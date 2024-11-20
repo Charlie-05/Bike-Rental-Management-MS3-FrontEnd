@@ -28,6 +28,7 @@ const routes: Routes = [
         path: 'bikes', component: BikesComponent, children: [
           { path: '', component: ListBikeComponent },
           { path: 'add-bike', component: AddBikeComponent },
+          {path: 'edit-bike/:id' , component : AddBikeComponent }
         ]
       },
       {

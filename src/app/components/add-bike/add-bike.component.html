@@ -2,25 +2,19 @@
     <form [formGroup]="addBikeForm" (ngSubmit)="onAddBike()">
         <div class="row">
             <div class="col-8">
-                <h2 class="text-danger mt-3">Add New Bike</h2>
+                <h2 class="text-danger mt-3">{{isEdit? 'Edit Bike' : 'Add New Bike'}}</h2>
                 <label for="title" class="form-label">Brand : </label>
                 <input type="text" class="form-control" id="" formControlName="brand">
                 <label for="description" class="form-label">Model : </label>
                 <input type="text" class="form-control" id="" formControlName="model">
                 <label for="description" class="form-label">Type : </label>
-                <input type="text" class="form-control" id="" formControlName="type">
-                <!-- <label for="priority" class="form-label">Select the priority</label>
-                <select formControlName="priority" class="form-control">
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                </select> -->
+                <!-- <input type="text" class="form-control" id="" formControlName="type"> -->
+
+                <select formControlName="type" class="form-control">
+                    <option *ngFor="let type of bikeTypes" [value]="type">{{type}}</option>
+                </select> 
                 <label for="description" class="form-label">Rate per Hour : </label>
                 <input type="number" class="form-control" id="" formControlName="ratePerHour">
-                <!-- <label for="assigneeId" class="form-label">Select the assignee</label>
-                <select formControlName="assigneeId" class="form-control">
-                    <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
-                </select> -->
                 <button type="submit" class="btn btn-primary mt-3" [disabled]="addBikeForm.invalid">Submit</button>
 
             </div>
