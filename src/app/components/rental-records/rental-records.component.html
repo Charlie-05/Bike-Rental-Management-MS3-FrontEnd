@@ -9,8 +9,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let record of rentalRecords">
-            <th scope="row">{{record.id}}</th>
+        <tr *ngFor="let record of rentalRecords;let i=index">
+            <th scope="row">{{i+1}}</th>
             <td>{{record.bikeRegNo}}</td>
             <td>{{record.rentalOut| date : 'MMM d, y, h:mm'}}</td>
             <td>{{record.rentalReturn | date : 'MMM d, y, h:mm'}}</td>

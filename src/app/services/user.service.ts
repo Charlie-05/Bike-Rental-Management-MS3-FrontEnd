@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IToken } from '../modals/token';
 import { jwtDecode } from 'jwt-decode';
+import { IUser } from '../modals/user';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,9 @@ export class UserService {
   }
   getRoles(){
     return this.http.get("http://localhost:5057/api/Users/Get-Roles");
+  }
+  getAllCustomers(){
+    return this.http.get<IUser[]>("http://localhost:5057/api/Users?role=2")
   }
   isLoggedIn() {
     if (localStorage.getItem('token')) {
