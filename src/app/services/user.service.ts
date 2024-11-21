@@ -24,6 +24,10 @@ export class UserService {
   getAllCustomers(){
     return this.http.get<IUser[]>("http://localhost:5057/api/Users?role=2")
   }
+
+  updateUser(user : any , nicNo : string){
+    return this.http.put("http://localhost:5057/api/Users/" + nicNo , user)
+  }
   isLoggedIn() {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');

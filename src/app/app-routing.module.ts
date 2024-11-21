@@ -16,6 +16,7 @@ import { RentalReturnComponent } from './components/rental-return/rental-return.
 import { RentalRecordsComponent } from './components/rental-records/rental-records.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { ListInventoryComponent } from './components/list-inventory/list-inventory.component';
+import { AccountSetupComponent } from './components/account-setup/account-setup.component';
 
 
 const routes: Routes = [
@@ -29,8 +30,8 @@ const routes: Routes = [
         path: 'bikes', component: BikesComponent, children: [
           { path: '', component: ListBikeComponent },
           { path: 'add-bike', component: AddBikeComponent },
-          {path: 'edit-bike/:id' , component : AddBikeComponent},
-          {path: 'inventory' , component : ListInventoryComponent},
+          { path: 'edit-bike/:id', component: AddBikeComponent },
+          { path: 'inventory', component: ListInventoryComponent },
         ]
       },
       {
@@ -62,6 +63,7 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
+      { path: 'setup', component: AccountSetupComponent },
       { path: '**', redirectTo: 'login', pathMatch: 'full' }
     ]
   },

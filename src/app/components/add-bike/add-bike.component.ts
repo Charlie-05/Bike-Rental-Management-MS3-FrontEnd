@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { IImage } from '../../modals/image';
 import { IBike, Types } from '../../modals/bike';
 import { BikeService } from '../../services/bike.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BrandService } from '../../services/brand.service';
 import { IBrand } from '../../modals/brand';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-bike',
@@ -22,7 +23,7 @@ export class AddBikeComponent implements OnInit{
   bikeTypes! : any[];
   bikeBrands! : IBrand[];
 
-  constructor(private fb: FormBuilder, private bikeService: BikeService , private route: ActivatedRoute , private brandService : BrandService) {
+  constructor(private fb: FormBuilder, private bikeService: BikeService , private route: ActivatedRoute , private brandService : BrandService , private router : Router , private toastr:ToastrService) {
     this.addBikeForm = this.fb.group({
       brandId: ['' , [Validators.required]],
       model: ['' ,  [Validators.required]],
@@ -47,6 +48,7 @@ export class AddBikeComponent implements OnInit{
     this.getBikeBrands();
   }
 
+
   getBikeTypes(){
     this.bikeTypes = Object.values(Types).filter(value => typeof value === 'string')
     // .map(value => ({ label: value, value }));
@@ -68,7 +70,8 @@ export class AddBikeComponent implements OnInit{
       this.bike.images = this.images;
       console.log(this.bike);
       this.bikeService.createBike(this.bike).subscribe(() => {
-        
+        this.toastr.success("Bike Successfully Added")
+        this.router.navigate(['/admin/bikes'])
        });
     }else if(this.isEdit == true){
       console.log(this.bike);
@@ -78,6 +81,7 @@ export class AddBikeComponent implements OnInit{
     }
    
   }
+  
 
   addImage() {
     this.bikeImages.push(this.fb.group({
