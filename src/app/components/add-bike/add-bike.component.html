@@ -7,16 +7,37 @@
                 <select formControlName="type" class="form-control" formControlName="brandId">
                     <option *ngFor="let brand of bikeBrands" [value]="brand.id">{{brand.name}}</option>
                 </select> 
+                <div *ngIf="addBikeForm.controls.brandId?.touched">                  
+                    <small class="text-danger" *ngIf="addBikeForm.get('brandId').errors">
+                        Brand is required
+                    </small>
+                </div>
                 <label for="description" class="form-label">Model : </label>
                 <input type="text" class="form-control" id="" formControlName="model">
+                <div *ngIf="addBikeForm.controls.model?.touched">                  
+                    <small class="text-danger" *ngIf="addBikeForm.get('model').errors">
+                        Model is required
+                    </small>
+                </div>
                 <label for="description" class="form-label">Type : </label>
-                <!-- <input type="text" class="form-control" id="" formControlName="type"> -->
-
                 <select formControlName="type" class="form-control">
                     <option *ngFor="let type of bikeTypes" [value]="type">{{type}}</option>
                 </select> 
+                <div *ngIf="addBikeForm.controls.type?.touched">                  
+                    <small class="text-danger" *ngIf="addBikeForm.get('type').errors">
+                       Type is required
+                    </small>
+                </div>
                 <label for="description" class="form-label">Rate per Hour : </label>
                 <input type="number" class="form-control" id="" formControlName="ratePerHour">
+                <div *ngIf="addBikeForm.controls.ratePerHour?.touched">                  
+                    <small class="text-danger" *ngIf="addBikeForm.get('ratePerHour').errors.required">
+                       Rate per hour is required
+                    </small>
+                    <small class="text-danger" *ngIf="addBikeForm.get('ratePerHour').errors.min">
+                        Rate per hour must be positive
+                     </small>
+                </div>
                 <button type="submit" class="btn btn-primary mt-3" [disabled]="addBikeForm.invalid">Submit</button>
 
             </div>
@@ -41,7 +62,13 @@
             </div>
         </div>
     </form>
-    <div *ngFor="let img of images">
-        <img [src]="img.imagePath">
+    <div class="row mt-2">
+        <div class="col-2 border border-black rounded-5 m-1" *ngFor="let img of images">
+            <div  class="ratio ratio-4x3">
+                <img [src]="img.imagePath">
+            </div>
+        </div>
     </div>
+    
+   
 </div>
