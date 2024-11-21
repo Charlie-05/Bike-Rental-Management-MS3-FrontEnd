@@ -12,7 +12,7 @@
     <tbody>
         <tr *ngFor="let request of rentalRequests">
 
-            <th scope="row">{{request.bike?.brand}} {{request.bike?.model}}</th>
+            <th scope="row">{{request.bike?.brandId}} {{request.bike?.model}}</th>
             <td>{{request.userId}}</td>
             <td>{{request.requestTime | date}}</td>
             <td>{{request.bikeId}}</td>

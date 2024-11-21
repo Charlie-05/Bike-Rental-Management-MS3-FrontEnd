@@ -30,6 +30,7 @@ import { RentalReturnComponent } from './components/rental-return/rental-return.
 import { RentalPaymentComponent } from './components/rental-payment/rental-payment.component';
 import { RentalRecordsComponent } from './components/rental-records/rental-records.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { ListInventoryComponent } from './components/list-inventory/list-inventory.component';
 
 
 
@@ -57,6 +58,7 @@ import { CustomerListComponent } from './components/customer-list/customer-list.
     RentalPaymentComponent,
     RentalRecordsComponent,
     CustomerListComponent,
+    ListInventoryComponent,
   ],
   imports: [
     BrowserModule,
