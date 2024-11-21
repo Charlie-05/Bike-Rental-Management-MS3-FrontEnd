@@ -32,7 +32,9 @@ import { RentalRecordsComponent } from './components/rental-records/rental-recor
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { ListInventoryComponent } from './components/list-inventory/list-inventory.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-
+import { AccountSetupComponent } from './components/account-setup/account-setup.component';
+import { ToastrModule } from 'ngx-toastr';
+import { ListBrandsComponent } from './components/list-brands/list-brands.component';
 
 
 
@@ -62,6 +64,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     CustomerListComponent,
     ListInventoryComponent,
     UserProfileComponent,
+    AccountSetupComponent,
+    ListBrandsComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +75,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     BrowserAnimationsModule,
     HttpClientModule,
     TooltipModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [BsModalService, provideAnimationsAsync()],
   bootstrap: [AppComponent]
