@@ -4,6 +4,8 @@ import { IImage } from '../../modals/image';
 import { IBike, Types } from '../../modals/bike';
 import { BikeService } from '../../services/bike.service';
 import { ActivatedRoute } from '@angular/router';
+import { BrandService } from '../../services/brand.service';
+import { IBrand } from '../../modals/brand';
 
 @Component({
   selector: 'app-add-bike',
@@ -18,10 +20,11 @@ export class AddBikeComponent implements OnInit{
   isEdit : boolean = false;
   images: IImage[] = [];
   bikeTypes! : any[];
+  bikeBrands! : IBrand[];
 
-  constructor(private fb: FormBuilder, private bikeService: BikeService , private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private bikeService: BikeService , private route: ActivatedRoute , private brandService : BrandService) {
     this.addBikeForm = this.fb.group({
-      brand: [''],
+      brandId: [''],
       model: [''],
       type: [''],
       ratePerHour: [0],
@@ -40,7 +43,8 @@ export class AddBikeComponent implements OnInit{
         this.addBikeForm.patchValue(data);
       })
     }
-    this.getBikeTypes()
+    this.getBikeTypes();
+    this.getBikeBrands();
   }
 
   getBikeTypes(){
@@ -48,6 +52,11 @@ export class AddBikeComponent implements OnInit{
     // .map(value => ({ label: value, value }));
     console.log(this.bikeTypes);
     Object.values(Types).filter(value => typeof value === 'string')
+  }
+  getBikeBrands(){
+    this.brandService.getBrands().subscribe(data => {
+      this.bikeBrands = data;
+    })
   }
   removeImage(index: number) {
     this.bikeImages.removeAt(index);

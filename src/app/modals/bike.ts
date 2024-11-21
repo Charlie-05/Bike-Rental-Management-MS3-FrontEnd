@@ -1,8 +1,10 @@
+import { IBrand } from "./brand";
 import { IImage } from "./image";
 import { IInventoryUnit } from "./inventoryUnit";
 
 export interface IBike {
     id: string,
+    brand: IBrand,
     brandId: string,
     model: string,
     type: string,
@@ -17,9 +19,9 @@ export enum Types {
     CafeRacer = 1,
     Classic = 2,
     Tourer = 3,
-    SportsTouring=4,
-    Sports=5,
-    Scooter=6,
-    Adventure=7,
-    Bicycle=8
+    SportsTouring = 4,
+    Sports = 5,
+    Scooter = 6,
+    Adventure = 7,
+    Bicycle = 8
 }

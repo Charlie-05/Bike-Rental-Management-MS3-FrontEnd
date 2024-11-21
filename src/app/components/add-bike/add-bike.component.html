@@ -4,7 +4,9 @@
             <div class="col-8">
                 <h2 class="text-danger mt-3">{{isEdit? 'Edit Bike' : 'Add New Bike'}}</h2>
                 <label for="title" class="form-label">Brand : </label>
-                <input type="text" class="form-control" id="" formControlName="brand">
+                <select formControlName="type" class="form-control" formControlName="brandId">
+                    <option *ngFor="let brand of bikeBrands" [value]="brand.id">{{brand.name}}</option>
+                </select> 
                 <label for="description" class="form-label">Model : </label>
                 <input type="text" class="form-control" id="" formControlName="model">
                 <label for="description" class="form-label">Type : </label>
