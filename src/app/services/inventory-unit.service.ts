@@ -7,12 +7,14 @@ import { IInventoryUnit } from '../modals/inventoryUnit';
 })
 export class InventoryUnitService {
 
-  constructor(private http : HttpClient) { }
-  postUnits(inventoryUnit : IInventoryUnit){
-    return this.http.post("http://localhost:5057/api/InventoryUnits" , inventoryUnit);
+  constructor(private http: HttpClient) { }
+  postUnits(inventoryUnit: IInventoryUnit) {
+    return this.http.post("http://localhost:5057/api/InventoryUnits", inventoryUnit);
   }
-
-  getAvailableUnitsByBikeId(bikeId : string){
+  getAvailableUnitsByBikeId(bikeId: string) {
     return this.http.get<IInventoryUnit[]>("http://localhost:5057/api/InventoryUnits?availability=true&bikeId=" + bikeId);
+  }
+  getAllInventoryUnits() {
+    return this.http.get<IInventoryUnit[]>("http://localhost:5057/api/InventoryUnits");
   }
 }

@@ -1,5 +1,6 @@
 export interface IInventoryUnit{
     registrationNo: string,
     yearOfManufacture: number,
-    bikeId : string
+    bikeId : string,
+    availability : boolean
 }

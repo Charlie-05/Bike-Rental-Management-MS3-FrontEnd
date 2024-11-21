@@ -1,1 +1,25 @@
-<p>list-inventory works!</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="inventoryUnits">
+        <tr *ngFor="let unit of inventoryUnits;let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{unit.registrationNo}}</td>
+            <td>{{unit.yearOfManufacture }}</td>
+            <td>{{unit.availability}}</td>
+            <td>
+                <button class="btn btn-primary" (click)="editInventoryUnit()"><i
+                        class="bi bi-pencil text-white"></i></button>
+                <button class="btn btn-danger" (click)="deleteInventoryUnit()"><i
+                        class="bi bi-trash-fill text-white"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>

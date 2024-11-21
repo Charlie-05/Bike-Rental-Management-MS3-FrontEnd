@@ -15,6 +15,7 @@ import { RentalPortalComponent } from './components/rental-portal/rental-portal.
 import { RentalReturnComponent } from './components/rental-return/rental-return.component';
 import { RentalRecordsComponent } from './components/rental-records/rental-records.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { ListInventoryComponent } from './components/list-inventory/list-inventory.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
         path: 'bikes', component: BikesComponent, children: [
           { path: '', component: ListBikeComponent },
           { path: 'add-bike', component: AddBikeComponent },
-          {path: 'edit-bike/:id' , component : AddBikeComponent }
+          {path: 'edit-bike/:id' , component : AddBikeComponent},
+          {path: 'inventory' , component : ListInventoryComponent},
         ]
       },
       {
