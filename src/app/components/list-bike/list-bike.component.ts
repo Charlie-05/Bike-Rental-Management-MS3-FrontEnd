@@ -14,7 +14,7 @@ import { InventoryUnitService } from '../../services/inventory-unit.service';
 export class ListBikeComponent implements OnInit {
 
   bikes!: IBike[];
-  currentBike! : IBike;
+  currentBike!: IBike;
   //currentBikeId! : string;
  // currentBikeUnits! : IInventoryUnit[];
   addBikeUnits! : IInventoryUnit;
