@@ -24,10 +24,10 @@ export class AddBikeComponent implements OnInit{
 
   constructor(private fb: FormBuilder, private bikeService: BikeService , private route: ActivatedRoute , private brandService : BrandService) {
     this.addBikeForm = this.fb.group({
-      brandId: [''],
-      model: [''],
-      type: [''],
-      ratePerHour: [0],
+      brandId: ['' , [Validators.required]],
+      model: ['' ,  [Validators.required]],
+      type: ['' ,  [Validators.required]],
+      ratePerHour: [0 ,  [Validators.required , Validators.min(1)]],
       images: this.fb.array([])
     })
     this.currentBikeId = this.route.snapshot.paramMap.get("id") || '';
@@ -67,7 +67,9 @@ export class AddBikeComponent implements OnInit{
     if(this.isEdit == false){
       this.bike.images = this.images;
       console.log(this.bike);
-      this.bikeService.createBike(this.bike).subscribe(() => { });
+      this.bikeService.createBike(this.bike).subscribe(() => {
+        
+       });
     }else if(this.isEdit == true){
       console.log(this.bike);
       this.bikeService.updateBike(this.bike , this.currentBikeId).subscribe(data => {
