@@ -18,6 +18,8 @@ import { CustomerListComponent } from './components/customer-list/customer-list.
 import { ListInventoryComponent } from './components/list-inventory/list-inventory.component';
 import { AccountSetupComponent } from './components/account-setup/account-setup.component';
 import { ListBrandsComponent } from './components/list-brands/list-brands.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ViewBikeComponent } from './components/view-bike/view-bike.component';
 
 
 const routes: Routes = [
@@ -55,7 +57,8 @@ const routes: Routes = [
     path: 'user', component: UserLayoutComponent,
     // canActivate : [AuthGuard],
     children: [
-      // { path: '', component: HeaderComponent },
+      { path: '', component: ViewBikeComponent  },
+      { path: 'profile', component: UserProfileComponent  },
 
     ]
 

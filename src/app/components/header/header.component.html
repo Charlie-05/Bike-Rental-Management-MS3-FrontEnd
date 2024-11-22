@@ -21,8 +21,8 @@
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <div class="collapse navbar-collapse row" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0 col-4">
                 <li class="nav-item">
                     <a class="nav-link active text-white" href="#">Home</a>
                 </li>
@@ -36,10 +36,12 @@
                     <a class="nav-link text-white">Contact Us</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
+            <form class="d-flex col-4" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+            <button class="btn btn-primary col-1 me-1" [routerLink]="['/user/profile']" >My Profile</button>
+            <button class="btn btn-primary col-1 me-1" (click)="logOut()" >Log out</button>
         </div>
     </div>
 </nav>

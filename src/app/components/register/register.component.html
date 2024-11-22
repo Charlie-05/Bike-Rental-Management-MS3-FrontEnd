@@ -18,37 +18,38 @@
                   <h5 class="fw-normal mb-0 pb-1" style="letter-spacing: 1px;">Create new account</h5>
 
                   <div class="form-outline mb-1">
-                    <input type="text" id="" class="form-control" formControlName="firstName" />
                     <label class="form-label" for="">First Name</label>
+                    <input type="text" id="" class="form-control" formControlName="firstName" />
                   </div>
 
                   <div class="form-outline mb-0">
-                    <input type="text" id="" class="form-control" formControlName="lastName" />
                     <label class="form-label" for="">Last Name</label>
+                    <input type="text" id="" class="form-control" formControlName="lastName" />
                   </div>
                   <div class="form-outline mb-0">
-                    <input type="text" id="" class="form-control" formControlName="email" />
                     <label class="form-label" for="">Email</label>
+                    <input type="text" id="" class="form-control" formControlName="email" />
                   </div>
                   <div class="form-outline mb-0">
-                    <input type="text" id="" class="form-control" formControlName="contactNo" />
                     <label class="form-label" for="">Mobile</label>
+                    <input type="text" id="" class="form-control" formControlName="contactNo" />
                   </div>
                   <div class="form-outline mb-0">
-                    <!-- <input type="text" id="" class="form-control" /-->     
+                    <!-- <input type="text" id="" class="form-control" /-->
+                    <label class="form-label" for="">Role</label>
                     <select formControlName="role" class="form-control">
                       <option>Select your role</option>
                       <option *ngFor="let role of roles" [value]="role.key">{{role.value}}</option>
                     </select>
-                    <label class="form-label" for="">Role</label>
+
                   </div>
                   <div class="form-outline mb-0">
-                    <input type="text" id="" class="form-control" formControlName="nicNumber"/>
                     <label class="form-label" for="">National Identity Number</label>
+                    <input type="text" id="" class="form-control" formControlName="nicNumber" />
                   </div>
                   <div class="form-outline mb-0">
-                    <input type="text" id="" class="form-control" formControlName="address"/>
                     <label class="form-label" for="">Address</label>
+                    <input type="text" id="" class="form-control" formControlName="address" />
                   </div>
 
                   <div class="pt-1 mb-1">
