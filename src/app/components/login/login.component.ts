@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { jwtDecode } from 'jwt-decode';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class LoginComponent {
   loginForm : FormGroup;
-  constructor(private fb : FormBuilder , private userService : UserService){
+  constructor(private fb : FormBuilder , private userService : UserService, private router : Router, private toastr : ToastrService){
     this.loginForm = this.fb.group({
       userName:[""],
       password: [""],
@@ -25,6 +27,8 @@ export class LoginComponent {
       if (data) {
         const decoded: any = jwtDecode(data.token);
         localStorage.setItem('user', JSON.stringify(decoded));
+        this.toastr.success("Welcome User!!!")
+        this.router.navigate(['/user'])
       }
     })
   }
