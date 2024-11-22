@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http : HttpClient) { }
 
   registerUser(user : any){
-    return this.http.post("http://localhost:5057/api/Users/Sign-Up" , user);
+    return this.http.post<IToken>("http://localhost:5057/api/Users/Sign-Up" , user);
   }
 
   logIn(user : any){
@@ -23,6 +23,9 @@ export class UserService {
   }
   getAllCustomers(){
     return this.http.get<IUser[]>("http://localhost:5057/api/Users?role=2")
+  }
+  getUserById(nicNo : string){
+    return this.http.get("http://localhost:5057/api/Users/" + nicNo)
   }
 
   updateUser(user : any , nicNo : string){

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +13,7 @@ import { UserService } from '../../services/user.service';
 export class RegisterComponent implements OnInit{
   registerForm : FormGroup;
   roles : any;
-  constructor(private fb : FormBuilder , private userService : UserService){
+  constructor(private fb : FormBuilder , private userService : UserService , private router : Router, private toastr : ToastrService){
     this.registerForm = this.fb.group({
       nicNumber : ['' , [Validators.required]],
       firstName : [''],
@@ -34,6 +37,12 @@ export class RegisterComponent implements OnInit{
     console.log(this.registerForm.value);
     this.userService.registerUser(this.registerForm.value).subscribe(data => {
       console.log(data);
+      if (data) {
+        const decoded: any = jwtDecode(data.token);
+        localStorage.setItem('user', JSON.stringify(decoded));
+        this.toastr.info("Please setup Username and passoword");
+        this.router.navigate(['/setup']);
+      }  
     })
   }
 }
