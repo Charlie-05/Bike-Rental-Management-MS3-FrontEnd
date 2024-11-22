@@ -15,11 +15,29 @@
             <td>{{unit.yearOfManufacture }}</td>
             <td>{{unit.availability}}</td>
             <td>
-                <button class="btn btn-primary" (click)="editInventoryUnit()"><i
+                <button class="btn btn-primary" (click)="openModal(template1)"><i
                         class="bi bi-pencil text-white"></i></button>
-                <button class="btn btn-danger" (click)="deleteInventoryUnit()"><i
+                <button class="btn btn-danger" (click)="deleteInventoryUnit(unit.registrationNo)"><i
                         class="bi bi-trash-fill text-white"></i></button>
             </td>
         </tr>
     </tbody>
 </table>
+
+<ng-template #template1>
+    <!-- <div class="modal-header">
+      <h4 class="modal-title pull-left">Add Bike Brand</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #editInventoryUnitForm="ngForm" (ngSubmit)="onSubmit(editInventoryUnitForm)">
+          <div class="mb-3">
+              <label  class="form-label">Brand Name : </label>
+              <input type="text" class="form-control" id="brandName" name="name" [(ngModel)]="brand.name">
+            </div>
+            <button class="btn btn-primary" type="submit">Add Brand</button>
+      </form>
+    </div> -->
+  </ng-template>

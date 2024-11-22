@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { InventoryUnitService } from '../../services/inventory-unit.service';
 import { IInventoryUnit } from '../../modals/inventoryUnit';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-list-inventory',
@@ -8,9 +9,18 @@ import { IInventoryUnit } from '../../modals/inventoryUnit';
   styleUrl: './list-inventory.component.css'
 })
 export class ListInventoryComponent implements OnInit {
+openModal(template: TemplateRef<any>) {
+  this.modalRef = this.modalService.show(template);
+}
 
-  inventoryUnits! : IInventoryUnit[]
-  constructor(private inventoryUnitService : InventoryUnitService){}
+  inventoryUnits! : IInventoryUnit[];
+  modalRef?: BsModalRef;
+  inventoryUnit = {
+    registrationNo: "",
+    yearOfManufacture: "",
+    bikeId : "",
+  }
+  constructor(private inventoryUnitService : InventoryUnitService , private modalService: BsModalService) {}
   ngOnInit(): void {
     this.getAllInventoryUnits();
   }
@@ -20,10 +30,12 @@ export class ListInventoryComponent implements OnInit {
       console.log(data);
     })
   }
-  editInventoryUnit(){
+  onSubmit(editInventoryUnitForm : any){
 
   }
-  deleteInventoryUnit(){
-    
+  deleteInventoryUnit(unitId : string){
+    this.inventoryUnitService.deleteInventoryUnit(unitId).subscribe(data => {
+      console.log(data);
+    })
   }
 }

@@ -17,6 +17,7 @@ import { RentalRecordsComponent } from './components/rental-records/rental-recor
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { ListInventoryComponent } from './components/list-inventory/list-inventory.component';
 import { AccountSetupComponent } from './components/account-setup/account-setup.component';
+import { ListBrandsComponent } from './components/list-brands/list-brands.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
           { path: 'add-bike', component: AddBikeComponent },
           { path: 'edit-bike/:id', component: AddBikeComponent },
           { path: 'inventory', component: ListInventoryComponent },
+          { path: 'brands', component: ListBrandsComponent },
         ]
       },
       {

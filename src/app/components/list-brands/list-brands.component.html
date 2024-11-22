@@ -1,1 +1,44 @@
-<p>list-brands works!</p>
+<div class="">
+    <button class="btn btn-success mt-2" (click)="openModal(template)"><i class="bi bi-plus-circle me-2"></i>Add Brand</button>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Bikes</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="brands">
+        <tr *ngFor="let brand of brands;let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{brand.name}}</td>
+            <td></td>
+            <td>
+                <button class="btn btn-primary" (click)="editBrand()"><i
+                        class="bi bi-pencil text-white"></i></button>
+                <button class="btn btn-danger" (click)="deleteBrand()"><i
+                        class="bi bi-trash-fill text-white"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add Bike Brand</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #addBrandForm="ngForm" (ngSubmit)="onSubmit(addBrandForm)">
+          <div class="mb-3">
+              <label  class="form-label">Brand Name : </label>
+              <input type="text" class="form-control" id="brandName" name="name" [(ngModel)]="brand.name">
+            </div>
+            <button class="btn btn-primary" type="submit">Add Brand</button>
+      </form>
+    </div>
+  </ng-template>
