@@ -4,7 +4,8 @@
       <th scope="col">#</th>
       <th scope="col">First</th>
       <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Type</th>
+      <th scope="col">Inventory Units</th>
       <th scope="col">Handle</th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
       <td>{{bike.model}}</td>
       <td>{{bike.ratePerHour}}</td>
       <td>{{bike.type}}</td>
+      <td >{{bike.inventoryUnits?.length}}</td>
       <td>
         <button (click)="addUnits(bike.id , template)" class="btn btn-secondary"><i
             class="bi bi-three-dots"></i></button>

@@ -17,4 +17,7 @@ export class InventoryUnitService {
   getAllInventoryUnits() {
     return this.http.get<IInventoryUnit[]>("http://localhost:5057/api/InventoryUnits");
   }
+  deleteInventoryUnit(regNo : string){
+    return this.http.delete("http://localhost:5057/api/InventoryUnits/" + regNo)
+  }
 }

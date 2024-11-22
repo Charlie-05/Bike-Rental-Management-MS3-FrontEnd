@@ -19,4 +19,13 @@ export class CustomerListComponent implements OnInit {
       this.customers = data;
     })
   }
+  unblockCustomer(){
+
+  }
+  blockCustomer(){
+
+  }
+  viewBlockedCustomers(){
+    
+  }
 }
