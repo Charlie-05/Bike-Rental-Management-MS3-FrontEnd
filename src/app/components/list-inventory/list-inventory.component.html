@@ -13,7 +13,7 @@
             <th scope="row">{{i+1}}</th>
             <td>{{unit.registrationNo}}</td>
             <td>{{unit.yearOfManufacture }}</td>
-            <td>{{unit.availability}}</td>
+            <td>{{unit.availability? "Available" : "Unavailable"}}</td>
             <td>
                 <button class="btn btn-primary" (click)="openModal(template1)"><i
                         class="bi bi-pencil text-white"></i></button>

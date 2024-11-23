@@ -14,7 +14,7 @@
         <tr *ngFor="let brand of brands;let i=index">
             <th scope="row">{{i+1}}</th>
             <td>{{brand.name}}</td>
-            <td></td>
+            <td>{{brand.bikes.length}}</td>
             <td>
                 <button class="btn btn-primary" (click)="editBrand()"><i
                         class="bi bi-pencil text-white"></i></button>

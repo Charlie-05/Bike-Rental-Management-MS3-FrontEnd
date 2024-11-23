@@ -9,7 +9,7 @@
             <th scope="col">Action</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="rentalRequests.length > 0">
         <tr *ngFor="let request of rentalRequests">
 
             <th scope="row">{{request.bike?.brandId}} {{request.bike?.model}}</th>
@@ -30,8 +30,10 @@
                         </div>
                     </form>
                 </div>
-
             </td>
         </tr>
+    </tbody>
+    <tbody *ngIf="rentalRequests.length == 0">
+        <h2 class="text text-success">You are all caught up...</h2>
     </tbody>
 </table>

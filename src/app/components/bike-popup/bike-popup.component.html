@@ -7,9 +7,9 @@
         </div>
         <div class="col-6">
             <form [formGroup]="rentalRequestForm" (ngSubmit)="onRequest()">
-                <label>Date</label>
-                <input type="date" formControlName="requestTime">
-                <button type="submit">Submit</button>
+                <label  class="form-label">Date of rent :</label>
+                <input type="date" formControlName="requestTime" class="form-control">
+                <button type="submit" class="btn btn-primary mt-2">Request</button>
             </form>
         </div>
     </div>

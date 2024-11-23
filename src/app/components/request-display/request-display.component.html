@@ -1,4 +1,3 @@
-
     <table class="table">
         <thead>
             <tr>
@@ -6,19 +5,20 @@
                 <th scope="col">First</th>
                 <th scope="col">Last</th>
                 <th scope="col">Handle</th>
-                <!-- <th scope="col">Handle</th> -->
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="rentalRequests.length > 0">
             <tr *ngFor="let request of rentalRequests">
                 <th scope="row">{{request.bike?.brandId}} {{request.bike?.model}}</th>
                 <td>{{request.userId}}</td>
                 <td>{{request.requestTime | date}}</td>
-                <!-- <td>{{request.bikeId}}</td> -->
                 <td>
                   <button class="btn btn-success" (click)="acceptRequest(request.id)">Accept</button>
                   <button class="btn btn-danger" (click)="declineRequest(request.id)">Decline</button>
                 </td>
             </tr>
+        </tbody>
+        <tbody *ngIf="rentalRequests.length == 0">
+            <h2 class="text text-success">You are all caught up...</h2>
         </tbody>
     </table>

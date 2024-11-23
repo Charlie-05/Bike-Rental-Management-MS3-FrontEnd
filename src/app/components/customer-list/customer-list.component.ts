@@ -28,4 +28,9 @@ export class CustomerListComponent implements OnInit {
   viewBlockedCustomers(){
     
   }
+  deleteUser(id : string){
+    this.userService.deleteUser(id).subscribe(data => {
+      console.log(data);
+    })
+  }
 }
