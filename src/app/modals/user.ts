@@ -1,4 +1,5 @@
 export interface IUser {
+    id: string
     nicNumber: string,
     firstName: string,
     lastName: string,

@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent {
   loginForm : FormGroup;
+  currentError! : string;
   constructor(private fb : FormBuilder , private userService : UserService, private router : Router, private toastr : ToastrService){
     this.loginForm = this.fb.group({
       userName:[""],
@@ -30,6 +31,8 @@ export class LoginComponent {
         this.toastr.success("Welcome User!!!")
         this.router.navigate(['/user'])
       }
+    },error => {
+      this.currentError = (error.error)
     })
   }
 }

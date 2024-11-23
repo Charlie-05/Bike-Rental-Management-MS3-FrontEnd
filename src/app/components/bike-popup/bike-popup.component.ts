@@ -2,6 +2,7 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { RentalRequestService } from '../../services/rental-request.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-bike-popup',
@@ -13,7 +14,7 @@ export class BikePopupComponent {
   rentalRequestForm : FormGroup;
   user = JSON.parse(localStorage.getItem('user') || '');
   
-  constructor(private fb : FormBuilder , private rentalRequestService : RentalRequestService){
+  constructor(private fb : FormBuilder , private rentalRequestService : RentalRequestService, private toastr : ToastrService){
     this.rentalRequestForm = this.fb.group({
       requestTime : [''],
       bikeId : [''],
@@ -26,6 +27,8 @@ export class BikePopupComponent {
     console.log(this.rentalRequestForm.value);
     this.rentalRequestService.postRequest(this.rentalRequestForm.value).subscribe(data => {
       console.log(data);
+    },error=>{
+       this.toastr.error(error.error) ;
     })
   }
 }

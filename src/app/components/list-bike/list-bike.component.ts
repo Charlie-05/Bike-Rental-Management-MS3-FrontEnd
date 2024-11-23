@@ -76,6 +76,8 @@ export class ListBikeComponent implements OnInit {
      console.log(this.addBikeUnits)
    this.inventoryUnitService.postUnits(this.addBikeUnits).subscribe(data => {
     console.log(data);
+    this.getAllBikes();
+    this.modalRef?.hide()
    })
   }
 

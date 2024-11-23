@@ -31,6 +31,10 @@ export class UserService {
   updateUser(user : any , nicNo : string){
     return this.http.put("http://localhost:5057/api/Users/" + nicNo , user)
   }
+
+  deleteUser(id : string){
+    return this.http.delete("http://localhost:5057/api/Users/" + id);
+  }
   isLoggedIn() {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');

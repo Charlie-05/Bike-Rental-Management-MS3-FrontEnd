@@ -17,11 +17,12 @@ export class ListBrandsComponent implements OnInit {
   constructor(private brandService : BrandService , private modalService: BsModalService){}
 
   ngOnInit(): void {
-    this.getAllBrands()
+    this.getAllBrands();
   }
   getAllBrands(){
     this.brandService.getBrands().subscribe(data => {
       this.brands = data ;
+      console.log(data);
     })
   }
   editBrand(){
