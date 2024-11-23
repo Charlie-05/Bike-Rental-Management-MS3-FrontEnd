@@ -1,7 +1,10 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BikeService } from '../../services/bike.service';
-import { IBike } from '../../modals/bike';
+import { IBike, Types } from '../../modals/bike';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { IBrand } from '../../modals/brand';
+import { BrandService } from '../../services/brand.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-view-bike',
@@ -9,16 +12,28 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   styleUrl: './view-bike.component.css'
 })
 export class ViewBikeComponent implements OnInit {
- constructor(private bikeService : BikeService , private modalService: BsModalService){};
+  filterForm! : any;
+ constructor(private bikeService : BikeService , private modalService: BsModalService , private brandService : BrandService , private fb : FormBuilder){
+
+ };
  bikes! : IBike[];
  currentBike! : IBike;
  currentImgIndex : number = 0;
+ bikeTypes! : any[];
+ bikeBrands! : IBrand[];
 
  ngOnInit(): void {
   this.getAllBikes();
+  this.getBikeTypes();
+  this.getBikeBrands();
  }
  modalRef?: BsModalRef;
-
+ radioModel = 'Middle';
+ radioModelDisabled = 'Middle';
+ modelGroupDisabled=false;
+ features = {
+  searchText: ''
+}
  selected! : any;
  openModal(template: TemplateRef<void>) {
    this.modalRef = this.modalService.show(template);
@@ -50,4 +65,15 @@ export class ViewBikeComponent implements OnInit {
  changeImage(bike : IBike){
   console.log("hello") 
  }
+ getBikeTypes(){
+  this.bikeTypes = Object.values(Types).filter(value => typeof value === 'string')
+  // .map(value => ({ label: value, value }));
+  console.log(this.bikeTypes);
+  Object.values(Types).filter(value => typeof value === 'string')
+}
+getBikeBrands(){
+  this.brandService.getBrands().subscribe(data => {
+    this.bikeBrands = data;
+  })
+}
 }

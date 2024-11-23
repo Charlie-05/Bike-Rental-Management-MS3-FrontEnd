@@ -1,29 +1,50 @@
+<form class="row mt-4 mb-3" role="search">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchText"
+      [(ngModel)]="features.searchText">
+  </div>
+  <div class="col-3"></div>
+  <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+</form>
 <div class="container-fluid">
-    <div class="bg">     
+  <div class="bg">
+    <div class="form-inline d-flex align-items-center">
+      <div class="btn-group" btnRadioGroup [(ngModel)]="radioModelDisabled" disabled>
+        <label class="btn btn-success" btnRadio="Left">Left</label>
+        <label class="btn btn-success" btnRadio="Middle">Middle</label>
+        <label class="btn btn-success" btnRadio="Right">Right</label>
+      </div>
     </div>
+  </div>
 </div>
+
 <div class="row">
-    <div class="card col-lg-2 col-md-3 col-sm-4 col-xsm-6" *ngFor="let bike of bikes" style="width: 18rem;">
-        <div class="">
-            <img [src]="bike.images?.[currentImgIndex]?.imagePath" class="card-img-top" alt="..." (click)="getBike(bike.id)">
-        </div>      
-        <div class="card-body">
-            <h5 class="card-title">{{bike.brandId}} {{bike.model}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <!-- <button (click)="viewbikeInfo(bike.id)" class="btn btn-primary">View More</button> -->
-            <div class="row d-flex justify-content-center">
-              <!-- <button (click)="openReqModal(bike.id , template)" class="btn btn-success col-4 ms-2">Request</button> -->
-              <button type="button" class="btn btn-primary col-6" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="selected=bike">
-                View
-              </button>
-            </div>
-          
-        </div>
+  <div class="card col-lg-2 col-md-3 col-sm-4 col-xsm-6" *ngFor="let bike of bikes | bikeSearch:features.searchText"
+    style="width: 18rem;">
+    <div class="">
+      <img [src]="bike.images?.[currentImgIndex]?.imagePath" class="card-img-top" alt="..." (click)="getBike(bike.id)">
     </div>
+    <div class="card-body">
+      <h5 class="card-title">{{bike.brandId}} {{bike.model}}</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+        content.</p>
+      <!-- <button (click)="viewbikeInfo(bike.id)" class="btn btn-primary">View More</button> -->
+      <div class="row d-flex justify-content-center">
+        <!-- <button (click)="openReqModal(bike.id , template)" class="btn btn-success col-4 ms-2">Request</button> -->
+        <button type="button" class="btn btn-primary col-6" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          (click)="selected=bike">
+          View
+        </button>
+      </div>
+
+    </div>
+
+  </div>
 </div>
+
 <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button> -->
- 
+
 <!-- May use input decorator in this instance instead of using the modal method  -->
 <!-- <ng-template #template>
   <div class="modal-header">
@@ -43,7 +64,8 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ selected? selected.brand.name : ""}} {{ selected? selected.model : ""}}</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ selected? selected.brand.name : ""}} {{ selected?
+          selected.model : ""}}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

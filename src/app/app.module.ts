@@ -35,6 +35,9 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { AccountSetupComponent } from './components/account-setup/account-setup.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ListBrandsComponent } from './components/list-brands/list-brands.component';
+import { BikeSearchPipe } from './pipes/bike-search.pipe';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 
 
@@ -66,6 +69,7 @@ import { ListBrandsComponent } from './components/list-brands/list-brands.compon
     UserProfileComponent,
     AccountSetupComponent,
     ListBrandsComponent,
+    BikeSearchPipe,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +81,8 @@ import { ListBrandsComponent } from './components/list-brands/list-brands.compon
     TooltipModule.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    BsDatepickerModule,
+    ButtonsModule
   ],
   providers: [BsModalService, provideAnimationsAsync()],
   bootstrap: [AppComponent]
