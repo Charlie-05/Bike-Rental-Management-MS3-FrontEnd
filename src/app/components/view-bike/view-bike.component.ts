@@ -32,7 +32,8 @@ export class ViewBikeComponent implements OnInit {
  radioModelDisabled = 'Middle';
  modelGroupDisabled=false;
  features = {
-  searchText: ''
+  searchText: '',
+  filter : ''
 }
  selected! : any;
  openModal(template: TemplateRef<void>) {
@@ -75,5 +76,8 @@ getBikeBrands(){
   this.brandService.getBrands().subscribe(data => {
     this.bikeBrands = data;
   })
+}
+getRadio(){
+  console.log(this.features.filter)
 }
 }

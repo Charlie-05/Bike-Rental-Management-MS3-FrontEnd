@@ -9,13 +9,15 @@
 </form>
 <div class="container-fluid">
   <div class="bg">
-    <div class="form-inline d-flex align-items-center">
-      <div class="btn-group" btnRadioGroup [(ngModel)]="radioModelDisabled" disabled>
-        <label class="btn btn-success" btnRadio="Left">Left</label>
-        <label class="btn btn-success" btnRadio="Middle">Middle</label>
-        <label class="btn btn-success" btnRadio="Right">Right</label>
+    <div class="form-inline d-flex align-items-center mt-2 mb-2">
+      <div class="btn-group" btnRadioGroup [(ngModel)]="features.filter">
+        <!-- <label class="btn btn-success" btnRadio="Left" (click)="getRadio()">Left</label>
+        <label class="btn btn-success" btnRadio="Middle" (click)="getRadio()">Middle</label>
+        <label class="btn btn-success" btnRadio="Right" (click)="getRadio()">Right</label> -->
+        <label class="btn btn-success" *ngFor="let type of bikeTypes" [btnRadio]="type" (click)="getRadio()">{{type}}</label>
       </div>
     </div>
+    <!-- <button>Get</button> -->
   </div>
 </div>
 
