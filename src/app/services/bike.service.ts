@@ -25,4 +25,13 @@ export class BikeService {
   updateBike(bike : IBike , id : string){
     return this.http.put("http://localhost:5057/api/Bikes/" + id , bike);
   }
+  getBikeFilters(bikeType : string , brandId : string){
+    return this.http.get<IBike[]>(`http://localhost:5057/api/Bikes?type=${bikeType}&brandId=${brandId}`)
+  }
+  getBrandFilters(brandId : string){
+    return this.http.get<IBike[]>(`http://localhost:5057/api/Bikes?brandId=${brandId}`)
+  }
+  getTypeFilters(bikeType : string){
+    return this.http.get<IBike[]>(`http://localhost:5057/api/Bikes?type=${bikeType}`)
+  }
 }

@@ -1,7 +1,7 @@
 <form class="row mt-4 mb-3" role="search">
   <div class="col-3"></div>
   <div class="col-6">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchText"
+    <input class="form-control me-2" type="search" placeholder="Search bikes..." aria-label="Search" name="searchText"
       [(ngModel)]="features.searchText">
   </div>
   <div class="col-3"></div>
@@ -9,12 +9,19 @@
 </form>
 <div class="container-fluid">
   <div class="bg">
+    <button class="btn btn-warning" (click)="features.filterBrand=null" (click)="features.filterType=null" (click)="getAllBikes()">Remove
+      Filters</button>
     <div class="form-inline d-flex align-items-center mt-2 mb-2">
-      <div class="btn-group" btnRadioGroup [(ngModel)]="features.filter">
-        <!-- <label class="btn btn-success" btnRadio="Left" (click)="getRadio()">Left</label>
-        <label class="btn btn-success" btnRadio="Middle" (click)="getRadio()">Middle</label>
-        <label class="btn btn-success" btnRadio="Right" (click)="getRadio()">Right</label> -->
-        <label class="btn btn-success" *ngFor="let type of bikeTypes" [btnRadio]="type" (click)="getRadio()">{{type}}</label>
+      <div class="btn-group" btnRadioGroup [(ngModel)]="features.filterType" [disabled]="modelGroupDisabled">
+        <label class="btn btn-success" *ngFor="let type of bikeTypes" [btnRadio]="type"
+          (click)="getBothFilters()">{{type}}</label>
+      </div>
+      <!-- <button class="btn btn-warning" (click)="modelGroupDisabled = !modelGroupDisabled">Enable/Disable</button> -->
+    </div>
+    <div class="form-inline d-flex align-items-center mt-2 mb-2">
+      <div class="btn-group" btnRadioGroup [(ngModel)]="features.filterBrand" [disabled]="modelGroupDisabled">
+        <label class="btn btn-success" *ngFor="let brand of bikeBrands" [btnRadio]="brand.id"
+          (click)="getBothFilters()">{{brand.name}}</label>
       </div>
     </div>
     <!-- <button>Get</button> -->
@@ -28,7 +35,7 @@
       <img [src]="bike.images?.[currentImgIndex]?.imagePath" class="card-img-top" alt="..." (click)="getBike(bike.id)">
     </div>
     <div class="card-body">
-      <h5 class="card-title">{{bike.brandId}} {{bike.model}}</h5>
+      <h5 class="card-title">{{bike.brand.name}} {{bike.model}} {{bike.type}}</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
         content.</p>
       <!-- <button (click)="viewbikeInfo(bike.id)" class="btn btn-primary">View More</button> -->
