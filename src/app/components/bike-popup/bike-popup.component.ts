@@ -16,7 +16,7 @@ export class BikePopupComponent {
 
   constructor(private fb: FormBuilder, private rentalRequestService: RentalRequestService, private toastr: ToastrService) {
     let getUser = (localStorage.getItem('user'))
-    let user = {NICNo : ''}
+    let user = { NICNo: '' }
     if (getUser) {
       user = JSON.parse(getUser);
     } this.rentalRequestForm = this.fb.group({

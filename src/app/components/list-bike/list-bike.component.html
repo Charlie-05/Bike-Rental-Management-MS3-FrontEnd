@@ -9,7 +9,7 @@
       <th scope="col">Handle</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="bikes && bikes.length > 0">
     <tr *ngFor="let bike of bikes">
       <th scope="row">{{bike.brand.name}}</th>
       <td>{{bike.model}}</td>
@@ -25,6 +25,9 @@
             class="bi bi-trash-fill text-white"></i></button>
       </td>
     </tr>
+  </tbody>
+  <tbody *ngIf="!bikes">
+    <h2 class="text text-danger">No bikes to display!!!</h2>
   </tbody>
 </table>
 <router-outlet></router-outlet>

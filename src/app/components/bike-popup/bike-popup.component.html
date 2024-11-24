@@ -6,6 +6,12 @@
             </div>
         </div>
         <div class="col-6">
+            <p>
+                {{bikeData.description}}
+            </p>
+            <div *ngFor="let s of [].constructor(bikeData.rating)">
+                <i class="fa-solid fa-star text-warning"></i>
+            </div><p>({{bikeData.numberOfRatings}})</p>
             <form [formGroup]="rentalRequestForm" (ngSubmit)="onRequest()">
                 <label  class="form-label">Date of rent :</label>
                 <input type="string" formControlName="requestTime" class="form-control" bsDatepicker>

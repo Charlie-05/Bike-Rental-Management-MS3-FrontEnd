@@ -28,6 +28,9 @@ export class AccountSetupComponent implements OnInit {
   ngOnInit(): void {
     let getUser =JSON.parse(localStorage.getItem("user") || '') ;
     console.log(getUser);
+    if(getUser.Role == "Admin"){
+      this.router.navigate(['/admin'])
+    }
     this.userService.getUserById(getUser.NICNo).subscribe(data => {
       this.currentUser = data;
       console.log(this.currentUser);
@@ -41,9 +44,6 @@ export class AccountSetupComponent implements OnInit {
     }
   }
   onSetup(userSetupForm : any) {
-    // this.userLogIn.userName = this.user.userName;
-    // this.userLogIn.password = this.user.password;
-    
     this.currentUser.userName = this.user.userName;
     this.currentUser.hashPassword = this.user.password;
     this.userService.updateUser(this.currentUser, this.currentUser.NICNo).subscribe(data => {
