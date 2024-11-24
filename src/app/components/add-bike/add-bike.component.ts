@@ -29,6 +29,7 @@ export class AddBikeComponent implements OnInit{
       model: ['' ,  [Validators.required]],
       type: ['' ,  [Validators.required]],
       ratePerHour: [0 ,  [Validators.required , Validators.min(1)]],
+      description : [''],
       images: this.fb.array([])
     })
     this.currentBikeId = this.route.snapshot.paramMap.get("id") || '';

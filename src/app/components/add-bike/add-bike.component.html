@@ -13,14 +13,14 @@
                         Brand is required
                     </small>
                 </div>
-                <label for="description" class="form-label">Model : </label>
+                <label for="model" class="form-label">Model : </label>
                 <input type="text" class="form-control" id="" formControlName="model">
                 <div *ngIf="addBikeForm.controls.model?.touched">                  
                     <small class="text-danger" *ngIf="addBikeForm.get('model').errors">
                         Model is required
                     </small>
                 </div>
-                <label for="description" class="form-label">Type : </label>
+                <label for="type" class="form-label">Type : </label>
                 <select formControlName="type" class="form-control">
                     <option value="" disabled selected>Select a Type</option>
                     <option *ngFor="let type of bikeTypes" [value]="type">{{type}}</option>
@@ -30,7 +30,7 @@
                        Type is required
                     </small>
                 </div>
-                <label for="description" class="form-label">Rate per Hour : </label>
+                <label for="ratePerHour" class="form-label">Rate per Hour : </label>
                 <input type="number" class="form-control" id="" formControlName="ratePerHour">
                 <div *ngIf="addBikeForm.controls.ratePerHour?.touched">                  
                     <small class="text-danger" *ngIf="addBikeForm.get('ratePerHour').errors?.required">
@@ -40,6 +40,10 @@
                         Rate per hour must be positive
                      </small>
                 </div>
+                <div class="form-floating mt-2">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" formControlName="description"></textarea>
+                    <label for="floatingTextarea">Description</label>
+                  </div>
                 <button type="submit" class="btn btn-primary mt-3" [disabled]="addBikeForm.invalid">Submit</button>
 
             </div>
