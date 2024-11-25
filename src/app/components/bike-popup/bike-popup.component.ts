@@ -32,6 +32,7 @@ export class BikePopupComponent {
     console.log(this.rentalRequestForm.value);
     this.rentalRequestService.postRequest(this.rentalRequestForm.value).subscribe(data => {
       console.log(data);
+      this.toastr.success("Rent Successful!!!")
     }, error => {
       this.toastr.error(error.error);
     })

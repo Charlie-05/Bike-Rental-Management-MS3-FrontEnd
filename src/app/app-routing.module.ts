@@ -20,6 +20,7 @@ import { AccountSetupComponent } from './components/account-setup/account-setup.
 import { ListBrandsComponent } from './components/list-brands/list-brands.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ViewBikeComponent } from './components/view-bike/view-bike.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 
 const routes: Routes = [
@@ -58,7 +59,9 @@ const routes: Routes = [
     // canActivate : [AuthGuard],
     children: [
       { path: '', component: ViewBikeComponent  },
-      { path: 'profile', component: UserProfileComponent  },
+      { path: 'profile', component: UserProfileComponent , children : [
+        {path: 'edit' , component : UserEditComponent}
+      ] },
 
     ]
 
