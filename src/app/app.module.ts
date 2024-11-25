@@ -38,6 +38,7 @@ import { ListBrandsComponent } from './components/list-brands/list-brands.compon
 import { BikeSearchPipe } from './pipes/bike-search.pipe';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 
 
@@ -70,6 +71,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
     AccountSetupComponent,
     ListBrandsComponent,
     BikeSearchPipe,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
