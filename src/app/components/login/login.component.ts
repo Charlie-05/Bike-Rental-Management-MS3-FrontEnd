@@ -27,9 +27,16 @@ export class LoginComponent {
       localStorage.setItem('token' , data.token);
       if (data) {
         const decoded: any = jwtDecode(data.token);
-        localStorage.setItem('user', JSON.stringify(decoded));
-        this.toastr.success("Welcome User!!!")
-        this.router.navigate(['/user'])
+        console.log(decoded.Role);
+        if(decoded.Role != "Admin"){
+          localStorage.setItem('user', JSON.stringify(decoded));
+          this.toastr.success("Welcome User!!!");
+          this.router.navigate(['/user']) 
+        }else{
+          this.router.navigate(['/admin']);
+
+        }
+       
       }
     },error => {
       this.currentError = (error.error)
