@@ -39,6 +39,7 @@ import { BikeSearchPipe } from './pipes/bike-search.pipe';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { UserHistoryComponent } from './components/user-history/user-history.component';
 
 
 
@@ -72,6 +73,7 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
     ListBrandsComponent,
     BikeSearchPipe,
     UserEditComponent,
+    UserHistoryComponent,
   ],
   imports: [
     BrowserModule,

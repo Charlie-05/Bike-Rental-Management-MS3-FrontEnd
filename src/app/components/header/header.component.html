@@ -42,7 +42,7 @@
                 <button type="button" class="btn btn-outline-warning position-relative" (click)="getNotifications()">
                   <i class="bi bi-bell"></i>
                   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    99+
+                    {{currentUser? currentUser.rentalRequests?.length : 0}}
                     <!-- <span class="visually-hidden">unread messages</span> -->
                   </span>
                 </button>

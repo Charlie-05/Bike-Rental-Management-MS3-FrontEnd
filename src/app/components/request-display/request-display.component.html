@@ -14,6 +14,7 @@
                 <td>{{request.requestTime | date}}</td>
                 <td>
                   <button class="btn btn-success" (click)="acceptRequest(request.id)">Accept</button>
+                  <button class="btn btn-success" *ngIf="request.id">Accept</button>
                   <button class="btn btn-danger" (click)="declineRequest(request.id)">Decline</button>
                 </td>
             </tr>

@@ -8,7 +8,8 @@ import { IRentalRequest } from '../../modals/rentalRequest';
   styleUrl: './request-display.component.css'
 })
 export class RequestDisplayComponent implements OnInit {
-  rentalRequests! : IRentalRequest[]
+  rentalRequests! : IRentalRequest[];
+
   constructor(private rentalrequestService : RentalRequestService){}
 
    ngOnInit(): void {
@@ -20,6 +21,7 @@ export class RequestDisplayComponent implements OnInit {
    acceptRequest(id : string){
     this.rentalrequestService.acceptRequest(id).subscribe(data => {
       console.log(data);
+
     })
    }
    

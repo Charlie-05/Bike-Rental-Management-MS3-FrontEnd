@@ -1,3 +1,6 @@
+import { IRentalRecord } from "./rentalRecord"
+import { IRentalRequest } from "./rentalRequest"
+
 export interface IUser {
     id: string
     nicNumber: string,
@@ -11,7 +14,9 @@ export interface IUser {
     isBlocked: boolean
     userName: boolean
     profileImage: string,
-    isVerified: boolean
+    isVerified: boolean,
+    rentalRecords? : IRentalRecord[],
+    rentalRequests? : IRentalRequest[]
 }
 
 export enum Roles {
