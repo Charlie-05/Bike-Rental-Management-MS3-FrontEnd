@@ -2,24 +2,25 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
+                <th scope="col">Bike Info</th>
+                <th scope="col">User NIC</th>
+                <th scope="col">Requested for</th>
                 <th scope="col">Handle</th>
             </tr>
         </thead>
-        <tbody *ngIf="rentalRequests.length > 0">
-            <tr *ngFor="let request of rentalRequests">
-                <th scope="row">{{request.bike?.brandId}} {{request.bike?.model}}</th>
+        <tbody *ngIf="rentalRequests">
+            <tr *ngFor="let request of rentalRequests;let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{request.bike?.brandId}} {{request.bike?.model}}</td>
                 <td>{{request.userId}}</td>
                 <td>{{request.requestTime | date}}</td>
                 <td>
-                  <button class="btn btn-success" (click)="acceptRequest(request.id)">Accept</button>
-                  <button class="btn btn-success" *ngIf="request.id">Accept</button>
-                  <button class="btn btn-danger" (click)="declineRequest(request.id)">Decline</button>
+                  <button class="btn btn-success" (click)="acceptRequest(request.id,i)" >Accept</button>
+                  <button class="btn btn-danger" (click)="declineRequest(request.id,i)">Decline</button>
                 </td>
             </tr>
         </tbody>
-        <tbody *ngIf="rentalRequests.length == 0">
+        <tbody *ngIf="rentalRequests?.length == 0">
             <h2 class="text text-success">You are all caught up...</h2>
         </tbody>
     </table>

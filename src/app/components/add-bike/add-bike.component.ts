@@ -63,6 +63,7 @@ export class AddBikeComponent implements OnInit{
   }
   removeImage(index: number) {
     this.bikeImages.removeAt(index);
+    this.images.splice(index , 1);
   }
 
   onAddBike() {

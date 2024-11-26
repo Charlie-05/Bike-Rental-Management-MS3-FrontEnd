@@ -15,12 +15,13 @@ export class BikePopupComponent {
 
 
   constructor(private fb: FormBuilder, private rentalRequestService: RentalRequestService, private toastr: ToastrService) {
-    let getUser = (localStorage.getItem('user'))
+    let getUser = (localStorage.getItem('user'));
+    let now = new Date()
     let user = { NICNo: '' }
     if (getUser) {
       user = JSON.parse(getUser);
     } this.rentalRequestForm = this.fb.group({
-      requestTime: [''],
+      requestTime: [now],
       bikeId: [''],
       userId: [user.NICNo]
     })
@@ -29,7 +30,8 @@ export class BikePopupComponent {
 
   onRequest() {
     this.rentalRequestForm.value.bikeId = this.bikeData.id;
-    console.log(this.rentalRequestForm.value);
+    this.rentalRequestForm.value.requestTime = this.formatDate(this.rentalRequestForm.value.requestTime);
+        console.log(this.rentalRequestForm.value);
     this.rentalRequestService.postRequest(this.rentalRequestForm.value).subscribe(data => {
       console.log(data);
       this.toastr.success("Rent Successful!!!")
@@ -37,4 +39,11 @@ export class BikePopupComponent {
       this.toastr.error(error.error);
     })
   }
+    // Method to format date in 'yyyy-mm-dd' format (you can include time if needed)
+    private formatDate(date: Date): string {
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-indexed
+      const day = date.getDate().toString().padStart(2, '0');
+      return `${year}-${month}-${day}`; // Example output: '2024-11-26'
+    }
 }

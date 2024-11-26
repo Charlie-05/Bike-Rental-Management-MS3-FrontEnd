@@ -7,23 +7,23 @@
             <th scope="col">#</th>
             <th scope="col">Brand Name</th>
             <th scope="col">Bikes</th>
-            <th scope="col">Handle</th>
+            <!-- <th scope="col">Handle</th> -->
         </tr>
     </thead>
     <tbody *ngIf="brands">
         <tr *ngFor="let brand of brands;let i=index">
             <th scope="row">{{i+1}}</th>
             <td>{{brand.name}}</td>
-            <td>{{brand.bikes.length}}</td>
-            <td>
+            <td>{{brand?.bikes?.length}}</td>
+            <!-- <td>
                 <button class="btn btn-primary" (click)="editBrand()"><i
                         class="bi bi-pencil text-white"></i></button>
                 <button class="btn btn-danger" (click)="deleteBrand()"><i
                         class="bi bi-trash-fill text-white"></i></button>
-            </td>
+            </td> -->
         </tr>
     </tbody>
-    <tbody *ngIf="brands.length == 0">
+    <tbody *ngIf="brands?.length == 0">
       <h2 class="text-danger">No brands to display...</h2>
     </tbody>
 </table>

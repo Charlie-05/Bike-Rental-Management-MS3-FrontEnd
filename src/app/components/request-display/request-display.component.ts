@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RentalRequestService } from '../../services/rental-request.service';
-import { IRentalRequest } from '../../modals/rentalRequest';
+import { IRentalRequest, Status } from '../../modals/rentalRequest';
+
 
 @Component({
   selector: 'app-request-display',
@@ -9,7 +10,8 @@ import { IRentalRequest } from '../../modals/rentalRequest';
 })
 export class RequestDisplayComponent implements OnInit {
   rentalRequests! : IRentalRequest[];
-
+  status!: Status;
+  requestStatus! : string;
   constructor(private rentalrequestService : RentalRequestService){}
 
    ngOnInit(): void {
@@ -18,17 +20,18 @@ export class RequestDisplayComponent implements OnInit {
       console.log(data);
      })
    }
-   acceptRequest(id : string){
+   acceptRequest(id : string,index : number){
     this.rentalrequestService.acceptRequest(id).subscribe(data => {
       console.log(data);
-
+      this.requestStatus = this.requestStatus + id;
     })
    }
    
-   declineRequest(id : string){
+   declineRequest(id : string, index : number){
     this.rentalrequestService.declineRequest(id).subscribe(data => {
       console.log(data);
     })
    }
 
 }
+
