@@ -39,11 +39,10 @@ export class BikePopupComponent {
       this.toastr.error(error.error);
     })
   }
-    // Method to format date in 'yyyy-mm-dd' format (you can include time if needed)
     private formatDate(date: Date): string {
       const year = date.getFullYear();
-      const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-indexed
+      const month = (date.getMonth() + 1).toString().padStart(2, '0'); 
       const day = date.getDate().toString().padStart(2, '0');
-      return `${year}-${month}-${day}`; // Example output: '2024-11-26'
+      return `${year}-${month}-${day}`; 
     }
 }
