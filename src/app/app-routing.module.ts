@@ -21,6 +21,7 @@ import { ListBrandsComponent } from './components/list-brands/list-brands.compon
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ViewBikeComponent } from './components/view-bike/view-bike.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { UserHistoryComponent } from './components/user-history/user-history.component';
 
 
 const routes: Routes = [
@@ -60,7 +61,8 @@ const routes: Routes = [
     children: [
       { path: '', component: ViewBikeComponent  },
       { path: 'profile', component: UserProfileComponent , children : [
-        {path: 'edit' , component : UserEditComponent}
+        {path: 'edit' , component : UserEditComponent},
+        {path: 'history' , component : UserHistoryComponent}
       ] },
 
     ]

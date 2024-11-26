@@ -17,13 +17,12 @@ export class CustomerListComponent implements OnInit {
   getAllCustomers(){
     this.userService.getAllCustomers().subscribe(data => {
       this.customers = data;
+      console.log(data);
     })
   }
-  unblockCustomer(){
 
-  }
-  blockCustomer(){
-
+  blockCustomer(id : string){
+    console.log(id);
   }
   viewBlockedCustomers(){
     
