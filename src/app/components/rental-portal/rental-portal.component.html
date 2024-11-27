@@ -7,7 +7,7 @@
             <th scope="col">Action</th>
         </tr>
     </thead>
-    <tbody *ngIf="rentalRequests.length > 0">
+    <tbody *ngIf="rentalRequests">
         <tr *ngFor="let request of rentalRequests">
 
             <th scope="row">{{request.bike?.brand?.name}} {{request.bike?.model}}</th>

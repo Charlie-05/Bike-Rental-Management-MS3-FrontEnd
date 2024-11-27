@@ -29,7 +29,7 @@ export class AccountSetupComponent implements OnInit {
     let getUser =JSON.parse(localStorage.getItem("user") || '') ;
     console.log(getUser);
     if(getUser.Role == "Admin"){
-      this.router.navigate(['/admin'])
+      this.router.navigate(['/login'])
     }
     this.userService.getUserById(getUser.NICNo).subscribe(data => {
       this.currentUser = data;

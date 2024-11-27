@@ -37,10 +37,12 @@ export class RegisterComponent implements OnInit{
     console.log(this.registerForm.value);
     this.userService.registerUser(this.registerForm.value).subscribe(data => {
       console.log(data);
+      
       if (data) {
+        localStorage.setItem('token', data.token);
         const decoded: any = jwtDecode(data.token);
         localStorage.setItem('user', JSON.stringify(decoded));
-        this.toastr.info("Please setup Username and passoword");
+        this.toastr.info("Please setup Username and password");
         this.router.navigate(['/setup']);
       }  
     })

@@ -5,11 +5,14 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { IBrand } from '../../modals/brand';
 import { BrandService } from '../../services/brand.service';
 import { FormBuilder } from '@angular/forms';
+import { BikePopupComponent } from "../bike-popup/bike-popup.component";
+import { BikeSearchPipe } from "../../pipes/bike-search.pipe";
 
 @Component({
   selector: 'app-view-bike',
   templateUrl: './view-bike.component.html',
-  styleUrl: './view-bike.component.css'
+  styleUrl: './view-bike.component.css',
+  // imports: [BikePopupComponent, BikeSearchPipe]
 })
 export class ViewBikeComponent implements OnInit {
   filterForm!: any;
