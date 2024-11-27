@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { ILogIn } from '../../modals/logIn';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { IUser, Setting } from '../../modals/user';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class AccountSetupComponent implements OnInit {
   password!: string;
   confirmPassword! : string;
   result : boolean = false;
-  currentUser! : any;
+  currentUser! : IUser;
   constructor(private userService : UserService , private router : Router , private toastr : ToastrService) {
   }
   userLogIn! : ILogIn;
@@ -46,7 +47,8 @@ export class AccountSetupComponent implements OnInit {
   onSetup(userSetupForm : any) {
     this.currentUser.userName = this.user.userName;
     this.currentUser.hashPassword = this.user.password;
-    this.userService.updateUser(this.currentUser, this.currentUser.NICNo).subscribe(data => {
+    console.log(this.currentUser);
+    this.userService.updateUser(this.currentUser, this.currentUser.nicNumber,Setting.Credentilas).subscribe(data => {
       console.log(data);
       this.toastr.success("Welcome User!!!")
       this.router.navigate(['/user'])

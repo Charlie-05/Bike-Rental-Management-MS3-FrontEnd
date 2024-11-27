@@ -9,18 +9,23 @@ export interface IUser {
     email: string,
     contactNo: string,
     address: string,
-    hashPassword: string
-    role: Roles
-    isBlocked: boolean
-    userName: boolean
+    hashPassword: string,
+    role: Roles,
+    isBlocked: boolean,
+    userName: string,
     profileImage: string,
     isVerified: boolean,
     rentalRecords? : IRentalRecord[],
-    rentalRequests? : IRentalRequest[]
+    rentalRequests? : IRentalRequest[],
+    password : string
 }
 
 export enum Roles {
     Admin,
     Manager,
     User
+}
+export enum Setting {
+    Credentilas ,
+    Info
 }
