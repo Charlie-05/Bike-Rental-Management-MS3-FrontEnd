@@ -9,7 +9,7 @@
             <th scope="col">Action</th>
         </tr>
     </thead>
-    <tbody *ngIf="rentalRecords.length > 0">
+    <tbody *ngIf="rentalRecords">
         <tr *ngFor="let record of rentalRecords">
 
             <th scope="row">{{record.bikeRegNo}} </th>
@@ -21,7 +21,7 @@
             </td>
         </tr>
     </tbody>
-    <tbody *ngIf="rentalRecords.length == 0">
+    <tbody *ngIf="rentalRecords?.length == 0">
       <h2 class="text text-success">You are all caught up...</h2>
   </tbody>
 </table>

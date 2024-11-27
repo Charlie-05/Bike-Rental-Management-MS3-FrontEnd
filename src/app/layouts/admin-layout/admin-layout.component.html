@@ -88,7 +88,8 @@
                 <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" [routerLink]="['/admin']">
+                            <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page"
+                                [routerLink]="['/admin']">
                                 <svg class="bi">
                                     <use xlink:href="#house-fill" />
                                 </svg>
@@ -185,12 +186,13 @@
 
                     <ul class="nav flex-column mb-auto">
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
+                            <button class="nav-link d-flex align-items-center gap-2" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
                                 <svg class="bi">
                                     <use xlink:href="#gear-wide-connected" />
                                 </svg>
                                 Settings
-                            </a>
+                            </button>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link d-flex align-items-center gap-2" href="#">
@@ -207,6 +209,53 @@
         <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <router-outlet></router-outlet>
         </div>
-        
+
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Account Settings</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" *ngIf="currentUser">
+                Username : {{currentUser.userName}}<br>
+                <button class="btn btn-primary mt-1 mb-1" (click)="formDisplay=true">Update Credentials</button>
+                <form *ngIf="formDisplay==true" #credentialUpdate="ngForm" (ngSubmit)="onSubmit(credentialUpdate)">
+                    <div class="mb-3">
+                        <label class="form-label">New username : </label>
+                        <input type="text" class="form-control" id="userName" name="userName"
+                            [(ngModel)]="user.newUserName">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Old password : </label>
+                        <input type="password" class="form-control" id="oldPassword" name="password"
+                            [(ngModel)]="user.oldPassword">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">New password : </label>
+                        <input type="password" class="form-control" id="password" name="newPassword"
+                            [(ngModel)]="user.newPassword">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Confirm password : </label>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                            [(ngModel)]="user.confirmPassword">
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
     </div>
 </div>

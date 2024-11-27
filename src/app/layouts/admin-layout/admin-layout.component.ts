@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { IUser } from '../../modals/user';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-layout',
@@ -6,5 +10,42 @@ import { Component } from '@angular/core';
   styleUrl: './admin-layout.component.css'
 })
 export class AdminLayoutComponent {
+
+  currentUser!: IUser;
+  formDisplay!: boolean;
+  user = {
+    oldUserName: this.currentUser?.userName,
+    newUserName: '',
+    oldPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  }
+  constructor(private userService: UserService, private modalService: BsModalService) {
+    this.getUserInfo();
+  }
+  getUserInfo() {
+    let user = JSON.parse(localStorage.getItem('user') || '');
+    this.userService.getUserById(user.NICNo).subscribe(data => {
+      this.currentUser = data;
+    })
+  }
+  onSubmit(myForm: NgForm) {
+    console.log(myForm.value);
+    let login = {
+      userName: this.currentUser?.userName,
+      password: myForm.value.password
+    };
+    console.log(login);
+    this.userService.logIn(login).subscribe(data => {
+      console.log(data);
+      if(data){
+        this.currentUser.userName = myForm.value.userName;
+        this.currentUser.hashPassword = myForm.value.newPassword;
+        this.userService.updateUser(this.currentUser , this.currentUser.nicNumber).subscribe(data => {
+          console.log(data);
+        })
+      }
+    })
+  }
 
 }
