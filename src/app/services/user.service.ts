@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IToken } from '../modals/token';
 import { jwtDecode } from 'jwt-decode';
-import { IUser } from '../modals/user';
+import { IUser, Setting } from '../modals/user';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +28,8 @@ export class UserService {
     return this.http.get<IUser>("http://localhost:5057/api/Users/" + nicNo)
   }
 
-  updateUser(user : any , nicNo : string){
-    return this.http.put("http://localhost:5057/api/Users/" + nicNo , user)
+  updateUser(user : any , nicNo : string, setting : Setting){
+    return this.http.put("http://localhost:5057/api/Users/" + nicNo + "?setting=" + setting, user)
   }
 
 

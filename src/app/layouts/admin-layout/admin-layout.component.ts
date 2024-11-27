@@ -1,6 +1,6 @@
 import { Component, TemplateRef } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { IUser } from '../../modals/user';
+import { IUser, Setting } from '../../modals/user';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgForm } from '@angular/forms';
 
@@ -41,7 +41,8 @@ export class AdminLayoutComponent {
       if(data){
         this.currentUser.userName = myForm.value.userName;
         this.currentUser.hashPassword = myForm.value.newPassword;
-        this.userService.updateUser(this.currentUser , this.currentUser.nicNumber).subscribe(data => {
+        console.log(this.currentUser);
+        this.userService.updateUser(this.currentUser , this.currentUser.nicNumber, Setting.Credentilas).subscribe(data => {
           console.log(data);
         })
       }
