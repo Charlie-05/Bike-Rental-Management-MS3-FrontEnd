@@ -18,6 +18,7 @@ ngOnInit(): void {
   let user = JSON.parse(localStorage.getItem('user') || '');
   this.userService.getUserById(user.NICNo).subscribe(data => {
     this.currentUser = data;
+    console.log(data);
     this.rentalRequests = data.rentalRequests;
     this.rentalRecords = data.rentalRecords;
   })

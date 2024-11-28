@@ -22,6 +22,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { ViewBikeComponent } from './components/view-bike/view-bike.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UserHistoryComponent } from './components/user-history/user-history.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
 
 
 const routes: Routes = [
@@ -59,11 +60,15 @@ const routes: Routes = [
     path: 'user', component: UserLayoutComponent,
     // canActivate : [AuthGuard],
     children: [
-      { path: '', component: ViewBikeComponent  },
-      { path: 'profile', component: UserProfileComponent , children : [
-        {path: 'edit' , component : UserEditComponent},
-        {path: 'history' , component : UserHistoryComponent}
-      ] },
+      { path: '', component: ViewBikeComponent },
+      {
+        path: 'profile', component: UserProfileComponent,
+        children: [
+          { path: '', component: UserCardComponent },
+          { path: 'edit', component: UserEditComponent },
+          { path: 'history', component: UserHistoryComponent }
+        ]
+      },
 
     ]
 
