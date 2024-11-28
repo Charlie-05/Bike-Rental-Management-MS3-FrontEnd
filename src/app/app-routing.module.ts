@@ -23,6 +23,7 @@ import { ViewBikeComponent } from './components/view-bike/view-bike.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UserHistoryComponent } from './components/user-history/user-history.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { ListManagerComponent } from './components/list-manager/list-manager.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,9 @@ const routes: Routes = [
       },
       {
         path: 'customers', component: CustomerListComponent
+      },
+      {
+        path: 'managers', component: ListManagerComponent
       },
 
     ]
