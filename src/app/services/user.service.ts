@@ -24,6 +24,9 @@ export class UserService {
   getAllCustomers(){
     return this.http.get<IUser[]>("http://localhost:5057/api/Users?role=2")
   }
+  getAllManagers(){
+    return this.http.get<IUser[]>("http://localhost:5057/api/Users?role=1")
+  }
   getUserById(nicNo : string){
     return this.http.get<IUser>("http://localhost:5057/api/Users/" + nicNo)
   }
@@ -31,7 +34,9 @@ export class UserService {
   updateUser(user : any , nicNo : string, setting : Setting){
     return this.http.put("http://localhost:5057/api/Users/" + nicNo + "?setting=" + setting, user)
   }
-
+  verifyUser(nicNo : string){
+    return this.http.get("http://localhost:5057/api/Users/Verify-user" + nicNo)
+  }
 
   deleteUser(id : string){
     return this.http.delete("http://localhost:5057/api/Users/" + id);

@@ -3,7 +3,7 @@ import { UserService } from '../../services/user.service';
 import { ILogIn } from '../../modals/logIn';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { IUser, Setting } from '../../modals/user';
+import { IUser, Roles, Setting } from '../../modals/user';
 
 
 @Component({
@@ -50,8 +50,19 @@ export class AccountSetupComponent implements OnInit {
     console.log(this.currentUser);
     this.userService.updateUser(this.currentUser, this.currentUser.nicNumber,Setting.Credentilas).subscribe(data => {
       console.log(data);
-      this.toastr.success("Welcome User!!!")
-      this.router.navigate(['/user'])
+      if(data){
+        if(this.currentUser.role == Roles.User){
+          this.toastr.success("Welcome User!!!")
+          this.router.navigate(['/user'])
+        }else if(this.currentUser.role == Roles.Manager){
+          this.toastr.success("Welcome Manager!!!")
+          this.router.navigate(['/login'])
+        }
+        
+      }
+     
+    },error => {
+      this.toastr.error(error.error);
     })
   }
 }
