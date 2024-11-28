@@ -1,0 +1,15 @@
+<div class="container border border-black">
+    <div class="row" *ngIf="userData">
+        <div class="col-4">
+            <div class="ratio ratio-4x3 rounded-6">
+                <img [src]="userData.profileImage" class="img-fluid" alt="Responsive Image">
+            </div>
+        </div>
+        <div class="col-8 p-4">
+            <h6>First name : {{userData.firstName}}</h6>
+            <h6>Last name : {{userData.lastName}}</h6>
+            <p>Email : {{userData.email}}<br>
+            Mobile : {{userData.contactNo}}</p>
+        </div>
+    </div>
+</div>
