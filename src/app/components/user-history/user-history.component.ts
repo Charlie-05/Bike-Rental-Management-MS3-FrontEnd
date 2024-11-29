@@ -23,4 +23,6 @@ export class UserHistoryComponent implements OnInit {
       this.rentalRecords = data.rentalRecords?.slice(0, 5);
     })
   }
+  
 }
+
