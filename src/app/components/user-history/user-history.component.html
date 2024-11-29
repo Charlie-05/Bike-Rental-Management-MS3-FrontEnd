@@ -1,5 +1,52 @@
 <div *ngIf="currentUser">
-    <div class="row" *ngFor="let req of rentalRecords;let i=index">
-        <h6>{{i + 1}}</h6>
-    </div>
+    <h3 class="mb-2">My Rental Records</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Bike Reg.No</th>
+                <th scope="col">Rent Start</th>
+                <th scope="col">Rent End</th>
+                <th scope="col">Payment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let record of rentalRecords;let i=index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{record.bikeRegNo}}</td>
+                <td>{{record.rentalOut| date : 'MMM d, y, h:mm'}}</td>
+                <td *ngIf="record.rentalReturn">{{record.rentalReturn | date : 'MMM d, y, h:mm'}} </td>
+                <td *ngIf="!record.rentalReturn">Pending</td>
+                <td *ngIf="record.payment">{{record.payment}} </td>
+                <td *ngIf="!record.payment">Pending</td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 class="mb-2 mt-2">My Rental Requests</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Request Date</th>
+                <th scope="col">Request Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let request of rentalRequests;let i=index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{request.requestTime | date}}</td>
+                <td [ngClass]="{'text-warning' :request.status == '0' , 'text-success' : request.status == '1'
+                 , 'text-danger' : request.status == '2' , 'text-primary' : request.status == '3' }">
+                 <i *ngIf="request.status == '0'">Pending</i>
+                 <i *ngIf="request.status == '1'">Accepted</i>
+                 <i *ngIf="request.status == '2'">Declined</i>
+                 <i *ngIf="request.status == '3'">On Rent</i>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
 </div>

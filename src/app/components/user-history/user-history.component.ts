@@ -10,17 +10,17 @@ import { IRentalRecord } from '../../modals/rentalRecord';
   styleUrl: './user-history.component.css'
 })
 export class UserHistoryComponent implements OnInit {
-  currentUser! : IUser;
-  rentalRequests! : any
-  rentalRecords! : any
-  constructor(private userService : UserService){}
-ngOnInit(): void {
-  let user = JSON.parse(localStorage.getItem('user') || '');
-  this.userService.getUserById(user.NICNo).subscribe(data => {
-    this.currentUser = data;
-    console.log(data);
-    this.rentalRequests = data.rentalRequests;
-    this.rentalRecords = data.rentalRecords;
-  })
-}
+  currentUser!: IUser;
+  rentalRequests!: any
+  rentalRecords!: any
+  constructor(private userService: UserService) { }
+  ngOnInit(): void {
+    let user = JSON.parse(localStorage.getItem('user') || '');
+    this.userService.getUserById(user.NICNo).subscribe(data => {
+      this.currentUser = data;
+      console.log(data);
+      this.rentalRequests = data.rentalRequests?.slice(0, 5);
+      this.rentalRecords = data.rentalRecords?.slice(0, 5);
+    })
+  }
 }
