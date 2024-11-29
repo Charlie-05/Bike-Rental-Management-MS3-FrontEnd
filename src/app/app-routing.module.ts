@@ -24,13 +24,14 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UserHistoryComponent } from './components/user-history/user-history.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { ListManagerComponent } from './components/list-manager/list-manager.component';
+import { AuthGuard } from './guards/auth-guard.guard';
 
 
 const routes: Routes = [
 
   {
     path: 'admin', component: AdminLayoutComponent,
-    // canActivate : [AuthGuard],
+     canActivate : [AuthGuard],
     children: [
       { path: '', component: DashboardComponent },
       {

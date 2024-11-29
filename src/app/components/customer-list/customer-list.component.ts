@@ -8,28 +8,37 @@ import { IUser } from '../../modals/user';
   styleUrl: './customer-list.component.css'
 })
 export class CustomerListComponent implements OnInit {
-  customers! : IUser[];
-  constructor(private userService : UserService){}
+  customers!: IUser[];
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.getAllCustomers();
   }
-  getAllCustomers(){
+  getAllCustomers() {
     this.userService.getAllCustomers().subscribe(data => {
       this.customers = data;
       console.log(data);
     })
   }
 
-  blockCustomer(id : string){
+  blockCustomer(id: string) {
     console.log(id);
   }
-  viewBlockedCustomers(){
-    
+  viewBlockedCustomers() {
+
   }
-  deleteUser(id : string){
-    this.userService.deleteUser(id).subscribe(data => {
+  // deleteUser(id : string){
+  //   this.userService.deleteUser(id).subscribe(data => {
+  //     console.log(data);
+  //   })
+  // }
+
+  verifyUser(nicNo: string, i: number) {
+    this.userService.verifyUser(nicNo).subscribe(data => {
       console.log(data);
+      if (data) {
+        console.log(i)
+      }
     })
   }
 }

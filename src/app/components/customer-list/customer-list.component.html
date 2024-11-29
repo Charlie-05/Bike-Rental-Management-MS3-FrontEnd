@@ -17,8 +17,8 @@
             <td>{{customer.email}}</td>
             <td>{{customer.contactNo}}</td>
             <td>
-              <button class="btn btn-danger" (click)="deleteUser(customer.nicNumber)">Delete</button> 
-              <button class="btn btn-warning" (click)="blockCustomer(customer.nicNumber)">{{customer.isBlocked? "Unblock" : "Block"}}</button> 
+                <button class="btn btn-primary" (click)="verifyUser(customer.nicNumber , i)" [disabled]="customer.isVerified">Verify</button> 
+                <button class="btn btn-warning" (click)="blockCustomer(customer.nicNumber)">{{customer.isBlocked? "Unblock" : "Block"}}</button> 
             </td>
         </tr>
     </tbody>
