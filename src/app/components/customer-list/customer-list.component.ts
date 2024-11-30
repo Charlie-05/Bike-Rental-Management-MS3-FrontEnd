@@ -36,9 +36,6 @@ export class CustomerListComponent implements OnInit {
   verifyUser(nicNo: string, i: number) {
     this.userService.verifyUser(nicNo).subscribe(data => {
       console.log(data);
-      if (data) {
-        console.log(i)
-      }
     })
   }
 }
