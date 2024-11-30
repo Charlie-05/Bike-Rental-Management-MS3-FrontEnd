@@ -30,7 +30,7 @@ export class ListManagerComponent implements OnInit {
     
   }
   blockManger(id : string){
-    this.userService.deleteUser(id).subscribe(data => {
+    this.userService.verifyUser(id).subscribe(data => {
       console.log(data);
     })
   }

@@ -7,18 +7,20 @@ import { UserService } from '../../services/user.service';
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.css'
 })
-export class UserCardComponent implements OnInit{
-userData! : IUser;
-constructor(private userService : UserService){}
-ngOnInit(): void {
-  let user = JSON.parse(localStorage.getItem('user') || '');
-  this.userService.getUserById(user.NICNo).subscribe(data => {
-    console.log(data);
-
-    if(data){
-      this.userData = data;
-      
+export class UserCardComponent implements OnInit {
+  userData!: IUser;
+  constructor(private userService: UserService) { }
+  ngOnInit(): void {
+    let getUser = localStorage.getItem('user');
+    if (getUser) {
+      let user = JSON.parse(getUser)
+      this.userService.getUserById(user.NICNo).subscribe(data => {
+        console.log(data);
+        if (data) {
+          this.userData = data;
+        }
+      })
     }
-  })
-}
+
+  }
 }

@@ -9,34 +9,38 @@ import { IUser, Setting } from '../../modals/user';
   styleUrl: './user-edit.component.css'
 })
 export class UserEditComponent implements OnInit {
-  currentUser! : IUser
-  userInfo! : FormGroup
-  constructor(private fb : FormBuilder , private userService : UserService){
+  currentUser!: IUser
+  userInfo!: FormGroup
+  constructor(private fb: FormBuilder, private userService: UserService) {
     this.userInfo = this.fb.group({
-      nicNumber : ['' , [Validators.required]],
-      firstName : [''],
-      lastName : [''],
-      email: ['' , [Validators.required , Validators.email]],
-      contactNo : [''],
-      address : [''],
-      role: ['' , [Validators.required]],
+      nicNumber: ['', [Validators.required]],
+      firstName: [''],
+      lastName: [''],
+      email: ['', [Validators.required, Validators.email]],
+      contactNo: [''],
+      address: [''],
+      role: ['', [Validators.required]],
     })
   }
 
   ngOnInit(): void {
-    let user = JSON.parse(localStorage.getItem('user') || '');
-    this.userService.getUserById(user.NICNo).subscribe(data => {
-      console.log(data);
+    let getUser = (localStorage.getItem('user'));
+    if (getUser) {
+      let user = JSON.parse(getUser);
+      this.userService.getUserById(user.NICNo).subscribe(data => {
+        console.log(data);
 
-      if(data){
-        this.currentUser = data;
-        this.userInfo.patchValue(data);
-      }
-    })
+        if (data) {
+          this.currentUser = data;
+          this.userInfo.patchValue(data);
+        }
+      })
+    }
+
   }
-  onEdit(){
+  onEdit() {
     console.log(this.userInfo.value);
-    this.userService.updateUser(this.userInfo.value , this.currentUser.nicNumber , Setting.Info).subscribe(data =>{
+    this.userService.updateUser(this.userInfo.value, this.currentUser.nicNumber, Setting.Info).subscribe(data => {
       console.log(data);
     })
   }
