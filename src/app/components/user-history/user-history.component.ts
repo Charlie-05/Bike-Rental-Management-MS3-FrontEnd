@@ -15,14 +15,18 @@ export class UserHistoryComponent implements OnInit {
   rentalRecords!: any
   constructor(private userService: UserService) { }
   ngOnInit(): void {
-    let user = JSON.parse(localStorage.getItem('user') || '');
-    this.userService.getUserById(user.NICNo).subscribe(data => {
-      this.currentUser = data;
-      console.log(data);
-      this.rentalRequests = data.rentalRequests?.slice(0, 5);
-      this.rentalRecords = data.rentalRecords?.slice(0, 5);
-    })
+    let getUser = localStorage.getItem('user');
+    if (getUser) {
+      let user = JSON.parse(getUser);
+      this.userService.getUserById(user.NICNo).subscribe(data => {
+        this.currentUser = data;
+        console.log(data);
+        this.rentalRequests = data.rentalRequests?.slice(0, 5);
+        this.rentalRecords = data.rentalRecords?.slice(0, 5);
+      })
+    }
+
   }
-  
+
 }
 
