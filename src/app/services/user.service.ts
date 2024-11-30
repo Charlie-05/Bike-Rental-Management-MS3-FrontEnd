@@ -41,6 +41,8 @@ export class UserService {
   deleteUser(id : string){
     return this.http.delete("http://localhost:5057/api/Users/" + id);
   }
+
+  
   isLoggedIn() {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');
