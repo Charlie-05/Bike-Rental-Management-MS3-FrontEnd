@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-
+  subscribeForm : any;
+  subscribe = {
+    email : ''
+  }
+onSubscribe(){
+console.log(this.subscribe.email);
+}
 }
