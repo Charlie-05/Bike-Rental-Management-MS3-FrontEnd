@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { IUser, Setting } from '../../modals/user';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-layout',
@@ -20,7 +21,7 @@ export class AdminLayoutComponent {
     newPassword: '',
     confirmPassword: ''
   }
-  constructor(private userService: UserService, private modalService: BsModalService) {
+  constructor(private userService: UserService, private modalService: BsModalService, private router : Router) {
     this.getUserInfo();
   }
   getUserInfo() {
@@ -47,6 +48,10 @@ export class AdminLayoutComponent {
         })
       }
     })
+  }
+  logOut(){
+    localStorage.clear();
+    this.router.navigate(['/'])
   }
 
 }
