@@ -14,7 +14,10 @@ export class BikeService {
     return this.http.post("http://localhost:5057/api/Bikes", bike)
   }
   getBikes(){
-    return this.http.get<IBike[]>("http://localhost:5057/api/Bikes")
+    return this.http.get<IBike[]>("http://localhost:5057/api/Bikes?role=2")
+  }
+  getBikesforAdmin(){
+    return this.http.get<IBike[]>("http://localhost:5057/api/Bikes?role=2")
   }
   getBike(id : string){
     return this.http.get<IBike>("http://localhost:5057/api/Bikes/" + id)

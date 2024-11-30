@@ -30,7 +30,7 @@ export class ListBikeComponent implements OnInit {
     this.loadData();
   }
   getAllBikes() {
-    this.bikeService.getBikes().subscribe(data => {
+    this.bikeService.getBikesforAdmin().subscribe(data => {
       this.bikes = data;
     })
   }
