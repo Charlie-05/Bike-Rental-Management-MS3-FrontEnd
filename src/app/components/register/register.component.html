@@ -20,19 +20,45 @@
                   <div class="form-outline mb-1">
                     <label class="form-label" for="">First Name</label>
                     <input type="text" id="" class="form-control" formControlName="firstName" />
+                    <div *ngIf="registerForm.controls.firstName?.touched">
+                      <small class="text-danger" *ngIf="registerForm.get('firstName')?.errors">
+                        Firstname is required
+                      </small>
+                    </div>
                   </div>
 
                   <div class="form-outline mb-0">
                     <label class="form-label" for="">Last Name</label>
                     <input type="text" id="" class="form-control" formControlName="lastName" />
+                    <div *ngIf="registerForm.controls.lastName?.touched">
+                      <small class="text-danger" *ngIf="registerForm.get('lastName')?.errors">
+                        Lastname is required
+                      </small>
+                    </div>
                   </div>
                   <div class="form-outline mb-0">
                     <label class="form-label" for="">Email</label>
                     <input type="text" id="" class="form-control" formControlName="email" />
+                    <div *ngIf="registerForm.controls.email?.touched">
+                      <small class="text-danger" *ngIf="registerForm.get('email')?.errors?.['required']">
+                        Email is required
+                      </small>
+                      <small class="text-danger" *ngIf="registerForm.controls['email']?.errors?.['email']">
+                        Email address is invalid
+                      </small>
+                    </div>
                   </div>
                   <div class="form-outline mb-0">
                     <label class="form-label" for="">Mobile</label>
                     <input type="text" id="" class="form-control" formControlName="contactNo" />
+                    <div *ngIf="registerForm.controls.contactNo?.touched">
+                      <small class="text-danger" *ngIf="registerForm.get('contactNo')?.errors?.['required']">
+                        Mobile is required
+                      </small>
+                      <small class="text-danger" *ngIf="registerForm.controls['contactNo']?.errors?.minlength">
+                        Mobile is invalid
+                      </small>
+                    </div>
                   </div>
                   <div class="form-outline mb-0">
                     <!-- <input type="text" id="" class="form-control" /-->
@@ -41,15 +67,33 @@
                       <option>Select your role</option>
                       <option *ngFor="let role of roles" [value]="role.key">{{role.value}}</option>
                     </select>
+                    <div *ngIf="registerForm.controls.role?.touched">
+                      <small class="text-danger" *ngIf="registerForm.get('role')?.errors?.['required']">
+                        Role is required
+                      </small>
+                    </div>
 
                   </div>
                   <div class="form-outline mb-0">
                     <label class="form-label" for="">National Identity Number</label>
                     <input type="text" id="" class="form-control" formControlName="nicNumber" />
+                    <div *ngIf="registerForm.controls.nicNumber?.touched">
+                      <small class="text-danger" *ngIf="registerForm.get('nicNumber')?.errors?.['required']">
+                        NIC number is required
+                      </small>
+                      <small class="text-danger" *ngIf="registerForm.controls['nicNumber']?.errors?.pattern">
+                        NIC number is invalid
+                      </small>
+                    </div>
                   </div>
                   <div class="form-outline mb-0">
                     <label class="form-label" for="">Address</label>
                     <input type="text" id="" class="form-control" formControlName="address" />
+                    <div *ngIf="registerForm.controls.address?.touched">
+                      <small class="text-danger" *ngIf="registerForm.get('address')?.errors?.['required']">
+                        Address is required
+                      </small>
+                    </div>
                   </div>
 
                   <div class="pt-1 mb-1">

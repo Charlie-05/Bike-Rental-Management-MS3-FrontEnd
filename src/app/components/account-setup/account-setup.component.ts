@@ -48,21 +48,21 @@ export class AccountSetupComponent implements OnInit {
     this.currentUser.userName = this.user.userName;
     this.currentUser.hashPassword = this.user.password;
     console.log(this.currentUser);
-    this.userService.updateUser(this.currentUser, this.currentUser.nicNumber,Setting.Credentilas).subscribe(data => {
-      console.log(data);
-      if(data){
-        if(this.currentUser.role == Roles.User){
-          this.toastr.success("Welcome User!!!")
-          this.router.navigate(['/user'])
-        }else if(this.currentUser.role == Roles.Manager){
-          this.toastr.success("Welcome Manager!!!")
-          this.router.navigate(['/login'])
+    if(this.result == true){
+      this.userService.updateUser(this.currentUser, this.currentUser.nicNumber,Setting.Credentilas).subscribe(data => {
+        console.log(data);
+        if(data){
+          if(this.currentUser.role == Roles.User){
+            this.toastr.success("Welcome User!!!")
+            this.router.navigate(['/user'])
+          }else if(this.currentUser.role == Roles.Manager){
+            this.toastr.success("Welcome Manager!!!")
+            this.router.navigate(['/login'])
+          } 
         }
-        
-      }
-     
-    },error => {
-      this.toastr.error(error.error);
-    })
+      },error => {
+        this.toastr.error(error.error);
+      })
+    }
   }
 }

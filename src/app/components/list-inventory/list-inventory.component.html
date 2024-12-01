@@ -16,8 +16,8 @@
             <td *ngIf="unit.availability == true"><i class="bi bi-check-circle-fill text-success"> Available </i></td>
             <td *ngIf="unit.availability == false"><i class="bi bi-x-circle-fill text-danger"> Unavaialble</i></td>
             <td>
-                <button class="btn btn-primary" (click)="openModal(template1)"><i
-                        class="bi bi-pencil text-white"></i></button>
+                <!-- <button class="btn btn-primary" (click)="openModal(template1)"><i
+                        class="bi bi-pencil text-white"></i></button> -->
                 <button class="btn btn-danger" (click)="deleteInventoryUnit(unit.registrationNo)"><i
                         class="bi bi-trash-fill text-white"></i></button>
             </td>
