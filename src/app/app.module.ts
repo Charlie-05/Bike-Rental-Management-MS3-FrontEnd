@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
@@ -42,6 +42,7 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UserHistoryComponent } from './components/user-history/user-history.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { ListManagerComponent } from './components/list-manager/list-manager.component';
+import { MyInterceptorService } from './interceptors/my-interceptor.service';
 
 
 
@@ -92,7 +93,11 @@ import { ListManagerComponent } from './components/list-manager/list-manager.com
     BsDatepickerModule,
     ButtonsModule
   ],
-  providers: [BsModalService, provideAnimationsAsync()],
-  bootstrap: [AppComponent]
+  providers: [BsModalService, provideAnimationsAsync(),   {
+    provide: HTTP_INTERCEPTORS,
+    useClass: MyInterceptorService,
+    multi: true, // Allows multiple interceptors
+  }],
+  bootstrap: [AppComponent,]
 })
 export class AppModule { }

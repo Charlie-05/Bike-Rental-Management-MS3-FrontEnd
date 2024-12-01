@@ -34,10 +34,14 @@ export class BikePopupComponent {
         console.log(this.rentalRequestForm.value);
     this.rentalRequestService.postRequest(this.rentalRequestForm.value).subscribe(data => {
       console.log(data);
-      this.toastr.success("Rental request Successful!!!")
-    }, error => {
-      this.toastr.error(error.error);
-    })
+      this.rentalRequestForm.reset();
+      this.toastr.success("Rental request Successful!!!");
+      
+    }
+    // , error => {
+    //   this.toastr.error(error.error);
+    // }
+  )
   }
     private formatDate(date: Date): string {
       const year = date.getFullYear();

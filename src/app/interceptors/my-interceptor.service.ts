@@ -18,7 +18,9 @@ export class MyInterceptorService implements HttpInterceptor {
     return next.handle(modifiedReq).pipe(catchError(err => {
       if ([401, 403].includes(err.status)) {
         this.router.navigate(['/login']);
-        this.toastr.info("Session Expired")
+        this.toastr.info(err.error)
+      }else if([400].includes(err.status)){
+        this.toastr.error(err.error);
       }
       const error = err.error?.message || err.statusText;
       return throwError(() => error)
