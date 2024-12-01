@@ -9,13 +9,21 @@
             <p>
                 {{bikeData.description}}
             </p>
-            <div *ngFor="let s of [].constructor(bikeData.rating)">
-                <i class="fa-solid fa-star text-warning"></i>
-            </div><p>({{bikeData.numberOfRatings}})</p>
+            <div *ngIf="bikeData.rating" class="d-flex flex-row">
+                <div *ngFor="let s of [].constructor(bikeData.rating)">
+                    <i class="fa-solid fa-star text-warning"></i>
+                </div> <p>({{bikeData.numberOfRatings}})</p>
+            </div>
+            <div *ngIf="!bikeData.rating" class="d-flex flex-row">
+                <div *ngFor="let s of [].constructor(5)">
+                    <i class="fa-solid fa-star text-tertiary"></i>
+                </div> <p>({{bikeData.numberOfRatings}})</p>
+            </div>
+           
             <form [formGroup]="rentalRequestForm" (ngSubmit)="onRequest()">
-                <label  class="form-label">Date of rent :</label>
+                <label class="form-label">Date of rent :</label>
                 <input type="string" formControlName="requestTime" class="form-control" bsDatepicker>
-                <button type="submit" class="btn btn-primary mt-2">Request</button>
+                <button type="submit" class="btn btn-primary mt-2" data-bs-dismiss="modal">Request</button>
             </form>
         </div>
     </div>

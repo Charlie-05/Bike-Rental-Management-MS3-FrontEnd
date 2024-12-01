@@ -12,8 +12,8 @@
     <button class="btn btn-outline-success" (click)="features.filterBrand=null" (click)="features.filterType=null" (click)="getAllBikes()">Remove
       Filters</button>
     <div class="form-inline d-flex align-items-center mt-2 mb-2">
-      <div class="btn-group" btnRadioGroup [(ngModel)]="features.filterType" [disabled]="modelGroupDisabled">
-        <label class="btn btn-success" *ngFor="let type of bikeTypes" [btnRadio]="type"
+      <div class="btn-group row" btnRadioGroup [(ngModel)]="features.filterType" [disabled]="modelGroupDisabled">
+        <label class="btn btn-success col-lg-1 col-md-2 col-sm-3" *ngFor="let type of bikeTypes" [btnRadio]="type"
           (click)="getBothFilters()">{{type}}</label>
       </div>
     </div>
