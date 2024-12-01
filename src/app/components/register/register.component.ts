@@ -10,18 +10,18 @@ import { jwtDecode } from 'jwt-decode';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export class RegisterComponent implements OnInit{
-  registerForm : FormGroup;
-  roles : any;
-  constructor(private fb : FormBuilder , private userService : UserService , private router : Router, private toastr : ToastrService){
+export class RegisterComponent implements OnInit {
+  registerForm: FormGroup;
+  roles: any;
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService) {
     this.registerForm = this.fb.group({
-      nicNumber : ['' , [Validators.required]],
-      firstName : [''],
-      lastName : [''],
-      email: ['' , [Validators.required , Validators.email]],
-      contactNo : [''],
-      address : [''],
-      role: ['' , [Validators.required]],
+      nicNumber: ['', [Validators.required, Validators.pattern(/^\d{12}$|^\d{7}[A-Za-z]$/)]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      contactNo: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(10)] ],
+      address: ['', [Validators.required]],
+      role: ['', [Validators.required]],
     })
   }
 
@@ -32,19 +32,19 @@ export class RegisterComponent implements OnInit{
     })
   }
 
-  onRegister(){
+  onRegister() {
     this.registerForm.value.role = parseInt(this.registerForm.value.role);
     console.log(this.registerForm.value);
     this.userService.registerUser(this.registerForm.value).subscribe(data => {
       console.log(data);
-      
+
       if (data) {
         localStorage.setItem('token', data.token);
         const decoded: any = jwtDecode(data.token);
         localStorage.setItem('user', JSON.stringify(decoded));
         this.toastr.info("Please setup Username and password");
         this.router.navigate(['/setup']);
-      }  
+      }
     })
   }
 }

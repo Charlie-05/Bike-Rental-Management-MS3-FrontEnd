@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
@@ -11,34 +11,32 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  loginForm : FormGroup;
-  currentError! : string;
-  constructor(private fb : FormBuilder , private userService : UserService, private router : Router, private toastr : ToastrService){
+  loginForm: FormGroup;
+  currentError!: string;
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService) {
     this.loginForm = this.fb.group({
-      userName:[""],
-      password: [""],
-      nicNumber: [""]
+      userName: ["", [Validators.required]],
+      password: ["", [Validators.required]]
     })
   }
 
-  onLogIn(){
+  onLogIn() {
     console.log(this.loginForm.value);
     this.userService.logIn(this.loginForm.value).subscribe(data => {
-      localStorage.setItem('token' , data.token);
+      localStorage.setItem('token', data.token);
       if (data) {
         const decoded: any = jwtDecode(data.token);
         console.log(decoded.Role);
         localStorage.setItem('user', JSON.stringify(decoded));
-        if(decoded.Role == "User"){
-          
+        if (decoded.Role == "User") {
+
           this.toastr.success("Welcome User!!!");
-          this.router.navigate(['/user']) 
-        }else if(decoded.Role != "User"){
+          this.router.navigate(['/user'])
+        } else if (decoded.Role != "User") {
           this.router.navigate(['/admin']);
         }
-       
       }
-    },error => {
+    }, error => {
       this.currentError = (error.error)
     })
   }
