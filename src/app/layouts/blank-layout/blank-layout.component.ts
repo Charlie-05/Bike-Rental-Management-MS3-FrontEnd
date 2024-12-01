@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blank-layout',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './blank-layout.component.css'
 })
 export class BlankLayoutComponent {
+constructor(private router : Router){
 
+}
 }

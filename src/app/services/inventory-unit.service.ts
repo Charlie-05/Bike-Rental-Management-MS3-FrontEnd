@@ -8,16 +8,18 @@ import { IInventoryUnit } from '../modals/inventoryUnit';
 export class InventoryUnitService {
 
   constructor(private http: HttpClient) { }
+  baseUrl = "http://localhost:5057/api/InventoryUnits"
+
   postUnits(inventoryUnit: IInventoryUnit) {
-    return this.http.post("http://localhost:5057/api/InventoryUnits", inventoryUnit);
+    return this.http.post(this.baseUrl, inventoryUnit);
   }
   getAvailableUnitsByBikeId(bikeId: string) {
-    return this.http.get<IInventoryUnit[]>("http://localhost:5057/api/InventoryUnits?availability=true&bikeId=" + bikeId);
+    return this.http.get<IInventoryUnit[]>(`${this.baseUrl}?availability=true&bikeId=${bikeId}`);
   }
   getAllInventoryUnits() {
-    return this.http.get<IInventoryUnit[]>("http://localhost:5057/api/InventoryUnits");
+    return this.http.get<IInventoryUnit[]>(this.baseUrl);
   }
   deleteInventoryUnit(regNo : string){
-    return this.http.delete("http://localhost:5057/api/InventoryUnits/" + regNo)
+    return this.http.delete(`${this.baseUrl}/${regNo}`)
   }
 }

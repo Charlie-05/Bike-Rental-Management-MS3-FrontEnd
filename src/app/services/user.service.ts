@@ -9,40 +9,38 @@ import { IUser, Setting } from '../modals/user';
 })
 export class UserService {
 
-  constructor(private http : HttpClient) { }
-
-  registerUser(user : any){
-    return this.http.post<IToken>("http://localhost:5057/api/Users/Sign-Up" , user);
+  constructor(private http: HttpClient) { }
+  baseUrl = "http://localhost:5057/api/Users"
+  registerUser(user: any) {
+    return this.http.post<IToken>(`${this.baseUrl}/Sign-Up`, user);
   }
 
-  logIn(user : any){
-    return this.http.post<IToken>("http://localhost:5057/api/Users/Log-In" , user);
+  logIn(user: any) {
+    return this.http.post<IToken>(`${this.baseUrl}/Log-In`, user);
   }
-  getRoles(){
-    return this.http.get("http://localhost:5057/api/Users/Get-Roles");
+  getRoles() {
+    return this.http.get(`${this.baseUrl}/Get-Roles`);
   }
-  getAllCustomers(){
-    return this.http.get<IUser[]>("http://localhost:5057/api/Users?role=2")
+  getAllCustomers() {
+    return this.http.get<IUser[]>(`${this.baseUrl}?role=2`)
   }
-  getAllManagers(){
-    return this.http.get<IUser[]>("http://localhost:5057/api/Users?role=1")
+  getAllManagers() {
+    return this.http.get<IUser[]>(`${this.baseUrl}?role=1`)
   }
-  getUserById(nicNo : string){
-    return this.http.get<IUser>("http://localhost:5057/api/Users/" + nicNo)
+  getUserById(nicNo: string) {
+    return this.http.get<IUser>(`${this.baseUrl}/${nicNo}`)
   }
-
-  updateUser(user : any , nicNo : string, setting : Setting){
-    return this.http.put("http://localhost:5057/api/Users/" + nicNo + "?setting=" + setting, user)
+  updateUser(user: any, nicNo: string, setting: Setting) {
+    return this.http.put(`${this.baseUrl}/${nicNo}?setting=${setting}`, user)
   }
-  verifyUser(nicNo : string){
-    return this.http.get("http://localhost:5057/api/Users/Verify-user" + nicNo)
+  verifyUser(nicNo: string) {
+    return this.http.get(`${this.baseUrl}/Verify-user${nicNo}`)
   }
-
-  deleteUser(id : string){
-    return this.http.delete("http://localhost:5057/api/Users/" + id);
+  deleteUser(id: string) {
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
-  
+
   isLoggedIn() {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');

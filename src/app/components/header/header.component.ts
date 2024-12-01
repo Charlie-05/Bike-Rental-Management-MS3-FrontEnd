@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   notifyCount!: number | undefined;
   logOut() {
     localStorage.clear();
-    this.router.navigate(['/'])
+    this.router.navigate(['/login'])
   }
   ngOnInit(): void {
 
