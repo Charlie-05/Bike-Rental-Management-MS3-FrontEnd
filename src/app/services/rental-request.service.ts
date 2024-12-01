@@ -8,20 +8,20 @@ import { IRentalRequest } from '../modals/rentalRequest';
 export class RentalRequestService {
 
   constructor(private http: HttpClient) { }
-
+  baseUrl = "http://localhost:5057/api/RentalRequests"
   postRequest(req: any) {
-    return this.http.post<IRentalRequest>("http://localhost:5057/api/RentalRequests", req);
+    return this.http.post<IRentalRequest>(this.baseUrl, req);
   }
   getRequests() {
-    return this.http.get<IRentalRequest[]>("http://localhost:5057/api/RentalRequests");
+    return this.http.get<IRentalRequest[]>(this.baseUrl);
   }
   getRequestsForPortal() {
-    return this.http.get<IRentalRequest[]>("http://localhost:5057/api/RentalRequests?status=1");
+    return this.http.get<IRentalRequest[]>(`${this.baseUrl}?status=1`);
   }
   acceptRequest(id: string) {
-    return this.http.get("http://localhost:5057/api/RentalRequests/Accept-Request" + id);
+    return this.http.get(`${this.baseUrl}/Accept-Request${id}`);
   }
   declineRequest(id: string) {
-    return this.http.get("http://localhost:5057/api/RentalRequests/Decline-Request" + id);
+    return this.http.get(`${this.baseUrl}/Decline-Request${id}`);
   }
 }
