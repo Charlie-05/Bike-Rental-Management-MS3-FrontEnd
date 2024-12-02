@@ -81,6 +81,9 @@ const routes: Routes = [
   {
     path: '', component: BlankLayoutComponent,
     children: [
+      {path :'', component : UserLayoutComponent, children : [
+        { path: '', component: ViewBikeComponent }
+      ] },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'setup', component: AccountSetupComponent },
