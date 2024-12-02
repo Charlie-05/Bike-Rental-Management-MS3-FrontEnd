@@ -3,6 +3,8 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { RentalRequestService } from '../../services/rental-request.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-bike-popup',
@@ -14,7 +16,7 @@ export class BikePopupComponent {
   rentalRequestForm: FormGroup;
 
 
-  constructor(private fb: FormBuilder, private rentalRequestService: RentalRequestService, private toastr: ToastrService) {
+  constructor(private fb: FormBuilder, private rentalRequestService: RentalRequestService, private toastr: ToastrService , private modalService :NgbModal) {
     let getUser = (localStorage.getItem('user'));
     let now = new Date()
     let user = { NICNo: '' }
@@ -35,7 +37,11 @@ export class BikePopupComponent {
     this.rentalRequestService.postRequest(this.rentalRequestForm.value).subscribe(data => {
       console.log(data);
       this.rentalRequestForm.reset();
-      this.toastr.success("Rental request Successful!!!");
+      if(data){
+        this.toastr.success("Rental request Successful!!!");
+  
+      }
+      
       
     }
     // , error => {

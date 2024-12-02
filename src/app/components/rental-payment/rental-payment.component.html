@@ -1,6 +1,6 @@
 <div class="modal-content" *ngIf="recordData">
     <div class="modal-header">
-      <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Rental Payment</h1>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
@@ -21,7 +21,7 @@
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       <div *ngIf="payment">
-        <button type="button" class="btn btn-primary" (click)="completeRecord(payment.payment , recordData.id)">Confirm Payment</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="completeRecord(payment.payment , recordData.id)">Confirm Payment</button>
       </div>
      
     </div>

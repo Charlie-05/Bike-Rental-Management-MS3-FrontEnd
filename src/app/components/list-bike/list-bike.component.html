@@ -23,7 +23,7 @@
             class="bi bi-three-dots"></i></button>
         <button class="btn btn-primary"><i class="bi bi-pencil text-white"
             [routerLink]="['/admin/bikes/edit-bike' , bike.id]"></i></button>
-        <button (click)="deleteBike(bike.id)" class="btn btn-danger"><i
+        <button (click)="deleteBike(bike.id, template2, i)" class="btn btn-danger"><i
             class="bi bi-trash-fill text-white"></i></button>
       </td>
     </tr>
@@ -79,5 +79,12 @@
 
     </form>
 
+  </div>
+</ng-template>
+<ng-template #template2>
+  <div class="modal-body text-center">
+    <p>Do you want to confirm?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
   </div>
 </ng-template>
