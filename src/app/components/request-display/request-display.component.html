@@ -11,7 +11,7 @@
         <tbody *ngIf="rentalRequests">
             <tr *ngFor="let request of rentalRequests;let i = index">
                 <th scope="row">{{i+1}}</th>
-                <td>{{request.bike?.brandId}} {{request.bike?.model}}</td>
+                <td>{{request.bike?.brand?.name}} {{request.bike?.model}}</td>
                 <td>{{request.userId}}</td>
                 <td>{{request.requestTime | date}}</td>
                 <td>

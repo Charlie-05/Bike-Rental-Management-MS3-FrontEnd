@@ -5,6 +5,7 @@ import { RentalRequestService } from '../../services/rental-request.service';
 import { IInventoryUnit } from '../../modals/inventoryUnit';
 import { RentalRecordService } from '../../services/rental-record.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-rental-portal',
@@ -18,7 +19,7 @@ export class RentalPortalComponent implements OnInit {
   rentalRecordForm!: FormGroup;
   registrationNo: string = '';
   constructor(private inventoryUnitService: InventoryUnitService, private rentalRequestService: RentalRequestService,
-    private rentalRecordService: RentalRecordService, private fb: FormBuilder) {
+    private rentalRecordService: RentalRecordService, private fb: FormBuilder, private toastr: ToastrService) {
     this.rentalRecordForm = this.fb.group({
       bikeRegNo: [''],
       rentalRequestId : ['']
@@ -42,11 +43,15 @@ export class RentalPortalComponent implements OnInit {
     })
   }
 
-  rentOut(requestId: string) {
+  rentOut(requestId: string , index : number) {
     console.log(this.rentalRecordForm.value);
     this.rentalRecordForm.value.rentalRequestId = requestId;
     this.rentalRecordService.postRentalRecord(this.rentalRecordForm.value).subscribe(data => {
       console.log(data);
+      if(data){
+        this.rentalRequests.splice(index , 1);
+        this.toastr.success("Rent out successful");
+      }
     })
   }
 }

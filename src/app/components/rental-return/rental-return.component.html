@@ -2,22 +2,22 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Last</th>
+            <th scope="col">Bike Reg.No</th>
+            <th scope="col">User NIC</th>
+            <th scope="col">Rental Out</th>
 
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody *ngIf="rentalRecords">
-        <tr *ngFor="let record of rentalRecords">
+        <tr *ngFor="let record of rentalRecords;let i=index">
 
-            <th scope="row">{{record.bikeRegNo}} </th>
-            <td>{{record.rentalOut | date}}</td>
-            <td>{{record.rentalRequestId}}</td>
-            <td>{{record.id}}</td>
+            <th scope="row">{{i+ 1}}</th>
+            <td>{{record.bikeRegNo}}</td>
+            <td>{{record.rentalRequest.userId}}</td>
+            <td>{{record.rentalOut | date : 'MMM d, y, h:mm'}}</td>
             <td>
-                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="selected=record" (click)="displayPayment(record.id)">Return</button>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="selected=record" (click)="displayPayment(record.id , i)">Return</button>
             </td>
         </tr>
     </tbody>

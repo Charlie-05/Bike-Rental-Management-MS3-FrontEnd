@@ -3,6 +3,7 @@ import { IRentalRecord } from '../../modals/rentalRecord';
 import { RentalRecordService } from '../../services/rental-record.service';
 import { IPayment } from '../../modals/payment';
 import { IRentalRecRequest } from '../../modals/rentalRecRequest';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-rental-return',
@@ -13,8 +14,9 @@ export class RentalReturnComponent implements OnInit {
   rentalRecords!: IRentalRecord[];
   currentRecord!: IRentalRecord;
   selected: any;
-  payment!: IPayment
-  constructor(private rentalRecordService: RentalRecordService) { }
+  payment!: IPayment;
+  currentIndex! : number;
+  constructor(private rentalRecordService: RentalRecordService, private toastr : ToastrService) { }
 
   ngOnInit(): void {
     this.rentalRecordService.getIncompleteRentalRecords().subscribe(data => {
@@ -23,8 +25,9 @@ export class RentalReturnComponent implements OnInit {
     })
   }
 
-  displayPayment(recordId: string) {
+  displayPayment(recordId: string , index:number) {
     console.log(recordId);
+    this.currentIndex = index;
     this.rentalRecordService.getRentalPayment(recordId).subscribe(data => {
       console.log(data);
       this.payment = data;
@@ -39,6 +42,10 @@ export class RentalReturnComponent implements OnInit {
       console.log(this.currentRecord);
       this.rentalRecordService.completeRentalRecord(rec.id, this.currentRecord).subscribe(data => {
         console.log(data);
+        if(data){
+          this.toastr.success("Payment successful");
+          this.rentalRecords.splice(this.currentIndex,1)
+        }
       })
     })
 

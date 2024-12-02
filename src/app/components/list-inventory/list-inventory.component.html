@@ -18,7 +18,7 @@
             <td>
                 <!-- <button class="btn btn-primary" (click)="openModal(template1)"><i
                         class="bi bi-pencil text-white"></i></button> -->
-                <button class="btn btn-danger" (click)="deleteInventoryUnit(unit.registrationNo)"><i
+                <button class="btn btn-danger" (click)="deleteInventoryUnit(unit.registrationNo)" [disabled]="!unit.availability"><i
                         class="bi bi-trash-fill text-white"></i></button>
             </td>
         </tr>

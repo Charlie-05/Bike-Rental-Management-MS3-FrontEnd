@@ -2,15 +2,16 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
+            <th scope="col">Bike Info</th>
+            <th scope="col">User NIC</th>
+            <th scope="col">Request Date</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody *ngIf="rentalRequests">
-        <tr *ngFor="let request of rentalRequests">
-
-            <th scope="row">{{request.bike?.brand?.name}} {{request.bike?.model}}</th>
+        <tr *ngFor="let request of rentalRequests;let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{request.bike?.brand?.name}} {{request.bike?.model}}</td>
             <td>{{request.userId}}</td>
             <td>{{request.requestTime | date}}</td>
             <td>
@@ -24,7 +25,7 @@
                             </select>
                         </div>
                         <div class="col-4">
-                            <button class="btn btn-success" type="submit" (click)="rentOut(request.id)">Rent</button>
+                            <button class="btn btn-success" type="submit" (click)="rentOut(request.id , i)">Rent</button>
                         </div>
                     </form>
                 </div>
