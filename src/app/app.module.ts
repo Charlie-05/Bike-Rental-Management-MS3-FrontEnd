@@ -47,6 +47,8 @@ import { MyInterceptorService } from './interceptors/my-interceptor.service';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,6 +96,7 @@ import { MyInterceptorService } from './interceptors/my-interceptor.service';
     ToastrModule.forRoot(),
     BsDatepickerModule,
     ButtonsModule,
+    
  
   ],
   providers: [BsModalService, provideAnimationsAsync(),   {

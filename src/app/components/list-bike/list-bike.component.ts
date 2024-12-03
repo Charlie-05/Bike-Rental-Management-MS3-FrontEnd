@@ -8,9 +8,10 @@ import { InventoryUnitService } from '../../services/inventory-unit.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-list-bike',
-  templateUrl: './list-bike.component.html',
-  styleUrl: './list-bike.component.css'
+    selector: 'app-list-bike',
+    templateUrl: './list-bike.component.html',
+    styleUrl: './list-bike.component.css',
+    standalone: false
 })
 export class ListBikeComponent implements OnInit {
 

@@ -4,9 +4,10 @@ import { UserService } from '../../services/user.service';
 import { IUser, Setting } from '../../modals/user';
 
 @Component({
-  selector: 'app-user-edit',
-  templateUrl: './user-edit.component.html',
-  styleUrl: './user-edit.component.css'
+    selector: 'app-user-edit',
+    templateUrl: './user-edit.component.html',
+    styleUrl: './user-edit.component.css',
+    standalone: false
 })
 export class UserEditComponent implements OnInit {
   currentUser!: IUser

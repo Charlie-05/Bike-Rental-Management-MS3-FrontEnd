@@ -3,9 +3,10 @@ import { UserService } from '../../services/user.service';
 import { IUser } from '../../modals/user';
 
 @Component({
-  selector: 'app-customer-list',
-  templateUrl: './customer-list.component.html',
-  styleUrl: './customer-list.component.css'
+    selector: 'app-customer-list',
+    templateUrl: './customer-list.component.html',
+    styleUrl: './customer-list.component.css',
+    standalone: false
 })
 export class CustomerListComponent implements OnInit {
   customers!: IUser[];

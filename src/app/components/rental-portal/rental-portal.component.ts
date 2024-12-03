@@ -8,9 +8,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-rental-portal',
-  templateUrl: './rental-portal.component.html',
-  styleUrl: './rental-portal.component.css'
+    selector: 'app-rental-portal',
+    templateUrl: './rental-portal.component.html',
+    styleUrl: './rental-portal.component.css',
+    standalone: false
 })
 export class RentalPortalComponent implements OnInit {
 

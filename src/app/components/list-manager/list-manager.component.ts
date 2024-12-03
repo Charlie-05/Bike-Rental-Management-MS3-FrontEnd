@@ -3,9 +3,10 @@ import { IUser } from '../../modals/user';
 import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-list-manager',
-  templateUrl: './list-manager.component.html',
-  styleUrl: './list-manager.component.css'
+    selector: 'app-list-manager',
+    templateUrl: './list-manager.component.html',
+    styleUrl: './list-manager.component.css',
+    standalone: false
 })
 export class ListManagerComponent implements OnInit {
   managers! : IUser[];

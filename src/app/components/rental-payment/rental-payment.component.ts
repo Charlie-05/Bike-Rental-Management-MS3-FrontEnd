@@ -5,9 +5,10 @@ import { IPayment } from '../../modals/payment';
 import { IRentalRecRequest } from '../../modals/rentalRecRequest';
 
 @Component({
-  selector: 'app-rental-payment',
-  templateUrl: './rental-payment.component.html',
-  styleUrl: './rental-payment.component.css'
+    selector: 'app-rental-payment',
+    templateUrl: './rental-payment.component.html',
+    styleUrl: './rental-payment.component.css',
+    standalone: false
 })
 export class RentalPaymentComponent {
   @Input() recordData!: IRentalRecord;

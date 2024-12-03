@@ -4,9 +4,10 @@ import { IBrand } from '../../modals/brand';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-list-brands',
-  templateUrl: './list-brands.component.html',
-  styleUrl: './list-brands.component.css'
+    selector: 'app-list-brands',
+    templateUrl: './list-brands.component.html',
+    styleUrl: './list-brands.component.css',
+    standalone: false
 })
 export class ListBrandsComponent implements OnInit {
   brands! : IBrand[];

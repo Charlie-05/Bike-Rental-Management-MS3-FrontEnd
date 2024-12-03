@@ -6,9 +6,10 @@ import { ToastrService } from 'ngx-toastr';
 import { jwtDecode } from 'jwt-decode';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrl: './register.component.css',
+    standalone: false
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;

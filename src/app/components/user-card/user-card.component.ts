@@ -3,9 +3,10 @@ import { IUser } from '../../modals/user';
 import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-user-card',
-  templateUrl: './user-card.component.html',
-  styleUrl: './user-card.component.css'
+    selector: 'app-user-card',
+    templateUrl: './user-card.component.html',
+    styleUrl: './user-card.component.css',
+    standalone: false
 })
 export class UserCardComponent implements OnInit {
   userData!: IUser;

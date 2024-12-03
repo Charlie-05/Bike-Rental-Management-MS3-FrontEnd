@@ -1,34 +1,44 @@
-<main>
-    <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group me-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+<div class="container text-center text-white my-4">
+    <div class="row g-4">
+        <div class="col-12 col-md-3">
+            <div class="shadow bg-primary text-white rounded-3 p-3 d-flex align-items-center">
+                <i class="fa-solid fa-motorcycle fs-1 me-3"></i>
+                <div>
+                    <h5>Total Bikes</h5>
+                    <p class="m-0">{{ bikeCount }}</p>
+                </div>
             </div>
-            <button type="button"
-                class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-                <svg class="bi">
-                    <use xlink:href="#calendar3" />
-                </svg>
-                This week
-            </button>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="shadow bg-primary text-white rounded-3 p-3 d-flex align-items-center">
+                <i class="bi bi-envelope-arrow-down fs-1 me-3"></i>
+                <div>
+                    <h5>Total Rentals</h5>
+                    <p class="m-0">{{ completedRentalRecordCount }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="shadow bg-primary text-white rounded-3 p-3 d-flex align-items-center">
+                <i class="bi bi-cash-coin fs-1 me-3"></i>
+                <div>
+                    <h5>Total Revenue</h5>
+                    <p class="m-0">{{ revenueAmount }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="shadow bg-primary text-white rounded-3 p-3 d-flex align-items-center">
+                <i class="bi bi-people-fill fs-1 me-3"></i>
+                <div>
+                    <h5>Total Customers</h5>
+                    <p class="m-0">{{ customerCount }}</p>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="container text-center text-white">
-        <div class="row">
-            <div class="col-3 row shadow  bg bg-primary rounded-3"><i class="fa-solid fa-motorcycle col-4"></i><h5 class="col-8">Total Bikes {{bikeCount}}</h5></div>
-            <div class="col-3 row shadow  bg bg-primary rounded-3"><i class="bi bi-envelope-arrow-down col-4"></i><h5 class="col-8">Total Rentals {{completedRentalRecordCount}}</h5></div>
-            <div class="col-3 row shadow  bg bg-primary rounded-3"><i class="bi bi-cash-coin col-4"></i><h5 class="col-8">Total Revenue {{revenueAmount}}</h5></div>
-            <div class="col-3 row shadow  bg bg-primary rounded-3"><i class="bi bi-people-fill col-4"></i><h5 class="col-8">Total Customers {{customerCount}}</h5></div>
-        </div>
-    </div>
+</div>
 
-
-    <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
-
-    <h2>Section title</h2>
-    <div class="table-responsive small">
-    </div>
-</main>
+<div class="my-4">
+    <canvas id="paymentsChart" width="900" height="380"></canvas>
+</div>

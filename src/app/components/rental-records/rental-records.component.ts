@@ -3,9 +3,10 @@ import { IRentalRecord } from '../../modals/rentalRecord';
 import { RentalRecordService } from '../../services/rental-record.service';
 
 @Component({
-  selector: 'app-rental-records',
-  templateUrl: './rental-records.component.html',
-  styleUrl: './rental-records.component.css'
+    selector: 'app-rental-records',
+    templateUrl: './rental-records.component.html',
+    styleUrl: './rental-records.component.css',
+    standalone: false
 })
 export class RentalRecordsComponent implements OnInit {
 
