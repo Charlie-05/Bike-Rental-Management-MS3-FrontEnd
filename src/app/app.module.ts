@@ -43,7 +43,7 @@ import { UserHistoryComponent } from './components/user-history/user-history.com
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { ListManagerComponent } from './components/list-manager/list-manager.component';
 import { MyInterceptorService } from './interceptors/my-interceptor.service';
- 
+
 
 
 
@@ -80,6 +80,7 @@ import { MyInterceptorService } from './interceptors/my-interceptor.service';
     UserHistoryComponent,
     UserCardComponent,
     ListManagerComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -93,7 +94,7 @@ import { MyInterceptorService } from './interceptors/my-interceptor.service';
     ToastrModule.forRoot(),
     BsDatepickerModule,
     ButtonsModule,
-
+ 
   ],
   providers: [BsModalService, provideAnimationsAsync(),   {
     provide: HTTP_INTERCEPTORS,
