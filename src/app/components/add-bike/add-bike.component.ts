@@ -80,6 +80,10 @@ export class AddBikeComponent implements OnInit{
       console.log(this.bike);
       this.bikeService.updateBike(this.bike , this.currentBikeId).subscribe(data => {
         console.log(data);
+        if(data){
+          this.toastr.success("Bike successfully updated");
+          this.router.navigate(['/admin/bikes'])
+        }
       })
     }
    

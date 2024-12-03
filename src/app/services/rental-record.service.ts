@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { IRentalRecord } from '../modals/rentalRecord';
 import { IPayment } from '../modals/payment';
 import { IRentalRecRequest } from '../modals/rentalRecRequest';
+import { IReviewRequest } from '../modals/reviewRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class RentalRecordService {
   constructor(private http: HttpClient) { }
 
   baseUrl = "http://localhost:5057/api/RentalRecords"
+  //http://localhost:5057/api/RentalRecords/
   postRentalRecord(record: any) {
     return this.http.post(this.baseUrl, record);
   }
@@ -36,5 +38,8 @@ export class RentalRecordService {
   }
   getOverDueRentals() {
     return this.http.get<IRentalRecord[]>(`${this.baseUrl}/Get-overdue`);
+  }
+  postReview(obj : IReviewRequest){
+    return this.http.post(`${this.baseUrl}/Review` , obj)
   }
 }

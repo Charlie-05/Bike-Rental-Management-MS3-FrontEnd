@@ -1,8 +1,9 @@
-/* .wrapper{
+ .wrapper{
     object-fit: cover;
-    height:60vh;
+    height:12vh;
+    width:5vw;
 }
 .wrapper img{
-    width:100%;
-    height:100%;
-} */
+ width: 100%;
+ height: 100%;
+}

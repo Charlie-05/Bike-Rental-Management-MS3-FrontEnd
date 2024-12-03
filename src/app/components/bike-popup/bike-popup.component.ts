@@ -7,17 +7,19 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as bootstrap from 'bootstrap';
 
 @Component({
-    selector: 'app-bike-popup',
-    templateUrl: './bike-popup.component.html',
-    styleUrl: './bike-popup.component.css',
-    standalone: false
+  selector: 'app-bike-popup',
+  templateUrl: './bike-popup.component.html',
+  styleUrl: './bike-popup.component.css',
+  standalone: false
 })
 export class BikePopupComponent {
   @Input() bikeData: any = '';
   rentalRequestForm: FormGroup;
+  selectedIndex: number = 0;
 
 
-  constructor(private fb: FormBuilder, private rentalRequestService: RentalRequestService, private toastr: ToastrService , private modalService :NgbModal) {
+
+  constructor(private fb: FormBuilder, private rentalRequestService: RentalRequestService, private toastr: ToastrService, private modalService: NgbModal) {
     let getUser = (localStorage.getItem('user'));
     let now = new Date()
     let user = { NICNo: '' }
@@ -34,26 +36,23 @@ export class BikePopupComponent {
   onRequest() {
     this.rentalRequestForm.value.bikeId = this.bikeData.id;
     this.rentalRequestForm.value.requestTime = this.formatDate(this.rentalRequestForm.value.requestTime);
-        console.log(this.rentalRequestForm.value);
+    console.log(this.rentalRequestForm.value);
     this.rentalRequestService.postRequest(this.rentalRequestForm.value).subscribe(data => {
       console.log(data);
       this.rentalRequestForm.reset();
-      if(data){
-        this.toastr.success("Rental request Successful!!!");
-  
+      if (data) {
+        this.toastr.success("Rental request Successful");
       }
-      
-      
     }
-    // , error => {
-    //   this.toastr.error(error.error);
-    // }
-  )
+      // , error => {
+      //   this.toastr.error(error.error);
+      // }
+    )
   }
-    private formatDate(date: Date): string {
-      const year = date.getFullYear();
-      const month = (date.getMonth() + 1).toString().padStart(2, '0'); 
-      const day = date.getDate().toString().padStart(2, '0');
-      return `${year}-${month}-${day}`; 
-    }
+  private formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
 }

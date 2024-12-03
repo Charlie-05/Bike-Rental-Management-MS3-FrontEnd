@@ -2,30 +2,37 @@
     <div class="row">
         <div class="col-6 row">
             <div class="ratio ratio-4x3">
-                <img [src]="bikeData.images?.[0].imagePath" class="img-fluid" alt="Responsive Image">
+                <img [src]="bikeData.images?.[selectedIndex].imagePath" class="img-fluid" alt="Responsive Image">
+            </div>
+            <div class="col-3" *ngFor="let img of bikeData.images;let i=index">
+                <div class="wrapper border border-black rounded-5" (click)="selectedIndex=i">
+                    <img [src]="img.imagePath">
+                </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-6 mt-6">
             <p>
                 {{bikeData.description}}
             </p>
             <div *ngIf="bikeData.rating" class="d-flex flex-row">
-                <div *ngFor="let s of [].constructor(bikeData.rating)">
+                {{bikeData.rating}}
+                <div *ngFor="let s of [].constructor(bikeData.rating  | number: '1.0-0')">
                     <i class="fa-solid fa-star text-warning"></i>
-                </div> <p>({{bikeData.numberOfRatings}})</p>
+                </div>
+                <p>({{bikeData.numberOfRatings}})</p>
             </div>
             <div *ngIf="!bikeData.rating" class="d-flex flex-row">
                 <div *ngFor="let s of [].constructor(5)">
                     <i class="fa-solid fa-star text-tertiary"></i>
-                </div> <p>({{bikeData.numberOfRatings}})</p>
+                </div>
+                <p>({{bikeData.numberOfRatings}})</p>
             </div>
-           
+
             <form [formGroup]="rentalRequestForm" (ngSubmit)="onRequest()">
                 <label class="form-label">Date of rent :</label>
                 <input type="string" formControlName="requestTime" class="form-control" bsDatepicker>
                 <button type="submit" class="btn btn-primary mt-2" data-bs-dismiss="modal">Request</button>
             </form>
         </div>
-    </div>
 
-</div>
+    </div>

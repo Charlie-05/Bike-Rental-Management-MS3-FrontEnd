@@ -1,82 +1,125 @@
 <div *ngIf="currentUser">
-    <h3 class="mb-2">My Rental Records</h3>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Bike Reg.No</th>
-                <th scope="col">Rent Start</th>
-                <th scope="col">Rent End</th>
-                <th scope="col">Payment</th>
-                <th scope="col">Handle</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let record of rentalRecords;let i=index">
-                <th scope="row">{{i+1}}</th>
-                <td>{{record.bikeRegNo}}</td>
-                <td>{{record.rentalOut| date : 'MMM d, y, h:mm'}}</td>
-                <td *ngIf="record.rentalReturn">{{record.rentalReturn | date : 'MMM d, y, h:mm'}} </td>
-                <td *ngIf="!record.rentalReturn">Pending</td>
-                <td *ngIf="record.payment">{{record.payment}} </td>
-                <td *ngIf="!record.payment">Pending</td>
-                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ratingModal" [disabled]="!record.rentalReturn">
-                    Review
-                  </button></td>
-            </tr>
-        </tbody>
-    </table>
-    <h3 class="mb-2 mt-2">My Rental Requests</h3>
+  <h3 class="mb-2">My Rental Records</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Bike Reg.No</th>
+        <th scope="col">Rent Start</th>
+        <th scope="col">Rent End</th>
+        <th scope="col">Payment</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of rentalRecords;let i=index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{record.bikeRegNo}}</td>
+        <td>{{record.rentalOut| date : 'MMM d, y, h:mm'}}</td>
+        <td *ngIf="record.rentalReturn">{{record.rentalReturn | date : 'MMM d, y, h:mm'}} </td>
+        <td *ngIf="!record.rentalReturn">Pending</td>
+        <td *ngIf="record.payment">{{record.payment}} </td>
+        <td *ngIf="!record.payment">Pending</td>
+        <td><button type="button" class="btn btn-primary" *ngIf="!record.review" (click)="openModal(template , record.id)"
+            [disabled]="!record.rentalReturn" >
+            Review
+          </button></td>
+        
+      </tr>
+    </tbody>
+  </table>
+  <h3 class="mb-2 mt-2">My Rental Requests</h3>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Request Date</th>
-                <th scope="col">Request Status</th>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Request Date</th>
+        <th scope="col">Request Status</th>
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let request of rentalRequests;let i=index">
-                <th scope="row">{{i+1}}</th>
-                <td>{{request.requestTime | date}}</td>
-                <td [ngClass]="{'text-warning' :request.status == '0' , 'text-success' : request.status == '1'
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of rentalRequests;let i=index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{request.requestTime | date}}</td>
+        <td [ngClass]="{'text-warning' :request.status == '0' , 'text-success' : request.status == '1'
                  , 'text-danger' : request.status == '2' , 'text-primary' : request.status == '3' }">
-                 <i *ngIf="request.status == '0'">Pending</i>
-                 <i *ngIf="request.status == '1'">Accepted</i>
-                 <i *ngIf="request.status == '2'">Declined</i>
-                 <i *ngIf="request.status == '3'">On Rent</i>
-                </td>
+          <i *ngIf="request.status == '0'">Pending</i>
+          <i *ngIf="request.status == '1'">Accepted</i>
+          <i *ngIf="request.status == '2'">Declined</i>
+          <i *ngIf="request.status == '3'">On Rent</i>
+        </td>
 
-            </tr>
-        </tbody>
-    </table>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
 
 
 
-  
 
-  <div class="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Share your Ride experience</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+
+<!-- <div class="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Share your Ride experience</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form #reviewForm="ngForm" (ngSubmit)="onSubmit(reviewForm)">
         <div class="modal-body">
-            <div class="form-floating mt-2">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                <label for="floatingTextarea">Review</label>
-              </div>
-              
+          <div class="form-floating mt-2">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+              [(ngModel)]="ratingModel.message" name="message"></textarea>
+            <label for="floatingTextarea">Review</label>
+          </div>
+          <div class="rating-container">
+            <rating [(ngModel)]="ratingModel.rating" name="rating" [max]="max" [readonly]="readonly" [titles]="titles"
+              (onLeave)="onLeave()" class="text-warning fs-3">
+            </rating>
+            <p *ngIf="hovered">Hovered rating: {{ hovered }}</p>
+            <p>Selected rating: {{ ratingModel.rating }}</p>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Share</button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
+</div> -->
+
+<ng-template #template>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Share your Ride experience</h1>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <form #reviewForm="ngForm" (ngSubmit)="onSubmit(reviewForm)">
+        <div class="modal-body">
+          <div class="form-floating mt-2">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+              [(ngModel)]="ratingModel.message" name="message"></textarea>
+            <label for="floatingTextarea">Review</label>
+          </div>
+          <div class="rating-container">
+            <rating [(ngModel)]="ratingModel.rating" name="rating" [max]="max" [readonly]="readonly" [titles]="titles"
+              (onLeave)="onLeave()" class="text-warning fs-3">
+            </rating>
+            <p *ngIf="hovered">Hovered rating: {{ hovered }}</p>
+            <p>Selected rating: {{ ratingModel.rating }}</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Share</button>
+        </div>
+      </form>
+    </div>
+ 
+
+</ng-template>

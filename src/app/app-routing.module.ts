@@ -25,6 +25,7 @@ import { UserHistoryComponent } from './components/user-history/user-history.com
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { ListManagerComponent } from './components/list-manager/list-manager.component';
 import { AuthGuard } from './guards/auth-guard.guard';
+import { ReportsComponent } from './components/reports/reports.component';
 
 
 const routes: Routes = [
@@ -58,6 +59,10 @@ const routes: Routes = [
       {
         path: 'managers', component: ListManagerComponent
       },
+      {
+        path: 'reports', component: ReportsComponent
+      },
+      
 
     ]
   },

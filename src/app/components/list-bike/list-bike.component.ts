@@ -22,6 +22,7 @@ export class ListBikeComponent implements OnInit {
   // currentBikeUnits! : IInventoryUnit[];
   addBikeUnits!: IInventoryUnit;
   addUnitsForm!: FormGroup;
+  modalRef1?: BsModalRef;
   modalRef?: BsModalRef;
   constructor(private bikeService: BikeService, private modalService: BsModalService, private fb: FormBuilder
     , private inventoryUnitService: InventoryUnitService, private toastr: ToastrService) {
@@ -40,23 +41,24 @@ export class ListBikeComponent implements OnInit {
   }
 
   deleteBike(id: string, template: TemplateRef<void>, index : number) {
-    console.log(id)
+    this.modalRef1 = this.modalService.show(template);
     this.currentBikeId = id
-    this.currentBikeIndex = index
+    this.currentBikeIndex = index;
+
   }
   confirm(): void {
     this.bikeService.deleteBike(this.currentBikeId).subscribe(data => {
       console.log(data);
       if (data) {
         this.toastr.success("Successfully Deleted", "Success")
-        this.modalRef?.hide();
+        this.modalRef1?.hide();
         this.bikes.splice(this.currentBikeIndex, 1);
       }
     })
   }
 
   decline(): void {
-    this.modalRef?.hide();
+    this.modalRef1?.hide();
   }
 
   loadData() {
