@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IToken } from '../modals/token';
 import { jwtDecode } from 'jwt-decode';
-import { IUser, Setting } from '../modals/user';
+import { IUser, Roles, Setting } from '../modals/user';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +49,21 @@ export class UserService {
         localStorage.setItem('user', JSON.stringify(decoded));
       }
       return true;
+    }
+    return false;
+  }
+  isAdminLoggedIn() {
+    if (localStorage.getItem('token')) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const decoded: any = jwtDecode(token);
+        localStorage.setItem('user', JSON.stringify(decoded));
+        let user = JSON.parse(JSON.stringify(decoded));
+        if(user.Role == Roles.Admin || Roles.Manager){
+          return true;
+        }
+      }
+      return false;
     }
     return false;
   }

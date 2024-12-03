@@ -26,13 +26,14 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 import { ListManagerComponent } from './components/list-manager/list-manager.component';
 import { AuthGuard } from './guards/auth-guard.guard';
 import { ReportsComponent } from './components/reports/reports.component';
+import { AdminAuthGuard } from './guards/admin-auth.guard';
 
 
 const routes: Routes = [
 
   {
     path: 'admin', component: AdminLayoutComponent,
-     canActivate : [AuthGuard],
+     canActivate : [AdminAuthGuard],
     children: [
       { path: '', component: DashboardComponent },
       {
@@ -68,7 +69,7 @@ const routes: Routes = [
   },
   {
     path: 'user', component: UserLayoutComponent,
-    // canActivate : [AuthGuard],
+     canActivate : [AuthGuard],
     children: [
       { path: '', component: ViewBikeComponent },
       {
