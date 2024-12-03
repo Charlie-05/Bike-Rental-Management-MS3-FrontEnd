@@ -5,9 +5,10 @@ import { IRentalRequest } from '../../modals/rentalRequest';
 import { IRentalRecord } from '../../modals/rentalRecord';
 
 @Component({
-  selector: 'app-user-history',
-  templateUrl: './user-history.component.html',
-  styleUrl: './user-history.component.css'
+    selector: 'app-user-history',
+    templateUrl: './user-history.component.html',
+    styleUrl: './user-history.component.css',
+    standalone: false
 })
 export class UserHistoryComponent implements OnInit {
   currentUser!: IUser;

@@ -4,9 +4,10 @@ import { IInventoryUnit } from '../../modals/inventoryUnit';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-list-inventory',
-  templateUrl: './list-inventory.component.html',
-  styleUrl: './list-inventory.component.css'
+    selector: 'app-list-inventory',
+    templateUrl: './list-inventory.component.html',
+    styleUrl: './list-inventory.component.css',
+    standalone: false
 })
 export class ListInventoryComponent implements OnInit {
 openModal(template: TemplateRef<any>) {

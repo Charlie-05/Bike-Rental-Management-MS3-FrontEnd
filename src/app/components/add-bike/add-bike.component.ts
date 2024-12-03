@@ -9,9 +9,10 @@ import { IBrand } from '../../modals/brand';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-add-bike',
-  templateUrl: './add-bike.component.html',
-  styleUrl: './add-bike.component.css'
+    selector: 'app-add-bike',
+    templateUrl: './add-bike.component.html',
+    styleUrl: './add-bike.component.css',
+    standalone: false
 })
 export class AddBikeComponent implements OnInit{
   addBikeForm: any;

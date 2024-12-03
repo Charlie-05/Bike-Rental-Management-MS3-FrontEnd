@@ -8,9 +8,10 @@ import { ToastrService } from 'ngx-toastr';
 import { Status } from '../../modals/rentalRequest';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.css',
+    standalone: false
 })
 export class HeaderComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private rentalRecordService: RentalRecordService, private toastr: ToastrService) {

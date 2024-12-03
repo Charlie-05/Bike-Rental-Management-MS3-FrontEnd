@@ -5,9 +5,10 @@ import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
-  selector: 'app-request-display',
-  templateUrl: './request-display.component.html',
-  styleUrl: './request-display.component.css'
+    selector: 'app-request-display',
+    templateUrl: './request-display.component.html',
+    styleUrl: './request-display.component.css',
+    standalone: false
 })
 export class RequestDisplayComponent implements OnInit {
   rentalRequests! : IRentalRequest[];

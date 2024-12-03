@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { IBike } from '../modals/bike';
 
 @Pipe({
-  name: 'bikeSearch'
+    name: 'bikeSearch',
+    standalone: false
 })
 export class BikeSearchPipe implements PipeTransform {
 

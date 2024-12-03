@@ -6,9 +6,10 @@ import { IRentalRecRequest } from '../../modals/rentalRecRequest';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-rental-return',
-  templateUrl: './rental-return.component.html',
-  styleUrl: './rental-return.component.css'
+    selector: 'app-rental-return',
+    templateUrl: './rental-return.component.html',
+    styleUrl: './rental-return.component.css',
+    standalone: false
 })
 export class RentalReturnComponent implements OnInit {
   rentalRecords!: IRentalRecord[];

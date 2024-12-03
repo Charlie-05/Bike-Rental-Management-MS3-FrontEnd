@@ -7,9 +7,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as bootstrap from 'bootstrap';
 
 @Component({
-  selector: 'app-bike-popup',
-  templateUrl: './bike-popup.component.html',
-  styleUrl: './bike-popup.component.css'
+    selector: 'app-bike-popup',
+    templateUrl: './bike-popup.component.html',
+    styleUrl: './bike-popup.component.css',
+    standalone: false
 })
 export class BikePopupComponent {
   @Input() bikeData: any = '';

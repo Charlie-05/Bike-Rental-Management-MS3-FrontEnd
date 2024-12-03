@@ -9,10 +9,10 @@ import { BikePopupComponent } from "../bike-popup/bike-popup.component";
 import { BikeSearchPipe } from "../../pipes/bike-search.pipe";
 
 @Component({
-  selector: 'app-view-bike',
-  templateUrl: './view-bike.component.html',
-  styleUrl: './view-bike.component.css',
-  // imports: [BikePopupComponent, BikeSearchPipe]
+    selector: 'app-view-bike',
+    templateUrl: './view-bike.component.html',
+    styleUrl: './view-bike.component.css',
+    standalone: false
 })
 export class ViewBikeComponent implements OnInit {
   filterForm!: any;

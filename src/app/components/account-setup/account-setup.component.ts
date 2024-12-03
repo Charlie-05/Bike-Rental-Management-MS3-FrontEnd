@@ -7,9 +7,10 @@ import { IUser, Roles, Setting } from '../../modals/user';
 
 
 @Component({
-  selector: 'app-account-setup',
-  templateUrl: './account-setup.component.html',
-  styleUrl: './account-setup.component.css'
+    selector: 'app-account-setup',
+    templateUrl: './account-setup.component.html',
+    styleUrl: './account-setup.component.css',
+    standalone: false
 })
 export class AccountSetupComponent implements OnInit {
 

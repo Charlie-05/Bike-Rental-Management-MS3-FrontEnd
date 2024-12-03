@@ -3,9 +3,10 @@ import { BikeService } from '../../services/bike.service';
 import { IBike } from '../../modals/bike';
 
 @Component({
-  selector: 'app-landing',
-  templateUrl: './landing.component.html',
-  styleUrl: './landing.component.css'
+    selector: 'app-landing',
+    templateUrl: './landing.component.html',
+    styleUrl: './landing.component.css',
+    standalone: false
 })
 export class LandingComponent {
 
