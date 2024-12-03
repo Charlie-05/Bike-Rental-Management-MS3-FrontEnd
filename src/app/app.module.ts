@@ -45,6 +45,9 @@ import { ListManagerComponent } from './components/list-manager/list-manager.com
 import { MyInterceptorService } from './interceptors/my-interceptor.service';
 import { ReportsComponent } from './components/reports/reports.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
+import { HasRoleDirective } from './directives/has-admin.directive';
+
+
 
 
 
@@ -84,6 +87,7 @@ import { RatingModule } from 'ngx-bootstrap/rating';
     UserCardComponent,
     ListManagerComponent,
     ReportsComponent,
+  //  HasRoleDirective
   ],
   imports: [
     BrowserModule,

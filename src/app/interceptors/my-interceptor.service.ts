@@ -21,6 +21,8 @@ export class MyInterceptorService implements HttpInterceptor {
         this.toastr.info(err.error)
       }else if([400].includes(err.status)){
         this.toastr.error(err.error);
+      }else if([500].includes(err.status)){
+        this.toastr.error(err.error);
       }
       const error = err.error?.message || err.statusText;
       return throwError(() => error)
