@@ -4,6 +4,7 @@ import { IUser, Setting } from '../../modals/user';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-admin-layout',
@@ -22,7 +23,8 @@ export class AdminLayoutComponent {
     newPassword: '',
     confirmPassword: ''
   }
-  constructor(private userService: UserService, private modalService: BsModalService, private router : Router) {
+  constructor(private userService: UserService, private modalService: BsModalService, private router : Router,
+     private toastr : ToastrService) {
     this.getUserInfo();
   }
   getUserInfo() {
@@ -46,6 +48,9 @@ export class AdminLayoutComponent {
         console.log(this.currentUser);
         this.userService.updateUser(this.currentUser , this.currentUser.nicNumber, Setting.Credentilas).subscribe(data => {
           console.log(data);
+          if(data){
+            this.toastr.success("Successfully updated", "Success")
+          }
         })
       }
     })

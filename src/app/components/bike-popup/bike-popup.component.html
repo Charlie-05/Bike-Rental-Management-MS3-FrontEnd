@@ -1,8 +1,8 @@
 <div *ngIf="bikeData">
     <div class="row">
-        <div class="col-6 row">
+        <div class="col-6 row" *ngIf="bikeData.images">
             <div class="ratio ratio-4x3">
-                <img [src]="bikeData.images?.[selectedIndex].imagePath" class="img-fluid" alt="Responsive Image">
+                <img [src]="bikeData?.images?.[selectedIndex]?.imagePath" class="img-fluid" alt="Responsive Image">
             </div>
             <div class="col-3" *ngFor="let img of bikeData.images;let i=index">
                 <div class="wrapper border border-black rounded-5" (click)="selectedIndex=i">

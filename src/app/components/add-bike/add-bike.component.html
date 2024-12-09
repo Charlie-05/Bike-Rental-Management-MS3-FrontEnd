@@ -44,7 +44,7 @@
                     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" formControlName="description"></textarea>
                     <label for="floatingTextarea">Description</label>
                   </div>
-                <button type="submit" class="btn btn-primary mt-3" [disabled]="addBikeForm.invalid">Submit</button>
+                <button type="submit" class="btn btn-primary mt-3" [disabled]="addBikeForm.invalid && images.length==0">Submit</button>
 
             </div>
 
@@ -69,10 +69,24 @@
         </div>
     </form>
     <div class="row mt-2">
-        <div class="col-2 border border-black rounded-5 m-1" *ngFor="let img of images">
+        <div class="col-2 border border-black rounded-2 m-1" *ngFor="let img of images">
             <div  class="ratio ratio-4x3">
                 <img [src]="img.imagePath">
             </div>
+        </div>
+    </div>
+    <div class="row mt-2" *ngIf="isEdit">
+        <div class="col-2 border border-black rounded-2 m-1 position-relative" *ngFor="let img of currentBike?.images">
+            <!-- Image Container -->
+            <div class="ratio ratio-4x3">
+                <img [src]="img.imagePath" class="img-fluid rounded">
+            </div>
+            
+            <!-- Delete Button -->
+            <button 
+                class="btn btn-danger position-absolute top-50 end-0 mt-4" (click)="deleteImage(img.id)">
+                <i class="bi bi-trash-fill text-white"></i>
+            </button>
         </div>
     </div>
     

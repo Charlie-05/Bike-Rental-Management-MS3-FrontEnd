@@ -16,9 +16,6 @@ export class BikePopupComponent {
   @Input() bikeData: any = '';
   rentalRequestForm: FormGroup;
   selectedIndex: number = 0;
-
-
-
   constructor(private fb: FormBuilder, private rentalRequestService: RentalRequestService, private toastr: ToastrService, private modalService: NgbModal) {
     let getUser = (localStorage.getItem('user'));
     let now = new Date()
