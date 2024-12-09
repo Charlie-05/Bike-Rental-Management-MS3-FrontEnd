@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { IUser, Setting } from '../../modals/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-user-edit',
@@ -12,7 +13,7 @@ import { IUser, Setting } from '../../modals/user';
 export class UserEditComponent implements OnInit {
   currentUser!: IUser
   userInfo!: FormGroup
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder, private userService: UserService , private toastr : ToastrService) {
     this.userInfo = this.fb.group({
       nicNumber: ['', [Validators.required]],
       firstName: [''],
@@ -43,6 +44,9 @@ export class UserEditComponent implements OnInit {
     console.log(this.userInfo.value);
     this.userService.updateUser(this.userInfo.value, this.currentUser.nicNumber, Setting.Info).subscribe(data => {
       console.log(data);
+      if(data){
+        this.toastr.success("Successfully updated", "Success")
+      }
     })
   }
 }

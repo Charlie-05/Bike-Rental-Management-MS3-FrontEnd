@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BrandService } from '../../services/brand.service';
 import { IBrand } from '../../modals/brand';
 import { ToastrService } from 'ngx-toastr';
+import { ImageService } from '../../services/image.service';
 
 @Component({
     selector: 'app-add-bike',
@@ -24,7 +25,8 @@ export class AddBikeComponent implements OnInit{
   bikeTypes! : any[];
   bikeBrands! : IBrand[];
 
-  constructor(private fb: FormBuilder, private bikeService: BikeService , private route: ActivatedRoute , private brandService : BrandService , private router : Router , private toastr:ToastrService) {
+  constructor(private fb: FormBuilder, private bikeService: BikeService , private route: ActivatedRoute 
+    , private brandService : BrandService , private router : Router , private toastr:ToastrService, private imageService : ImageService) {
     this.addBikeForm = this.fb.group({
       brandId: ['' , [Validators.required]],
       model: ['' ,  [Validators.required]],
@@ -115,7 +117,14 @@ export class AddBikeComponent implements OnInit{
     });
     console.log(this.images);
   }
-
+  deleteImage(id? : string){
+    if(id){
+      this.imageService.deleteImage(id).subscribe(data => {
+        console.log(data)
+      })
+    }
+   
+  }
 
 
 

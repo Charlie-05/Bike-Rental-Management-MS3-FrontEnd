@@ -1,4 +1,4 @@
-<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+<!-- <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
     <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
         aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
         <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
@@ -219,11 +219,145 @@
         </div>
 
     </div>
-</div>
+</div-->
 
 
+<nav class="navbar bg-body-tertiary row">
+    <div class="col-5"></div>
 
-<!-- Modal -->
+    <form class="col-3">
+        <input class="form-control border border-black" type="text" placeholder="Search">
+    </form>
+    <div class="col-3"></div>
+    <div class="col-1">
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong class="text-dark" *ngIf="currentUser">{{currentUser.userName}}</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Settings</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" (click)="logOut()">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+</nav>
+<main class="d-flex flex-nowrap">
+    <h1 class="visually-hidden">Sidebars examples</h1>
+
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg class="bi pe-none me-2" width="40" height="32">
+                <use xlink:href="#bootstrap" />
+            </svg>
+            <div class="fs-4 justify-content-center">
+                <div class="wrapper">
+                    <img src="Images/logo1.webp">
+                </div>
+            </div>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto fs-4">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" [routerLink]="['/admin']">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#home" />
+                    </svg>
+                    Dashboard
+                </a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page"
+                    [routerLink]="['/admin']">
+                    <svg class="bi">
+                        <use xlink:href="#house-fill" />
+                    </svg>
+                    Dashboard
+                </a>
+            </li> -->
+            <li>
+                <a class="nav-link text-white" [routerLink]="['/admin/rentals']">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#speedometer2" />
+                    </svg>
+                    Rentals
+                </a>
+            </li>
+            <li>
+                <a class="nav-link text-white" [routerLink]="['/admin/bikes']">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#speedometer2" />
+                    </svg>
+                    Bikes
+                </a>
+            </li>
+            <li>
+                <a class="nav-link text-white" [routerLink]="['/admin/customers']">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#speedometer2" />
+                    </svg>
+                    Customers
+                </a>
+
+            </li>
+            <li>
+                <a class="nav-link text-white" [routerLink]="['/admin/managers']">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#speedometer2" />
+                    </svg>
+                    Managers
+                </a>
+
+            </li>
+            <li>
+                <a class="nav-link text-white" [routerLink]="['/admin/reports']">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#speedometer2" />
+                    </svg>
+                    Reports
+                </a>
+
+            </li>
+            <!-- <li>
+                <a href="#" class="nav-link text-white bg-secondary">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#table" />
+                    </svg>
+                    Log Out
+                </a>
+            </li> -->
+        </ul>
+        <hr>
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>mdo</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="b-example-divider b-example-vr"></div>
+
+    <div class="container-fluid">
+        <router-outlet></router-outlet>
+    </div>
+</main>
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -257,12 +391,12 @@
                         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
                             [(ngModel)]="user.confirmPassword">
                     </div>
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Save</button>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
+                <!-- <button type="button" class="btn btn-primary">Understood</button> -->
             </div>
         </div>
     </div>

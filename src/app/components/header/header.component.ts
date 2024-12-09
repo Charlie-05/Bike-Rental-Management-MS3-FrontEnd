@@ -8,10 +8,10 @@ import { ToastrService } from 'ngx-toastr';
 import { Status } from '../../modals/rentalRequest';
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrl: './header.component.css',
-    standalone: false
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.css',
+  standalone: false
 })
 export class HeaderComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private rentalRecordService: RentalRecordService, private toastr: ToastrService) {
@@ -20,12 +20,13 @@ export class HeaderComponent implements OnInit {
   currentUser!: IUser;
   currentUserOverDue: IRentalRecord[] = [];
   notifyCount!: number | undefined;
+  isLoggedIn : boolean = false;
   logOut() {
     localStorage.clear();
     this.router.navigate(['/login'])
   }
   ngOnInit(): void {
-
+    this.loginStatus()
   }
   getNotifications() {
     let user = localStorage.getItem("user");
@@ -55,6 +56,12 @@ export class HeaderComponent implements OnInit {
 
       })
     }
+  }
+
+  loginStatus(){
+   if(this.userService.isLoggedIn()){
+    this.isLoggedIn = true;
+   }
   }
 
 }

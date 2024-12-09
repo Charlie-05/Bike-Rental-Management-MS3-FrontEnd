@@ -1,18 +1,30 @@
-<div class="container border border-black">
-    <div class="row" *ngIf="userData">
-        <div class="col-3">
-            <div class="ratio ratio-4x3 rounded-1">
-                <img [src]="userData.profileImage? userData.profileImage : 'Images/profile.jpg'" class="img-fluid"
-                    alt="Responsive Image">
-            </div>
+<div class="container border rounded shadow p-4 my-3 bg-light">
+    <div class="row align-items-center" *ngIf="userData">
+      <!-- Profile Image Section -->
+      <div class="col-md-3 text-center">
+        <div class="ratio ratio-1x1 rounded-circle overflow-hidden border border-2">
+          <img 
+            [src]="userData.profileImage ? userData.profileImage : 'Images/profile.jpg'" 
+            class="img-fluid" 
+            alt="User Profile">
         </div>
-        <div class="col-2"></div>
-        <div class="col-4 p-4">
-            <h6>First name : {{userData.firstName}}</h6>
-            <h6>Last name : {{userData.lastName}}</h6>
-            <p>Email : {{userData.email}}<br>
-                Mobile : {{userData.contactNo}}</p>
+      </div>
+      
+      <!-- User Details Section -->
+      <div class="col-md-9">
+        <h5 class="text-primary">User Profile</h5>
+        <hr>
+        <div class="row">
+          <div class="col-6">
+            <p class="mb-1"><strong>First Name:</strong> {{ userData.firstName }}</p>
+            <p class="mb-1"><strong>Last Name:</strong> {{ userData.lastName }}</p>
+          </div>
+          <div class="col-6">
+            <p class="mb-1"><strong>Email:</strong> {{ userData.email }}</p>
+            <p class="mb-1"><strong>Mobile:</strong> {{ userData.contactNo }}</p>
+          </div>
         </div>
-        <div class="col-2"></div>
+      </div>
     </div>
-</div>
+  </div>
+  

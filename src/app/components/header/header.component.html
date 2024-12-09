@@ -16,7 +16,11 @@
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Fixed navbar</a>
+    <a class="navbar-brand">
+      <div class="wrapper">
+        <img src="Images/logo1.webp">
+      </div>
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
       aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -50,8 +54,9 @@
           </span>
         </button>
       </div>
-      <button class="btn btn-primary col-1 me-1" [routerLink]="['/user/profile']">My Profile</button>
-      <button class="btn btn-primary col-1 me-1" (click)="logOut()">Log out</button>
+      <button class="btn btn-primary col-1 me-1" *ngIf="isLoggedIn" [routerLink]="['/user/profile']">My Profile</button>
+      <button class="btn btn-primary col-1 me-1" *ngIf="isLoggedIn" (click)="logOut()">Log out</button>
+      <button class="btn btn-primary col-1 me-1" *ngIf="!isLoggedIn" [routerLink]="['/login']">Log In</button>
     </div>
   </div>
 </nav>

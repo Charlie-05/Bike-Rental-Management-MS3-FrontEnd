@@ -7,15 +7,17 @@ import { BrandService } from '../../services/brand.service';
 import { FormBuilder } from '@angular/forms';
 import { BikePopupComponent } from "../bike-popup/bike-popup.component";
 import { BikeSearchPipe } from "../../pipes/bike-search.pipe";
+import { Roles } from '../../modals/user';
 
 @Component({
-    selector: 'app-view-bike',
-    templateUrl: './view-bike.component.html',
-    styleUrl: './view-bike.component.css',
-    standalone: false
+  selector: 'app-view-bike',
+  templateUrl: './view-bike.component.html',
+  styleUrl: './view-bike.component.css',
+  standalone: false
 })
 export class ViewBikeComponent implements OnInit {
   filterForm!: any;
+  user: string = "user";
   constructor(private bikeService: BikeService, private modalService: BsModalService, private brandService: BrandService, private fb: FormBuilder) {
 
   };
@@ -74,7 +76,6 @@ export class ViewBikeComponent implements OnInit {
   }
   getBikeTypes() {
     this.bikeTypes = Object.values(Types).filter(value => typeof value === 'string')
-    // .map(value => ({ label: value, value }));
     console.log(this.bikeTypes);
     Object.values(Types).filter(value => typeof value === 'string')
   }
@@ -83,35 +84,18 @@ export class ViewBikeComponent implements OnInit {
       this.bikeBrands = data;
     })
   }
-  // getTypeRadio() {
-  //   console.log(this.features.filterType);
-  //   if (this.features.filterType && this.features.filterBrand == null) {
-  //     this.bikeService.getTypeFilters(this.features.filterType).subscribe(data => {
-  //       console.log(data);
-  //       this.bikes = data;
-  //     })
-  //   }
-  // }
-  // getBrandRadio() {
-  //   console.log(this.features.filterBrand);
-  //   if (this.features.filterBrand && this.features.filterType == null) {
-  //     this.bikeService.getBrandFilters(this.features.filterBrand).subscribe(data => {
-  //       console.log(data);
-  //       this.bikes = data;
-  //     })
-  //   }
-  // }
+
   getBothFilters() {
     console.log(this.features.filterBrand);
     console.log(this.features.filterType);
     if (this.features.filterBrand == null && this.features.filterType) {
-      this.bikeService.getTypeFilters(this.features.filterType).subscribe(data => {
+      this.bikeService.getTypeFilters(this.features.filterType, this.user).subscribe(data => {
         console.log(data);
         this.bikes = data;
       })
     }
     else if (this.features.filterBrand && this.features.filterType == null) {
-      this.bikeService.getBrandFilters(this.features.filterBrand).subscribe(data => {
+      this.bikeService.getBrandFilters(this.features.filterBrand, this.user).subscribe(data => {
         console.log(data);
         this.bikes = data;
       })

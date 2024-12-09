@@ -9,7 +9,8 @@
 </form>
 <div class="container-fluid">
   <div class="bg">
-    <button class="btn btn-outline-success" (click)="features.filterBrand=null" (click)="features.filterType=null" (click)="getAllBikes()">Remove
+    <button class="btn btn-outline-success" (click)="features.filterBrand=null" (click)="features.filterType=null"
+      (click)="getAllBikes()">Remove
       Filters</button>
     <div class="form-inline d-flex align-items-center mt-2 mb-2">
       <div class="btn-group row" btnRadioGroup [(ngModel)]="features.filterType" [disabled]="modelGroupDisabled">
@@ -36,9 +37,9 @@
       <h5 class="card-title">{{bike.brand.name}} {{bike.model}} {{bike.type}}</h5>
       <p class="card-text"> {{bike.description}}</p>
       <div class="row d-flex justify-content-center">
-        
+
         <button type="button" class="btn btn-primary col-6" data-bs-toggle="modal" data-bs-target="#exampleModal"
-          (click)="selected=bike">
+          (click)="selected=bike" [disabled]="bike.inventoryUnits.length==0">
           View
         </button>
       </div>
