@@ -13,7 +13,7 @@ export interface IUser {
     role: Roles,
     isBlocked: boolean,
     userName: string,
-    profileImage: string,
+    profileImage: any,
     isVerified: boolean,
     rentalRecords? : IRentalRecord[],
     rentalRequests? : IRentalRequest[],
@@ -27,5 +27,6 @@ export enum Roles {
 }
 export enum Setting {
     Credentilas ,
-    Info
+    Info,
+    Block
 }

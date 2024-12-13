@@ -2,7 +2,8 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Roles } from '../modals/user';
 
 @Directive({
-  selector: '[appHasRole]'
+  selector: '[appHasRole]',
+  standalone: false
 })
 export class HasRoleDirective {
 
@@ -14,9 +15,11 @@ export class HasRoleDirective {
   }
 
   private updateView(){
-    let user = JSON.parse(localStorage.getItem("user") || '');
-    let role = user.role;
-    if(role == Roles.Admin){
+    // let user = JSON.parse(localStorage.getItem("user") || '');
+    // let role = user.role;
+    // console.log(user);
+    // console.log(role);
+    if(this.currentRole == 'Admin'){
       this.viewContainer.createEmbeddedView(this.templateRef);
     }else{
       this.viewContainer.clear();

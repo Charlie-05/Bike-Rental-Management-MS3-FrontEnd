@@ -5,7 +5,7 @@
                 <img [src]="bikeData?.images?.[selectedIndex]?.imagePath" class="img-fluid" alt="Responsive Image">
             </div>
             <div class="col-3" *ngFor="let img of bikeData.images;let i=index">
-                <div class="wrapper border border-black rounded-5" (click)="selectedIndex=i">
+                <div class="wrapper border border-black rounded-2" (click)="selectedIndex=i">
                     <img [src]="img.imagePath">
                 </div>
             </div>

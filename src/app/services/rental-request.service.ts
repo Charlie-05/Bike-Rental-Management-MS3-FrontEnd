@@ -24,4 +24,7 @@ export class RentalRequestService {
   declineRequest(id: string) {
     return this.http.get(`${this.baseUrl}/Decline-Request${id}`);
   }
+  getRequestById(id : string){
+    return this.http.get<any>(`${this.baseUrl}/${id}`)
+  }
 }

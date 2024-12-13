@@ -1,1 +1,140 @@
-<p>reports works!</p>
+<div *ngIf="bikes.length!= 0">
+    <div class="container-fluid">
+        <div class="card w-100 mb-4 shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Bikes</h5>
+            </div>
+            <div *ngFor="let bike of bikes" class="card-body">
+                <h5 class="card-title">{{bike.brand.name}} {{bike.model}}</h5>
+                <div class="row">
+                    <p class="card-text col-9">
+                        <span>{{bike.description}}<br>
+                            Number of units : {{bike.inventoryUnits?.length}}</span><br>
+                        <strong>Rate per hour : {{bike.ratePerHour}}</strong><br>
+                        <strong>Type : {{bike.type}}</strong><br>
+                        <span>Rating : {{bike.rating}} <i class="fa-solid fa-star text-warning"></i></span>
+                    </p>
+                    <img class="col-3" [src]="bike.images[0].imagePath">
+                </div>
+                <a [routerLink]="['/admin/bikes']" class="btn btn-primary">Go to Bikes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="units.length!=0">
+    <div class="container-fluid">
+        <div class="card w-100 mb-4 shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Inventory Units</h5>
+            </div>
+            <div *ngFor="let unit of units" class="card-body">
+                <h5 class="card-title">{{unit.registrationNo}}</h5>
+                <p class="card-text">
+                    <strong>Year of manufacture : {{unit.yearOfManufacture}}</strong><br>
+                    <span *ngIf="unit.availability == true"><i class="bi bi-check-circle-fill text-success"> Available
+                        </i></span>
+                    <span *ngIf="unit.availability == false"><i class="bi bi-x-circle-fill text-danger">
+                            Unavaialble</i></span><br>
+                    <span>
+                        Bike details : {{unit.bike.brand.name}} {{unit.bike.model}}<br>
+                        Added on : {{unit.dateAdded | date : 'MMM d, y, h:mm'}}
+                    </span>
+                </p>
+                <a [routerLink]="['/admin/bikes/inventory']" class="btn btn-primary">Go to Units</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="users.length!=0">
+    <div class="container-fluid">
+        <div class="card w-100 mb-4 shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Users</h5>
+            </div>
+            <div *ngFor="let user of users" class="card-body">
+                <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
+                <div class="row">
+                    <p class="card-text col-8">
+                        <strong>NIC No. : {{user.nicNumber}}</strong><br>
+                        <strong>Username : {{user.userName}}</strong><br>
+                        <span>Email : {{user.email}}<br>
+                            Mobile : {{user.contactNo}}<br>
+                            Address : {{user.address}}</span>
+                    </p>
+                    <img *ngIf="user.profileImage" class="col-3 me-2" [src]="user.profileImage" height="140vh">
+                </div>          
+                <a [routerLink]="['/admin/customers']" class="btn btn-primary">Go to Customers</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="brands.length!=0">
+    <div class="container-fluid">
+        <div class="card w-100 mb-4 shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Brands</h5>
+            </div>
+            <div *ngFor="let brand of brands" class="card-body">
+                <h5 class="card-title">{{brand.name}}</h5>
+                <p class="card-text">
+                </p>
+                <a  class="btn btn-primary" [routerLink]="['/admin/bikes/brands']">Go to Brands</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="requests.length!=0">
+    <div class="container-fluid">
+        <div class="card w-100 mb-4 shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Rental Requests</h5>
+            </div>
+            <div *ngFor="let request of requests" class="card-body">
+                <h5 class="card-title">{{request.userId}} {{request.requestTime | date}}</h5>
+                <p class="card-text">
+                    <strong [ngClass]="{'text-warning' :request.status == '0' , 'text-success' : request.status == '1'
+                 , 'text-danger' : request.status == '2' , 'text-primary' : request.status == '3' }">Status : <i
+                            *ngIf="request.status == '0'">Pending</i>
+                        <i *ngIf="request.status == '1'">Accepted</i>
+                        <i *ngIf="request.status == '2'">Declined</i>
+                        <i *ngIf="request.status == '3'">On Rent</i></strong>
+                </p>
+                <a  (click)="routeRequest(request.status)" class="btn btn-primary">Go to Requests</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="records.length!=0">
+    <div class="container-fluid">
+        <div class="card w-100 mb-4 shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Rental Records</h5>
+            </div>
+            <div *ngFor="let record of records" class="card-body">
+                <h5 class="card-title">{{record.rentalOut | date : 'MMM d, y, h:mm'}} - {{record.rentalReturn | date :
+                    'MMM d, y, h:mm'}}</h5>
+                <p class="card-text">
+                    <strong>Reg No. : {{record.bikeRegNo}}</strong><br>
+                    <strong>Payment : {{record.payment}}</strong><br>
+                    <span *ngIf="record.review">Review : {{record.review}}</span>
+                </p>
+                <a [routerLink]="['/admin/rentals/records']" class="btn btn-primary">Go to Records</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="container-fluid">
+    <div class="card w-100 mb-4 shadow">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Full-Width Card Header</h5>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Card Title</h5>
+            <p class="card-text">
+                This is a full-width card that stretches across the entire width of the parent container.
+                You can use this to display important content prominently.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</div> -->

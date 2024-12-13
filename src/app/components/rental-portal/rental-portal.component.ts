@@ -17,6 +17,7 @@ export class RentalPortalComponent implements OnInit {
 
   rentalRequests!: IRentalRequest[];
   currentInventoryUnits!: IInventoryUnit[];
+  unitsPopulate : any[] = []
   rentalRecordForm!: FormGroup;
   registrationNo: string = '';
   constructor(private inventoryUnitService: InventoryUnitService, private rentalRequestService: RentalRequestService,
@@ -31,13 +32,16 @@ export class RentalPortalComponent implements OnInit {
     this.rentalRequestService.getRequestsForPortal().subscribe(data => {
       console.log(data);
       this.rentalRequests = data;
-      this.rentalRequests.forEach(request => {
-        this.getAvailableInventoryUnits(request.bikeId);
-      });
-
+      // this.rentalRequests.forEach(request => {
+      //   this.getAvailableInventoryUnits(request.bikeId, index);
+      // });
+      // for (let index = 0; index < this.rentalRequests.length; index++) {
+      //   const element = this.rentalRequests[index]; 
+      //   this.getAvailableInventoryUnits(element.bikeId, index);
+      // }
     })
   }
-  getAvailableInventoryUnits(bikeId: string) {
+  getAvailableInventoryUnits(bikeId: string, index : number) {
     this.inventoryUnitService.getAvailableUnitsByBikeId(bikeId).subscribe(data => {
       this.currentInventoryUnits = data;
       console.log(data);

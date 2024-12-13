@@ -1,3 +1,7 @@
+<button class="btn btn-outline-success mt-2" (click)="getFilterRecords()">{{dateFilter? "Remove Filter" : "Filter by date"}}</button>
+<div class="pr-3 pb-3 pe-3 w-auto" *ngIf="dateFilter">
+    <bs-daterangepicker-inline [bsValue]="bsInlineRangeValue" (bsValueChange)="onDateRangeChange($event)"></bs-daterangepicker-inline>
+  </div>
 <table class="table">
     <thead>
         <tr>

@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent {
   loginForm: FormGroup;
   currentError!: string;
+  logInAttempts : number = 0;
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService) {
     this.loginForm = this.fb.group({
       userName: ["", [Validators.required]],
@@ -38,7 +39,8 @@ export class LoginComponent {
         }
       }
     }, error => {
-      this.currentError = (error.error)
+      this.currentError = (error.error);
+      this.logInAttempts++;
     })
   }
 }

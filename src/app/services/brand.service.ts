@@ -15,4 +15,7 @@ export class BrandService {
   getBrands() {
     return this.http.get<IBrand[]>(this.baseUrl);
   }
+  getBrandById(id : string){
+    return this.http.get<any>(`${this.baseUrl}/${id}`)
+  }
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IImage } from '../modals/image';
 
 @Injectable({
   providedIn: 'root'
@@ -11,5 +12,9 @@ export class ImageService {
 url : string = "http://localhost:5057/api/Images"
   deleteImage(id : string){
     return this.http.delete(`${this.url}/${id}`)
+  }
+
+  postImage(obj : IImage){
+    return this.http.post(this.url , obj);
   }
 }
