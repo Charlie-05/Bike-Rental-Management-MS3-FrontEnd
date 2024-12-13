@@ -15,14 +15,24 @@ export class LoginComponent {
   loginForm: FormGroup;
   currentError!: string;
   logInAttempts : number = 0;
+  formInvalid : boolean = false;
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService) {
     this.loginForm = this.fb.group({
       userName: ["", [Validators.required]],
       password: ["", [Validators.required]]
     })
+    if(this.logInAttempts > 5){
+      this.formInvalid = true;
+      this.toastr.warning("You have reached maximum attempts")
+    }
   }
 
   onLogIn() {
+    this.logInAttempts = parseInt(JSON.parse(localStorage.getItem('attempts') || '0'));
+    if(this.logInAttempts > 5){
+      this.toastr.warning("You have reached maximum attempts");
+      this.formInvalid = true;
+    }
     console.log(this.loginForm.value);
     this.userService.logIn(this.loginForm.value).subscribe(data => {
       localStorage.setItem('token', data.token);
@@ -41,6 +51,8 @@ export class LoginComponent {
     }, error => {
       this.currentError = (error.error);
       this.logInAttempts++;
+      console.log(this.logInAttempts);
+      localStorage.setItem('attempts', JSON.stringify(this.logInAttempts));
     })
   }
 }
