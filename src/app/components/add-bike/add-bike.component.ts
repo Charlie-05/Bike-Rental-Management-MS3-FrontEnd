@@ -52,18 +52,19 @@ export class AddBikeComponent implements OnInit{
     this.getBikeBrands();
   }
 
-
   getBikeTypes(){
     this.bikeTypes = Object.values(Types).filter(value => typeof value === 'string')
     // .map(value => ({ label: value, value }));
     console.log(this.bikeTypes);
     Object.values(Types).filter(value => typeof value === 'string')
   }
+
   getBikeBrands(){
     this.brandService.getBrands().subscribe(data => {
       this.bikeBrands = data;
     })
   }
+
   removeImage(index: number) {
     this.bikeImages.removeAt(index);
     this.images.splice(index , 1);
@@ -79,6 +80,13 @@ export class AddBikeComponent implements OnInit{
         this.router.navigate(['/admin/bikes'])
        });
     }else if(this.isEdit == true){
+     // this.bike.images = this.images;
+     this.images.forEach(img => {
+        img.bikeId = this.currentBikeId;
+        this.imageService.postImage(img).subscribe(data => {
+          console.log(data);
+        })
+      });
       console.log(this.bike);
       this.bikeService.updateBike(this.bike , this.currentBikeId).subscribe(data => {
         console.log(data);
@@ -125,7 +133,4 @@ export class AddBikeComponent implements OnInit{
     }
    
   }
-
-
-
 }

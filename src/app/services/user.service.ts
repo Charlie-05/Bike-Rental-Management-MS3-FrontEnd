@@ -30,7 +30,7 @@ export class UserService {
   getUserById(nicNo: string) {
     return this.http.get<IUser>(`${this.baseUrl}/${nicNo}`)
   }
-  updateUser(user: any, nicNo: string, setting: Setting) {
+  updateUser(nicNo: string, setting: Setting, user: any) {
     return this.http.put(`${this.baseUrl}/${nicNo}?setting=${setting}`, user)
   }
   verifyUser(nicNo: string) {
@@ -39,6 +39,11 @@ export class UserService {
   deleteUser(id: string) {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
+
+  blockUser(nicNo: string, setting: Setting){
+    return this.http.put(`${this.baseUrl}/${nicNo}?setting=${setting}`, {})
+  }
+
 
 
   isLoggedIn() {

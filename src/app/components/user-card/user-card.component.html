@@ -6,8 +6,9 @@
           <img 
             [src]="userData.profileImage ? userData.profileImage : 'Images/profile.jpg'" 
             class="img-fluid" 
-            alt="User Profile">
+            alt="User Profile">  
         </div>
+        <button class="btn btn-success" (click)="upload=true">Change profile</button>
       </div>
       
       <!-- User Details Section -->
@@ -23,6 +24,10 @@
             <p class="mb-1"><strong>Email:</strong> {{ userData.email }}</p>
             <p class="mb-1"><strong>Mobile:</strong> {{ userData.contactNo }}</p>
           </div>
+          <div class="" *ngIf="upload==true">
+            <input class="form-control" type="file" (change)="loadImage($event)">
+            <button class="btn btn-success" (click)="updateUser()">Upload</button>
+          </div>      
         </div>
       </div>
     </div>

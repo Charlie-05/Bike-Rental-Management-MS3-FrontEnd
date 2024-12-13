@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { IUser } from '../../modals/user';
+import { IUser, Setting } from '../../modals/user';
 
 @Component({
     selector: 'app-customer-list',
@@ -23,7 +23,9 @@ export class CustomerListComponent implements OnInit {
   }
 
   blockCustomer(id: string) {
-    console.log(id);
+    this.userService.blockUser(id , Setting.Block).subscribe(data => {
+      console.log(data);
+    })
   }
   viewBlockedCustomers() {
 

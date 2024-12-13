@@ -18,7 +18,7 @@
                 <div>
                     <form action="" class="row" [formGroup]="rentalRecordForm">
                         <div class="col-8">
-                            <select class="form-control" formControlName="bikeRegNo">
+                            <select class="form-control" formControlName="bikeRegNo" (click)="getAvailableInventoryUnits(request.bikeId, i)">
                                 <option value="" disabled selected>Bike Reg.No</option>
                                 <option *ngFor="let unit of currentInventoryUnits" [value]="unit.registrationNo">
                                     {{unit.registrationNo}}</option>

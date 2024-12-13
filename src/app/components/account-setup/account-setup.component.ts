@@ -50,7 +50,7 @@ export class AccountSetupComponent implements OnInit {
     this.currentUser.hashPassword = this.user.password;
     console.log(this.currentUser);
     if(this.result == true){
-      this.userService.updateUser(this.currentUser, this.currentUser.nicNumber,Setting.Credentilas).subscribe(data => {
+      this.userService.updateUser(this.currentUser.nicNumber,Setting.Credentilas, this.currentUser, ).subscribe(data => {
         console.log(data);
         if(data){
           if(this.currentUser.role == Roles.User){

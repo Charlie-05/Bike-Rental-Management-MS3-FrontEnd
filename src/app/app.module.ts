@@ -89,7 +89,7 @@ import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.
     ListManagerComponent,
     ReportsComponent,
     AdminSidebarComponent,
-  //  HasRoleDirective
+    HasRoleDirective
   ],
   imports: [
     BrowserModule,

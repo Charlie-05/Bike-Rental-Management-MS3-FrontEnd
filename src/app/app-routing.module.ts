@@ -61,9 +61,11 @@ const routes: Routes = [
         path: 'managers', component: ListManagerComponent
       },
       {
-        path: 'reports', component: ReportsComponent
+        path: 'reports', component: ReportsComponent,
       },
-      
+      {
+        path: 'reports:/id', component: ReportsComponent
+      }
 
     ]
   },

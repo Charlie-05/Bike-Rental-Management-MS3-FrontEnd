@@ -42,7 +42,7 @@ export class UserEditComponent implements OnInit {
   }
   onEdit() {
     console.log(this.userInfo.value);
-    this.userService.updateUser(this.userInfo.value, this.currentUser.nicNumber, Setting.Info).subscribe(data => {
+    this.userService.updateUser(this.currentUser.nicNumber, Setting.Info, this.userInfo.value, ).subscribe(data => {
       console.log(data);
       if(data){
         this.toastr.success("Successfully updated", "Success")

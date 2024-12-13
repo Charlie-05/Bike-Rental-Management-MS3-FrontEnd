@@ -4,11 +4,17 @@ import { IRentalRecord } from '../modals/rentalRecord';
 import { IPayment } from '../modals/payment';
 import { IRentalRecRequest } from '../modals/rentalRecRequest';
 import { IReviewRequest } from '../modals/reviewRequest';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RentalRecordService {
+  private dataSubject = new BehaviorSubject<any>('Default Value');
+  public data$ = this.dataSubject.asObservable();
+  updateData(newData: any) {
+    this.dataSubject.next(newData);
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -41,5 +47,11 @@ export class RentalRecordService {
   }
   postReview(obj : IReviewRequest){
     return this.http.post(`${this.baseUrl}/Review` , obj)
+  }
+  getRecordsbyRange(start : string , end : string){
+    return this.http.get<IRentalRecord[]>(`${this.baseUrl}/Get-Range?Start=${start}&End=${end}`)
+  }
+  search(searchText : string){
+    return this.http.get(`http://localhost:5057/api/RentalRecords/Search?searchText=` + searchText.toLowerCase());
   }
 }

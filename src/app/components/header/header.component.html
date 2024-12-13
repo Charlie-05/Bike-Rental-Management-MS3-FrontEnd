@@ -33,11 +33,11 @@
         <li class="nav-item">
           <a class="nav-link text-white" [routerLink]="['/user']">Bikes</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link text-white">Review & FAQ</a>
-        </li>
+        </li> -->
         <li class="nav-item">
-          <a class="nav-link text-white">Contact Us</a>
+          <a class="nav-link text-white" href="">Contact Us</a>
         </li>
       </ul>
       <div class="col-2">
@@ -54,7 +54,8 @@
           </span>
         </button>
       </div>
-      <button class="btn btn-primary col-1 me-1" *ngIf="isLoggedIn" [routerLink]="['/user/profile']">My Profile</button>
+      <button class="btn btn-primary col-1 me-1" *ngIf="isLoggedIn" [routerLink]="['/user/profile']">
+        My Profile</button>
       <button class="btn btn-primary col-1 me-1" *ngIf="isLoggedIn" (click)="logOut()">Log out</button>
       <button class="btn btn-primary col-1 me-1" *ngIf="!isLoggedIn" [routerLink]="['/login']">Log In</button>
     </div>

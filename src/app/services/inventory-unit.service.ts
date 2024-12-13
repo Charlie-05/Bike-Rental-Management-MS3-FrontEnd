@@ -22,4 +22,7 @@ export class InventoryUnitService {
   deleteInventoryUnit(regNo : string){
     return this.http.delete(`${this.baseUrl}/${regNo}`)
   }
+  getInventoryUnitByRegNo(regNo : string){
+    return this.http.get(`${this.baseUrl}/${regNo}`)
+  }
 }
