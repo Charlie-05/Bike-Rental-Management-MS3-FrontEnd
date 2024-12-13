@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IRentalRecord } from '../../modals/rentalRecord';
 import { RentalRecordService } from '../../services/rental-record.service';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-rental-records',
@@ -12,9 +15,9 @@ export class RentalRecordsComponent implements OnInit {
   bsInlineRangeValue: Date[];
   bsInlineValue = new Date();
   maxDate = new Date()
-  rentalRecords!: IRentalRecord[];
+  rentalRecords: IRentalRecord[] = [];
   dateFilter : boolean = false;
-  constructor(private rentalRecordService: RentalRecordService) {
+  constructor(private rentalRecordService: RentalRecordService, private datepipe : DatePipe) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
    }
@@ -26,6 +29,7 @@ export class RentalRecordsComponent implements OnInit {
   getAllRecords() {
     this.rentalRecordService.getRentalRecords().subscribe(data => {
       this.rentalRecords = data;
+      console.log(data);
     })
   }
   getFilterRecords(){
@@ -45,6 +49,53 @@ export class RentalRecordsComponent implements OnInit {
       console.log(data);
       this.rentalRecords = data;
     })
+  }
+  
+  exportToPDF() {
+    const doc = new jsPDF();
+
+    // Add a title
+    doc.text('Rental Records - RentWheelz', 14, 10);
+    // Generate table from data
+    autoTable(doc, {
+      head: [['No', 'BikeReg.No','User ID', 'Rent Out', 'Rental Return', 'Payment']],
+      body: this.rentalRecords.map((row, index) => [
+        index + 1, 
+        row.bikeRegNo,
+        row.rentalRequest.userId,
+        this.datepipe.transform(row.rentalOut ,'MMM d, y, h:mm' ),   
+        this.datepipe.transform(row.rentalReturn ,'MMM d, y, h:mm' ) ,
+       'Rs.'+ row.payment
+      ]),
+      startY: 20
+    });
+
+    // Save the PDF
+    doc.save(`records${this.maxDate.toISOString()}.pdf`);
+  }
+  printPDF() {
+    const doc = new jsPDF();
+
+    // Add a title
+    doc.text('Rental Records - RentWheelz', 14, 10);
+
+    // Generate table from data
+    autoTable(doc, {
+      head: [['No', 'BikeReg.No','User ID', 'Rent Out', 'Rental Return', 'Payment']],
+      body: this.rentalRecords.map((row, index) => [
+        index + 1, 
+        row.bikeRegNo,
+        row.rentalRequest.userId,
+        this.datepipe.transform(row.rentalOut ,'MMM d, y, h:mm' ),   
+        this.datepipe.transform(row.rentalReturn ,'MMM d, y, h:mm' ) ,
+       'Rs.'+ row.payment
+      ]),
+      startY: 20
+    });
+
+    // Open the PDF in a new window for printing
+    const pdfData = doc.output('bloburl');
+    window.open(pdfData);
   }
   
 

@@ -1,5 +1,10 @@
-<button class="btn btn-outline-success mt-2" (click)="getFilterRecords()">{{dateFilter? "Remove Filter" : "Filter by date"}}</button>
-<div class="pr-3 pb-3 pe-3 w-auto" *ngIf="dateFilter">
+<div class="d-flex justify-content-end">
+    <button class="btn btn-outline-success mt-2 me-2" (click)="getFilterRecords()">{{dateFilter? "Remove Filter" : "Filter by date"}}
+    </button>
+      <button class="btn btn-outline-primary mt-2 me-2" (click)="exportToPDF()">Export</button>
+      <button class="btn btn-outline-primary mt-2 me-2" (click)="printPDF()">Print</button>
+ </div>
+ <div class="pr-3 pb-3 pe-3 w-auto" *ngIf="dateFilter">
     <bs-daterangepicker-inline [bsValue]="bsInlineRangeValue" (bsValueChange)="onDateRangeChange($event)"></bs-daterangepicker-inline>
   </div>
 <table class="table">
@@ -9,7 +14,7 @@
             <th scope="col">Bike Reg.No</th>
             <th scope="col">Rent Start</th>
             <th scope="col">Rent End</th>
-            <th scope="col">Payment</th>
+            <th scope="col">Payment (Rs.)</th>
         </tr>
     </thead>
     <tbody>

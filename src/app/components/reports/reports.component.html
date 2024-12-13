@@ -61,7 +61,7 @@
                             Mobile : {{user.contactNo}}<br>
                             Address : {{user.address}}</span>
                     </p>
-                    <img *ngIf="user.profileImage" class="col-3 me-2" [src]="user.profileImage" height="140vh">
+                    <img *ngIf="user.profileImage" class="col-3 me-2" [src]="user.profileImage">
                 </div>          
                 <a [routerLink]="['/admin/customers']" class="btn btn-primary">Go to Customers</a>
             </div>
