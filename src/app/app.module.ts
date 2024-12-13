@@ -47,6 +47,7 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { HasRoleDirective } from './directives/has-admin.directive';
 import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -105,7 +106,7 @@ import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.
     ButtonsModule,
     RatingModule.forRoot()
   ],
-  providers: [BsModalService, provideAnimationsAsync(),   {
+  providers: [BsModalService,DatePipe, provideAnimationsAsync(),   {
     provide: HTTP_INTERCEPTORS,
     useClass: MyInterceptorService,
     multi: true, // Allows multiple interceptors
